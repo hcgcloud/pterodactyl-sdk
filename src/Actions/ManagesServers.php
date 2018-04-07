@@ -41,4 +41,15 @@ trait ManagesServers
     {
         return new Server($this->post('servers', $data)['data'], $this);
     }
+
+    /**
+     * Delete the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function deleteServer($serverId)
+    {
+        return $this->delete("servers/$serverId");
+    }
 }

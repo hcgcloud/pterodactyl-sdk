@@ -81,7 +81,7 @@ trait MakesHttpRequests
 
         $response = $this->guzzle->request($verb, $uri, $options);
 
-        if ($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() != 200 && $response->getStatusCode() != 204) {
             return $this->handleRequestError($response);
         }
 
