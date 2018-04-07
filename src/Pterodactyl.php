@@ -7,6 +7,7 @@ use GuzzleHttp\Client as HttpClient;
 class Pterodactyl
 {
     use MakesHttpRequests,
+        Actions\ManagesUsers,
         Actions\ManagesServers;
 
     /**

@@ -67,6 +67,21 @@ These parameters will be used in the POST request sent to Pterodactyl servers, y
 Notice that this request for example will only start the server creation process, your server might need a few minutes before it completes provisioning, you'll need to check
 the Server's `$installed` property to know if it's ready or not yet.
 
+## Managing Users
+
+```php
+$pterodactyl->users();
+$pterodactyl->user($userId);
+$pterodactyl->createUser(array $data);
+$pterodactyl->deleteUser($userId);
+```
+
+On a User instance you may also call:
+
+```php
+$user->delete();
+```
+
 ## Managing Servers
 
 ```php
