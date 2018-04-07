@@ -86,6 +86,7 @@ On a Server instance you may also call:
 $server->delete();
 $server->suspend();
 $server->unsuspend();
+```
 
 ## License
 
