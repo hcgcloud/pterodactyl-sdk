@@ -14,9 +14,8 @@ trait ManagesServers
      */
     public function servers()
     {
-        $servers = $this->get('servers')['data'];
         return $this->transformCollection(
-            $servers,
+            $this->get('servers')['data'],
             Server::class
         );
     }
@@ -40,6 +39,6 @@ trait ManagesServers
      */
     public function createServer(array $data)
     {
-        return new Server($this->post('servers', $data), $this);
+        return new Server($this->post('servers', $data)['data'], $this);
     }
 }

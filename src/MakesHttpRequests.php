@@ -69,11 +69,13 @@ trait MakesHttpRequests
     {
         $url = $this->baseUri . $uri;
 
-        $hmac  = hash_hmac('sha256', $url . '', $this->apiSecret, true);
+        $body = json_encode($payload);
+
+        $hmac  = hash_hmac('sha256', $url . $body, $this->apiSecret, true);
 
         $token = $this->apiKey . '.' . base64_encode($hmac);
 
-        $options = empty($payload) ? [] : ['form_params' => $payload];
+        $options['body'] = $body;
         $options = array_add($options, 'debug', true);
         $options['headers'] = array_add($options, 'Authorization', 'Bearer '.$token);
 

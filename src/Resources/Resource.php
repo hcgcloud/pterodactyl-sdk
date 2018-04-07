@@ -29,6 +29,7 @@ class Resource
      */
     public function __construct(array $attributes, $pterodactyl = null)
     {
+        $attributes = isset($attributes['attributes']) ? array_merge($attributes, $attributes['attributes']) : $attributes;
         $this->attributes = $attributes;
         $this->pterodactyl = $pterodactyl;
 
