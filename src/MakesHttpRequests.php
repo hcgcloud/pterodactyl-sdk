@@ -67,9 +67,6 @@ trait MakesHttpRequests
      */
     private function request($verb, $uri, array $payload = [])
     {
-        // 'headers' => [
-        //         'Authorization' => 'Bearer '.$this->apiKey,
-
         $url = $this->baseUri . $uri;
 
         $hmac  = hash_hmac('sha256', $url . '', $this->apiSecret, true);

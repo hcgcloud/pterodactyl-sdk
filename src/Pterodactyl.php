@@ -80,6 +80,8 @@ class Pterodactyl
     protected function transformCollection($collection, $class, $extraData = [])
     {
         return array_map(function ($data) use ($class, $extraData) {
+            $options = empty($payload) ? [] : ['form_params' => $payload];
+            $data = isset($data['attributes']) ? array_merge($data, $data['attributes']) : $data;
             return new $class($data + $extraData, $this);
         }, $collection);
     }

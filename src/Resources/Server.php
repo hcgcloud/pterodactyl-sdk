@@ -5,11 +5,39 @@ namespace Fruitbytes\Pterodactyl\Resources;
 class Server extends Resource
 {
     /**
+     * The type of the server.
+     *
+     * @var string
+     */
+    public $type;
+
+    /**
      * The id of the server.
      *
      * @var integer
      */
     public $id;
+
+    /**
+     * The uuid of the server.
+     *
+     * @var integer
+     */
+    public $uuid;
+
+    /**
+     * The short uuid of the server.
+     *
+     * @var string
+     */
+    public $uuidShort;
+
+    /**
+     * The node id of the server.
+     *
+     * @var string
+     */
+    public $nodeId;
 
     /**
      * The name of the server.
@@ -19,74 +47,130 @@ class Server extends Resource
     public $name;
 
     /**
-     * The id of the provider credential instance.
+     * The description of the server.
+     *
+     * @var string
+     */
+    public $description;
+
+    /**
+     * The skip scripts setting of the server.
+     *
+     * @var bool
+     */
+    public $skipScripts;
+
+    /**
+     * The suspended status of the server.
      *
      * @var integer
      */
-    public $credentialId;
+    public $suspended;
 
     /**
-     * The size of the server.
+     * The owner id of the server.
+     *
+     * @var integer
+     */
+    public $ownerId;
+
+    /**
+     * The memory allocation of the server.
+     *
+     * @var integer
+     */
+    public $memory;
+
+    /**
+     * The swap allocation of the server.
+     *
+     * @var integer
+     */
+    public $swap;
+
+    /**
+     * The disk allocation of the server.
+     *
+     * @var integer
+     */
+    public $disk;
+
+    /**
+     * The io throlling of the server.
+     *
+     * @var integer
+     */
+    public $io;
+
+    /**
+     * The cpu limit of the server.
+     *
+     * @var integer
+     */
+    public $cpu;
+
+    /**
+     * The oom disabled setting of the server.
+     *
+     * @var integer
+     */
+    public $oomDisabled;
+
+    /**
+     * The ip allocation id of the server.
+     *
+     * @var integer
+     */
+    public $allocationId;
+
+    /**
+     * The service id for the server.
+     *
+     * @var integer
+     */
+    public $serviceId;
+
+    /**
+     * The option id for the server.
+     *
+     * @var integer
+     */
+    public $optionId;
+
+    /**
+     * The pack id for the server.
+     *
+     * @var integer
+     */
+    public $packId;
+
+    /**
+     * The statup script for the server.
      *
      * @var string
      */
-    public $size;
+    public $startup;
 
     /**
-     * The region of the server.
+     * The docker image for the server.
      *
      * @var string
      */
-    public $region;
+    public $image;
 
     /**
-     * The IP address of the server.
+     * The primary username for the server.
      *
      * @var string
      */
-    public $ipAddress;
+    public $username;
 
     /**
-     * The Private IP address of the server.
+     * The installed status of the server.
      *
-     * @var string
+     * @var integer
      */
-    public $privateIpAddress;
-
-    /**
-     * The PHP version used in the server.
-     *
-     * @var string
-     */
-    public $phpVersion;
-
-    /**
-     * The status of the Blackfire service.
-     *
-     * @var string
-     */
-    public $blackfireStatus;
-
-    /**
-     * The status of the Papertrail service.
-     *
-     * @var string
-     */
-    public $papertrailStatus;
-
-    /**
-     * Determine if the server installation is done.
-     *
-     * @var bool
-     */
-    public $isReady;
-
-    /**
-     * Determine if Pterodactyl access to the server was revoked.
-     *
-     * @var bool
-     */
-    public $revoked;
+    public $installed;
 
     /**
      * The date/time the server was created.
@@ -96,11 +180,18 @@ class Server extends Resource
     public $createdAt;
 
     /**
-     * The IDs of other servers on the same servers network.
+     * The date/time the server was updated.
+     *
+     * @var string
+     */
+    public $updatedAt;
+
+    /**
+     * The attributes of the server.
      *
      * @var array
      */
-    public $network = [];
+    public $attributes = [];
 
     /**
      * Update the given server.
@@ -110,7 +201,7 @@ class Server extends Resource
      */
     public function update(array $data)
     {
-        return $this->forge->updateServer($this->id, $data);
+        return $this->pterodactyl->updateServer($this->id, $data);
     }
 
     /**
@@ -120,7 +211,7 @@ class Server extends Resource
      */
     public function delete()
     {
-        return $this->forge->deleteServer($this->id);
+        return $this->pterodactyl->deleteServer($this->id);
     }
 
     /**
@@ -130,6 +221,6 @@ class Server extends Resource
      */
     public function reboot()
     {
-        return $this->forge->rebootServer($this->id);
+        return $this->pterodactyl->rebootServer($this->id);
     }
 }
