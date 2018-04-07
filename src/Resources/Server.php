@@ -215,12 +215,22 @@ class Server extends Resource
     }
 
     /**
-     * Reboot the server.
+     * Suspend the server.
      *
      * @return void
      */
-    public function reboot()
+    public function suspend()
     {
-        return $this->pterodactyl->rebootServer($this->id);
+        return $this->pterodactyl->suspendServer($this->id);
+    }
+
+    /**
+     * Unsuspend the server.
+     *
+     * @return void
+     */
+    public function unsuspend()
+    {
+        return $this->pterodactyl->unsuspendServer($this->id);
     }
 }

@@ -52,4 +52,26 @@ trait ManagesServers
     {
         return $this->delete("servers/$serverId");
     }
+
+    /**
+     * Suspend the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function suspendServer($serverId)
+    {
+        return $this->patch("servers/$serverId/suspend", ['action'=>'suspend']);
+    }
+
+    /**
+     * Unsuspend the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function unsuspendServer($serverId)
+    {
+        return $this->patch("servers/$serverId/suspend", ['action'=>'unsuspend']);
+    }
 }

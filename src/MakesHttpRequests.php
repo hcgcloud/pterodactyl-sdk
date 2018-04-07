@@ -46,6 +46,18 @@ trait MakesHttpRequests
     }
 
     /**
+     * Make a PATCH request to Pterodactyl servers and return the response.
+     *
+     * @param  string $uri
+     * @param  array $payload
+     * @return mixed
+     */
+    private function patch($uri, array $payload = [])
+    {
+        return $this->request('PATCH', $uri, $payload);
+    }
+
+    /**
      * Make a DELETE request to Pterodactyl servers and return the response.
      *
      * @param  string $uri
