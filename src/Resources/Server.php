@@ -194,17 +194,6 @@ class Server extends Resource
     public $attributes = [];
 
     /**
-     * Update the given server.
-     *
-     * @param  array $data
-     * @return Server
-     */
-    public function update(array $data)
-    {
-        return $this->pterodactyl->updateServer($this->id, $data);
-    }
-
-    /**
      * Delete the given server.
      *
      * @return void
