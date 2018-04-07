@@ -1,6 +1,6 @@
 <?php
 
-namespace Themsaid\Forge\Exceptions;
+namespace Fruitbytes\Pterodactyl\Exceptions;
 
 use Exception;
 
