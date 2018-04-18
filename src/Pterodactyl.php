@@ -8,7 +8,8 @@ class Pterodactyl
 {
     use MakesHttpRequests,
         Actions\ManagesUsers,
-        Actions\ManagesServers;
+        Actions\ManagesServers,
+        Actions\ManagesAllocations;
 
     /**
      * The Pterodactyl API Key.
