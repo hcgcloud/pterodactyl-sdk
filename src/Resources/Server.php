@@ -194,7 +194,7 @@ class Server extends Resource
     public $attributes = [];
 
     /**
-     * The attributes of the server.
+     * The allocations of the server.
      *
      * @var array
      */
