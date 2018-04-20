@@ -15,7 +15,7 @@ trait ManagesAllocations
     public function allocations($nodeId)
     {
         return $this->transformCollection(
-            $this->get("admin/nodes/$nodeId")['included'],
+            $this->get("admin/nodes/$nodeId". "?include=allocations")['included'],
             Allocation::class
         );
     }

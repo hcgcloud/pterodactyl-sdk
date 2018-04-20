@@ -3,6 +3,7 @@
 namespace Fruitbytes\Pterodactyl\Actions;
 
 use Fruitbytes\Pterodactyl\Resources\Server;
+use Fruitbytes\Pterodactyl\Resources\Allocation;
 
 trait ManagesServers
 {
@@ -15,7 +16,7 @@ trait ManagesServers
     public function servers()
     {
         return $this->transformCollection(
-            $this->get('servers')['data'],
+            $this->get('admin/servers')['data'],
             Server::class
         );
     }
@@ -28,7 +29,18 @@ trait ManagesServers
      */
     public function server($serverId)
     {
-        return new Server($this->get("servers/$serverId")['data'], $this);
+        $request = $this->get("admin/servers/$serverId" . "?include=allocations");
+
+        $allocations = $this->transformCollection(
+            $request['included'],
+            Allocation::class
+        );
+
+        $server = new Server($request['data'], $this);
+
+        $server->allocations = $allocations;
+
+        return $server;
     }
 
     /**
@@ -39,7 +51,7 @@ trait ManagesServers
      */
     public function createServer(array $data)
     {
-        return new Server($this->post('servers', $data)['data'], $this);
+        return new Server($this->post('admin/servers', $data)['data'], $this);
     }
 
     /**
@@ -50,7 +62,7 @@ trait ManagesServers
      */
     public function deleteServer($serverId)
     {
-        return $this->delete("servers/$serverId");
+        return $this->delete("admin/servers/$serverId");
     }
 
     /**
@@ -61,7 +73,7 @@ trait ManagesServers
      */
     public function suspendServer($serverId)
     {
-        return $this->patch("servers/$serverId/suspend", ['action'=>'suspend']);
+        return $this->patch("admin/servers/$serverId/suspend", ['action'=>'suspend']);
     }
 
     /**
@@ -72,6 +84,6 @@ trait ManagesServers
      */
     public function unsuspendServer($serverId)
     {
-        return $this->patch("servers/$serverId/suspend", ['action'=>'unsuspend']);
+        return $this->patch("admin/servers/$serverId/suspend", ['action'=>'unsuspend']);
     }
 }

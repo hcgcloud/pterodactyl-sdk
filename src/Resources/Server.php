@@ -194,6 +194,13 @@ class Server extends Resource
     public $attributes = [];
 
     /**
+     * The attributes of the server.
+     *
+     * @var array
+     */
+    public $allocations = [];
+
+    /**
      * Delete the given server.
      *
      * @return void
