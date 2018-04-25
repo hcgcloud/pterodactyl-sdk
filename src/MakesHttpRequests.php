@@ -88,7 +88,7 @@ trait MakesHttpRequests
         $token = $this->apiKey . '.' . base64_encode($hmac);
 
         $options['body'] = $body;
-        $options = array_add($options, 'debug', true);
+        $options = array_add($options, 'debug', false);
         $options['headers'] = array_add($options, 'Authorization', 'Bearer '.$token);
 
         $response = $this->guzzle->request($verb, $uri, $options);
