@@ -103,6 +103,13 @@ $server->suspend();
 $server->unsuspend();
 ```
 
+## Using Servers
+
+```php
+$pterodactyl->powerServer($serverUuid, $action); // 'start', 'stop', 'restart', 'kill'
+$pterodactyl->commandServer($serverUuid, $command);
+```
+
 ## License
 
 `fruitbytes/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
