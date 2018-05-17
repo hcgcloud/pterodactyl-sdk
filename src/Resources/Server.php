@@ -201,6 +201,13 @@ class Server extends Resource
     public $allocations = [];
 
     /**
+     * The stats of the server.
+     *
+     * @var array
+     */
+    public $stats = [];
+
+    /**
      * Delete the given server.
      *
      * @return void
