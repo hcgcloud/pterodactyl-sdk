@@ -236,4 +236,24 @@ class Server extends Resource
     {
         return $this->pterodactyl->unsuspendServer($this->id);
     }
+
+    /**
+     * Power the server.
+     *
+     * @return void
+     */
+    public function power($action)
+    {
+        return $this->pterodactyl->powerServer($this->uuid, $action);
+    }
+
+    /**
+     * Power the server.
+     *
+     * @return void
+     */
+    public function command($command)
+    {
+        return $this->pterodactyl->commandServer($this->uuid, $command);
+    }
 }

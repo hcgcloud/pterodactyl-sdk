@@ -110,6 +110,13 @@ $pterodactyl->powerServer($serverUuid, $action); // 'start', 'stop', 'restart', 
 $pterodactyl->commandServer($serverUuid, $command);
 ```
 
+On a Server instance you may also call:
+
+```php
+$server->power($action); // 'start', 'stop', 'restart', 'kill'
+$server->command($command);
+```
+
 ## License
 
 `fruitbytes/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
