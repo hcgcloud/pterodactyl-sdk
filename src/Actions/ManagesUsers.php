@@ -15,7 +15,7 @@ trait ManagesUsers
     public function users()
     {
         return $this->transformCollection(
-            $this->get('admin/users')['data'],
+            $this->get('api/application/users')['data'],
             User::class
         );
     }
@@ -28,7 +28,7 @@ trait ManagesUsers
      */
     public function user($userId)
     {
-        return new User($this->get("admin/users/$userId")['data'], $this);
+        return new User($this->get("api/application/users/$userId")['data'], $this);
     }
 
     /**
@@ -39,7 +39,7 @@ trait ManagesUsers
      */
     public function createUser(array $data)
     {
-        return new User($this->post('admin/users', $data)['data'], $this);
+        return new User($this->post('api/application/users', $data)['data'], $this);
     }
 
     /**
@@ -50,6 +50,6 @@ trait ManagesUsers
      */
     public function deleteUser($userId)
     {
-        return $this->delete("admin/users/$userId");
+        return $this->delete("api/application/users/$userId");
     }
 }

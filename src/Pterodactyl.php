@@ -20,13 +20,6 @@ class Pterodactyl
     public $apiKey;
 
     /**
-     * The Pterodactyl API Secret.
-     *
-     * @var string
-     */
-    public $apiSecret;
-
-    /**
      * The Pterodactyl Base Uri.
      *
      * @var string
@@ -54,11 +47,9 @@ class Pterodactyl
      * @param  \GuzzleHttp\Client $guzzle
      * @return void
      */
-    public function __construct($apiKey, $apiSecret, $baseUri, HttpClient $guzzle = null)
+    public function __construct($apiKey, $baseUri, HttpClient $guzzle = null)
     {
         $this->apiKey = $apiKey;
-
-        $this->apiSecret = $apiSecret;
 
         $this->baseUri = $baseUri;
 

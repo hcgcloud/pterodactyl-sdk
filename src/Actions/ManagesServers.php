@@ -16,7 +16,7 @@ trait ManagesServers
     public function servers()
     {
         return $this->transformCollection(
-            $this->get('admin/servers')['data'],
+            $this->get('api/application/servers')['data'],
             Server::class
         );
     }
@@ -29,7 +29,7 @@ trait ManagesServers
      */
     public function server($serverId)
     {
-        $request = $this->get("admin/servers/$serverId" . "?include=allocations");
+        $request = $this->get("api/application/servers/$serverId" . "?include=allocations");
 
         $allocations = $this->transformCollection(
             $request['included'],
@@ -51,7 +51,7 @@ trait ManagesServers
      */
     public function createServer(array $data)
     {
-        return new Server($this->post('admin/servers', $data)['data'], $this);
+        return new Server($this->post('api/application/servers', $data)['data'], $this);
     }
 
     /**
@@ -62,7 +62,7 @@ trait ManagesServers
      */
     public function deleteServer($serverId)
     {
-        return $this->delete("admin/servers/$serverId");
+        return $this->delete("api/application/servers/$serverId");
     }
 
     /**
@@ -73,7 +73,7 @@ trait ManagesServers
      */
     public function suspendServer($serverId)
     {
-        return $this->patch("admin/servers/$serverId/suspend", ['action'=>'suspend']);
+        return $this->patch("api/application/servers/$serverId/suspend", ['action'=>'suspend']);
     }
 
     /**
@@ -84,6 +84,6 @@ trait ManagesServers
      */
     public function unsuspendServer($serverId)
     {
-        return $this->patch("admin/servers/$serverId/suspend", ['action'=>'unsuspend']);
+        return $this->patch("api/application/servers/$serverId/suspend", ['action'=>'unsuspend']);
     }
 }

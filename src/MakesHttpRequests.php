@@ -83,9 +83,7 @@ trait MakesHttpRequests
 
         $body = json_encode($payload);
 
-        $hmac  = hash_hmac('sha256', $url . $body, $this->apiSecret, true);
-
-        $token = $this->apiKey . '.' . base64_encode($hmac);
+        $token = $this->apiKey;
 
         $options['body'] = $body;
         $options = array_add($options, 'debug', false);
