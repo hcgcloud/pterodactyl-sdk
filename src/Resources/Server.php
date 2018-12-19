@@ -5,13 +5,6 @@ namespace Fruitbytes\Pterodactyl\Resources;
 class Server extends Resource
 {
     /**
-     * The type of the server.
-     *
-     * @var string
-     */
-    public $type;
-
-    /**
      * The id of the server.
      *
      * @var integer
@@ -30,14 +23,14 @@ class Server extends Resource
      *
      * @var string
      */
-    public $uuidShort;
+    public $identifier;
 
     /**
      * The node id of the server.
      *
      * @var string
      */
-    public $nodeId;
+    public $node;
 
     /**
      * The name of the server.
@@ -47,20 +40,6 @@ class Server extends Resource
     public $name;
 
     /**
-     * The description of the server.
-     *
-     * @var string
-     */
-    public $description;
-
-    /**
-     * The skip scripts setting of the server.
-     *
-     * @var bool
-     */
-    public $skipScripts;
-
-    /**
      * The suspended status of the server.
      *
      * @var integer
@@ -68,109 +47,11 @@ class Server extends Resource
     public $suspended;
 
     /**
-     * The owner id of the server.
-     *
-     * @var integer
-     */
-    public $ownerId;
-
-    /**
-     * The memory allocation of the server.
-     *
-     * @var integer
-     */
-    public $memory;
-
-    /**
-     * The swap allocation of the server.
-     *
-     * @var integer
-     */
-    public $swap;
-
-    /**
-     * The disk allocation of the server.
-     *
-     * @var integer
-     */
-    public $disk;
-
-    /**
-     * The io throlling of the server.
-     *
-     * @var integer
-     */
-    public $io;
-
-    /**
-     * The cpu limit of the server.
-     *
-     * @var integer
-     */
-    public $cpu;
-
-    /**
-     * The oom disabled setting of the server.
-     *
-     * @var integer
-     */
-    public $oomDisabled;
-
-    /**
-     * The ip allocation id of the server.
-     *
-     * @var integer
-     */
-    public $allocationId;
-
-    /**
-     * The service id for the server.
-     *
-     * @var integer
-     */
-    public $serviceId;
-
-    /**
-     * The option id for the server.
-     *
-     * @var integer
-     */
-    public $optionId;
-
-    /**
      * The pack id for the server.
      *
      * @var integer
      */
-    public $packId;
-
-    /**
-     * The statup script for the server.
-     *
-     * @var string
-     */
-    public $startup;
-
-    /**
-     * The docker image for the server.
-     *
-     * @var string
-     */
-    public $image;
-
-    /**
-     * The primary username for the server.
-     *
-     * @var string
-     */
-    public $username;
-
-    /**
-     * The installed status of the server.
-     *
-     * @var integer
-     */
-    public $installed;
+    public $pack;
 
     /**
      * The date/time the server was created.
@@ -194,18 +75,18 @@ class Server extends Resource
     public $attributes = [];
 
     /**
+     * The limits of the server.
+     *
+     * @var array
+     */
+    public $limits = [];
+
+    /**
      * The allocations of the server.
      *
      * @var array
      */
     public $allocations = [];
-
-    /**
-     * The stats of the server.
-     *
-     * @var array
-     */
-    public $stats = [];
 
     /**
      * Delete the given server.
@@ -244,7 +125,7 @@ class Server extends Resource
      */
     public function power($action)
     {
-        return $this->pterodactyl->powerServer($this->uuid, $action);
+        return $this->pterodactyl->powerServer($this->id, $action);
     }
 
     /**

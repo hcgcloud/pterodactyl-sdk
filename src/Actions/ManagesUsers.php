@@ -28,7 +28,7 @@ trait ManagesUsers
      */
     public function user($userId)
     {
-        return new User($this->get("api/application/users/$userId")['data'], $this);
+        return new User($this->get("api/application/users/$userId")['attributes'], $this);
     }
 
     /**

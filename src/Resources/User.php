@@ -5,13 +5,6 @@ namespace Fruitbytes\Pterodactyl\Resources;
 class User extends Resource
 {
     /**
-     * The type of the user.
-     *
-     * @var string
-     */
-    public $type;
-
-    /**
      * The id of the user.
      *
      * @var integer
@@ -44,14 +37,14 @@ class User extends Resource
      *
      * @var string
      */
-    public $nameFirst;
+    public $firstName;
 
     /**
      * The last name of the user.
      *
      * @var string
      */
-    public $nameLast;
+    public $lastName;
 
     /**
      * The language of the user.
@@ -66,20 +59,6 @@ class User extends Resource
      * @var integer
      */
     public $rootAdmin;
-
-    /**
-     * The use_totp setting for the user.
-     *
-     * @var integer
-     */
-    public $useTotp;
-
-    /**
-     * The gravatar id of the user.
-     *
-     * @var integer
-     */
-    public $gravatar;
 
     /**
      * The date/time the user was created.

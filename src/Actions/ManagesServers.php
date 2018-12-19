@@ -30,13 +30,13 @@ trait ManagesServers
     public function server($serverId)
     {
         $request = $this->get("api/application/servers/$serverId" . "?include=allocations");
-
+        //print_r($request);
         $allocations = $this->transformCollection(
-            $request['included'],
+            $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
         );
 
-        $server = new Server($request['data'], $this);
+        $server = new Server($request, $this);
 
         $server->allocations = $allocations;
 
@@ -73,7 +73,7 @@ trait ManagesServers
      */
     public function suspendServer($serverId)
     {
-        return $this->patch("api/application/servers/$serverId/suspend", ['action'=>'suspend']);
+        return $this->post("api/application/servers/$serverId/suspend");
     }
 
     /**
@@ -84,6 +84,6 @@ trait ManagesServers
      */
     public function unsuspendServer($serverId)
     {
-        return $this->patch("api/application/servers/$serverId/suspend", ['action'=>'unsuspend']);
+        return $this->post("api/application/servers/$serverId/unsuspend");
     }
 }

@@ -48,9 +48,9 @@ trait UsesServers
      * @param  string $serverUuid
      * @return void
      */
-    public function powerServer($serverUuid, $action)
+    public function powerServer($serverId, $action)
     {
-        return $this->post("user/server/$serverUuid/power", ['action'=>"$action"]);
+        return $this->post("api/client/servers/$serverId/power", ['action'=>"$action"]);
     }
 
     /**
