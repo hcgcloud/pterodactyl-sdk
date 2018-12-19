@@ -1,5 +1,5 @@
 {
-    "name": "fruitbytes/pterodactyl-sdk",
+    "name": "tlingc/pterodactyl-sdk",
     "description": "Pterodactyl PHP SDK (Unofficial)",
     "keywords": ["pterodactyl", "sdk", "php"],
     "license": "MIT",
@@ -7,6 +7,10 @@
         {
             "name": "Josh Trebilco",
             "email": "josh@fruitbytes.com"
+        },
+        {
+            "name": "TLingC",
+            "email": "my@tlingc.com"
         }
     ],
     "require": {
