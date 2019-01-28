@@ -1,6 +1,6 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl\Exceptions;
+namespace HCGCloud\Pterodactyl\Exceptions;
 
 use Exception;
 

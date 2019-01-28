@@ -1,9 +1,9 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl\Actions;
+namespace HCGCloud\Pterodactyl\Actions;
 
-use Fruitbytes\Pterodactyl\Resources\Server;
-use Fruitbytes\Pterodactyl\Resources\Stat;
+use HCGCloud\Pterodactyl\Resources\Server;
+use HCGCloud\Pterodactyl\Resources\Stat;
 
 trait UsesServers
 {

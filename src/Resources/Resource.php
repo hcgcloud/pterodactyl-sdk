@@ -1,8 +1,8 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl\Resources;
+namespace HCGCloud\Pterodactyl\Resources;
 
-use Fruitbytes\Pterodactyl\Pterodactyl;
+use HCGCloud\Pterodactyl\Pterodactyl;
 
 class Resource
 {

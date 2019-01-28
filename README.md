@@ -7,7 +7,7 @@
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
 
 ```bash
-composer require fruitbytes/pterodactyl-sdk
+composer require hcgcloud/pterodactyl-sdk
 ```
 
 Then use Composer's autoload:
@@ -19,7 +19,7 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$pterodactyl = new \Fruitbytes\Pterodactyl\Pterodactyl(PUBLIC_KEY_HERE, SECRET_KEY_HERE, BASE_URI_HERE);
+$pterodactyl = new \HCGCloud\Pterodactyl\Pterodactyl(PUBLIC_KEY_HERE, SECRET_KEY_HERE, BASE_URI_HERE);
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ Using the pterodactyl instance you may perform multiple actions as well as retri
 $servers = $pterodactyl->servers();
 ```
 
-This will give you an array of servers that you have access to, each server is represented by an instance of `Fruitbytes\Pterodactyl\Resources\Server`, this instance has multiple public
+This will give you an array of servers that you have access to, each server is represented by an instance of `HCGCloud\Pterodactyl\Resources\Server`, this instance has multiple public
 properties like `$name`, `$id`, `$owner`, `$memory`, and others.
 
 You may also retrieve a single server using:
@@ -72,6 +72,7 @@ the Server's `$installed` property to know if it's ready or not yet.
 ```php
 $pterodactyl->users();
 $pterodactyl->user($userId);
+$pterodactyl->userex($userExternalId);
 $pterodactyl->createUser(array $data);
 $pterodactyl->deleteUser($userId);
 ```
@@ -87,6 +88,7 @@ $user->delete();
 ```php
 $pterodactyl->servers();
 $pterodactyl->server($serverId);
+$pterodactyl->serverex($serverExternalId);
 $pterodactyl->createServer(array $data);
 $pterodactyl->deleteServer($serverId);
 
@@ -119,12 +121,12 @@ $server->command($command);
 
 ## License
 
-`fruitbytes/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
+`hcgcloud/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
 [license file](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/fruitbytes/pterodactyl-sdk.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/hcgcloud/pterodactyl-sdk.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/fruitbytes/pterodactyl-sdk.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/fruitbytes/pterodactyl-sdk
-[link-downloads]: https://packagist.org/packages/fruitbytes/pterodactyl-sdk
+[link-packagist]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
+[link-downloads]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk

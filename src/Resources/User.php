@@ -1,6 +1,6 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl\Resources;
+namespace HCGCloud\Pterodactyl\Resources;
 
 class User extends Resource
 {

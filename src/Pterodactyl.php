@@ -1,6 +1,6 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl;
+namespace HCGCloud\Pterodactyl;
 
 use GuzzleHttp\Client as HttpClient;
 

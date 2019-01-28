@@ -1,8 +1,8 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl\Actions;
+namespace HCGCloud\Pterodactyl\Actions;
 
-use Fruitbytes\Pterodactyl\Resources\User;
+use HCGCloud\Pterodactyl\Resources\User;
 
 trait ManagesUsers
 {

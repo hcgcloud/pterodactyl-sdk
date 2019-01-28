@@ -1,12 +1,12 @@
 <?php
 
-namespace Fruitbytes\Pterodactyl;
+namespace HCGCloud\Pterodactyl;
 
 use Psr\Http\Message\ResponseInterface;
-use Fruitbytes\Pterodactyl\Exceptions\TimeoutException;
-use Fruitbytes\Pterodactyl\Exceptions\NotFoundException;
-use Fruitbytes\Pterodactyl\Exceptions\ValidationException;
-use Fruitbytes\Pterodactyl\Exceptions\FailedActionException;
+use HCGCloud\Pterodactyl\Exceptions\TimeoutException;
+use HCGCloud\Pterodactyl\Exceptions\NotFoundException;
+use HCGCloud\Pterodactyl\Exceptions\ValidationException;
+use HCGCloud\Pterodactyl\Exceptions\FailedActionException;
 
 trait MakesHttpRequests
 {
