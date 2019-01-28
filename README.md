@@ -19,7 +19,7 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$pterodactyl = new \HCGCloud\Pterodactyl\Pterodactyl(PUBLIC_KEY_HERE, SECRET_KEY_HERE, BASE_URI_HERE);
+$pterodactyl = new \HCGCloud\Pterodactyl\Pterodactyl(API_KEY_HERE, BASE_URI_HERE);
 ```
 
 ## Usage
