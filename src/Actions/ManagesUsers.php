@@ -32,6 +32,16 @@ trait ManagesUsers
     }
 
     /**
+     * Get a user instance by external id.
+     *
+     * @param  string $userId
+     * @return User
+     */
+    public function userex($userId)
+    {
+        return new User($this->get("api/application/users/external/$userId"), $this);
+    }
+    /**
      * Create a new user.
      *
      * @param  array $data
