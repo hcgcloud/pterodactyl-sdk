@@ -42,6 +42,28 @@ trait ManagesServers
 
         return $server;
     }
+	
+    /**
+     * Get a server instance by external id.
+     *
+     * @param  string $serverId
+     * @return Server
+     */
+    public function serverex($serverId)
+    {
+        $request = $this->get("api/application/servers/external/$serverId" . "?include=allocations");
+        //print_r($request);
+        $allocations = $this->transformCollection(
+            $request['attributes']['relationships']['allocations']['data'],
+            Allocation::class
+        );
+
+        $server = new Server($request, $this);
+
+        $server->allocations = $allocations;
+
+        return $server;
+    }
 
     /**
      * Create a new server.
