@@ -28,9 +28,9 @@ trait ManagesUsers
      */
     public function user($userId)
     {
-        return new User($this->get("api/application/users/$userId")['attributes'], $this);
+        return new User($this->get("api/application/users/$userId"), $this);
     }
-
+	
     /**
      * Get a user instance by external id.
      *
@@ -49,7 +49,7 @@ trait ManagesUsers
      */
     public function createUser(array $data)
     {
-        return new User($this->post('api/application/users', $data)['data'], $this);
+        return new User($this->post('api/application/users', $data), $this);
     }
 
     /**
