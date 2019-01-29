@@ -10,6 +10,13 @@ class Server extends Resource
      * @var integer
      */
     public $id;
+	
+    /**
+     * The external id of the server.
+     *
+     * @var integer
+     */
+    public $externalId;
 
     /**
      * The uuid of the server.
@@ -39,6 +46,13 @@ class Server extends Resource
      */
     public $name;
 
+    /**
+     * The description of the server.
+     *
+     * @var string
+     */
+    public $description;
+	
     /**
      * The suspended status of the server.
      *
@@ -117,7 +131,7 @@ class Server extends Resource
     {
         return $this->pterodactyl->unsuspendServer($this->id);
     }
-
+	
     /**
      * Reinstall the server.
      *
