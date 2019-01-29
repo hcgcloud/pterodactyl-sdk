@@ -4,6 +4,11 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
 
+## Important
+**As we are upgrading it to support version 0.7.x, and haven't finished the upgrade yet. Some features may still not work properly. In addition, functions provided by this sdk may change at any time. Unless you already know the possible consequences, don't use it in production.**
+
+## Install
+
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
 
 ```bash
