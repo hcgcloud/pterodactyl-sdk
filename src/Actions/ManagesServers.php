@@ -108,4 +108,15 @@ trait ManagesServers
     {
         return $this->post("api/application/servers/$serverId/unsuspend");
     }
+	
+    /**
+     * Reinstall the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function reinstallServer($serverId)
+    {
+        return $this->post("api/application/servers/$serverId/reinstall");
+    }
 }

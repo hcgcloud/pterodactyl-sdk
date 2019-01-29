@@ -119,6 +119,16 @@ class Server extends Resource
     }
 
     /**
+     * Reinstall the server.
+     *
+     * @return void
+     */
+    public function reinstall()
+    {
+        return $this->pterodactyl->reinstallServer($this->id);
+    }
+	
+    /**
      * Power the server.
      *
      * @return void
