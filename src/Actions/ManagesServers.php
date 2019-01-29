@@ -73,7 +73,7 @@ trait ManagesServers
      */
     public function createServer(array $data)
     {
-        return new Server($this->post('api/application/servers', $data)['data'], $this);
+        return new Server($this->post('api/application/servers', $data), $this);
     }
 
     /**
