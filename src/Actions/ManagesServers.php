@@ -119,4 +119,16 @@ trait ManagesServers
     {
         return $this->post("api/application/servers/$serverId/reinstall");
     }
+	
+    /**
+     * Rebuild the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function rebuildServer($serverId)
+    {
+        return $this->post("api/application/servers/$serverId/rebuild");
+    }
+	
 }
