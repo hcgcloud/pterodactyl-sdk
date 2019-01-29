@@ -7,23 +7,32 @@
 ## Important
 **As we are upgrading it to support version 0.7.x, and haven't finished the upgrade yet. Some features may still not work properly. In addition, functions provided by this sdk may change at any time. Unless you already know the possible consequences, don't use it in production.**
 
-### Functions upgraded & tested
+### Functions upgraded/added/modified and have been tested
 
+#### Server
 - [x] $pterodactyl->servers();
 - [x] $pterodactyl->server($serverId);
 - [x] $pterodactyl->serverEx($serverExternalId);
 - [x] $pterodactyl->createServer(array $data);
 - [x] $pterodactyl->deleteServer($serverId);
-- [ ] $pterodactyl->suspendServer($serverId);
-- [ ] $pterodactyl->unsuspendServer($serverId);
-- [ ] $pterodactyl->powerServer($serverUuid, $action);
-- [ ] $pterodactyl->commandServer($serverUuid, $command);
+- [x] $pterodactyl->suspendServer($serverId);
+- [x] $pterodactyl->unsuspendServer($serverId);
+- [x] $pterodactyl->powerServer($serverIdentifier, $action);
+- [x] $pterodactyl->commandServer($serverIdentifier, $command);
+- [x] $pterodactyl->listServers();
+- [x] $pterodactyl->getServer($serverIdentifier);
+- [x] $pterodactyl->powerServer($serverIdentifier, $action); //'start', 'stop', 'restart', 'kill'
+- [x] $pterodactyl->commandServer($serverIdentifier, $command);
+
+##### Server Instance
 - [x] $server->delete();
 - [x] $server->suspend();
 - [x] $server->unsuspend();
-- [ ] $server->power();
-- [ ] $server->command();
+- [x] $server->power();
+- [x] $server->command();
 
+#### Node
+- [x] $pterodactyl->nodes();
 ## Install
 
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
@@ -129,30 +138,40 @@ $user->delete();
 ## Managing Servers
 
 ```php
+//Works with Application API
 $pterodactyl->servers();
 $pterodactyl->server($serverId);
 $pterodactyl->serverEx($serverExternalId);
 $pterodactyl->createServer(array $data);
 $pterodactyl->deleteServer($serverId);
-
-// Server access
 $pterodactyl->suspendServer($serverId);
 $pterodactyl->unsuspendServer($serverId);
 $pterodactyl->reinstallServer($serverId);
 $pterodactyl->rebuildServer($serverId);
-
-// Server Variable
 $pterodactyl->updateServerStartup($serverId, array $data);
+
+//Works with Account API
+//Please note that the following $serverIdentifier is not same as $serverId, it is a short version of server UUID.
+$pterodactyl->listServers();
+$pterodactyl->getServer($serverIdentifier);
+$pterodactyl->powerServer($serverIdentifier, $action); //'start', 'stop', 'restart', 'kill'
+$pterodactyl->commandServer($serverIdentifier, $command);
+
 ```
 
 On a Server instance you may also call:
 
 ```php
+//Works with Application API
 $server->delete();
 $server->suspend();
 $server->unsuspend();
 $server->reinstall();
 $server->rebuild();
+
+//Works with Account API
+$server->power($action); //'start', 'stop', 'restart', 'kill
+$server->command($command);
 ```
 
 ## License
