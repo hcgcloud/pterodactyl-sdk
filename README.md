@@ -29,10 +29,10 @@
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
 
 ```bash
-composer require hcgcloud/pterodactyl-sdk
+composer require hcgcloud/pterodactyl-sdk:dev-master
 ```
 
-Then use Composer's autoload:
+Then use Composer's autoload unless you are using a framework that support composer autoload:
 
 ```php
 require __DIR__.'/../vendor/autoload.php';

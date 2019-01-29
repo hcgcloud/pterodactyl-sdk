@@ -57,11 +57,11 @@ trait ManagesServers
             $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
         );
-
+		
         $server = new Server($request, $this);
-
+		
         $server->allocations = $allocations;
-
+		
         return $server;
     }
 
