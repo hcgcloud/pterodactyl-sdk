@@ -49,7 +49,7 @@ trait ManagesServers
      * @param  string $serverId
      * @return Server
      */
-    public function serverex($serverId)
+    public function serverEx($serverId)
     {
         $request = $this->get("api/application/servers/external/$serverId" . "?include=allocations");
 		
