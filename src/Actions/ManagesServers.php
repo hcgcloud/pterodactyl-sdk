@@ -30,7 +30,7 @@ trait ManagesServers
     public function server($serverId)
     {
         $request = $this->get("api/application/servers/$serverId" . "?include=allocations");
-        //print_r($request);
+		
         $allocations = $this->transformCollection(
             $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
@@ -52,7 +52,7 @@ trait ManagesServers
     public function serverex($serverId)
     {
         $request = $this->get("api/application/servers/external/$serverId" . "?include=allocations");
-        //print_r($request);
+		
         $allocations = $this->transformCollection(
             $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
