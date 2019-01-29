@@ -159,7 +159,7 @@ class Server extends Resource
      */
     public function power($action)
     {
-        return $this->pterodactyl->powerServer($this->id, $action);
+        return $this->pterodactyl->powerServer($this->identifier, $action);
     }
 
     /**
@@ -169,6 +169,6 @@ class Server extends Resource
      */
     public function command($command)
     {
-        return $this->pterodactyl->commandServer($this->uuid, $command);
+        return $this->pterodactyl->commandServer($this->identifier, $command);
     }
 }

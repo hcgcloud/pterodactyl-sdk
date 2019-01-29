@@ -3,7 +3,6 @@
 namespace HCGCloud\Pterodactyl\Actions;
 
 use HCGCloud\Pterodactyl\Resources\Server;
-use HCGCloud\Pterodactyl\Resources\Stat;
 
 trait UsesServers
 {
@@ -16,7 +15,7 @@ trait UsesServers
     public function listServers()
     {
         return $this->transformCollection(
-            $this->get('user')['data'],
+            $this->get('api/client/')['data'],
             Server::class
         );
     }
@@ -26,18 +25,13 @@ trait UsesServers
      *
      * @return Server[]
      */
-    public function getServer($serverUuid)
+    public function getServer($serverIdentifier)
     {
-        $request = $this->get("user/server/$serverUuid" . "?include=stats");
+        $request1 = $this->get("api/client/servers/$serverIdentifier");
+		$request2 = $this->get("api/client/servers/$serverIdentifier/utilization");
+        $server = new Server($request1, $this);
 
-        $stats = $this->transformCollection(
-            $request['included'],
-            Stat::class
-        );
-
-        $server = new Server($request['data'], $this);
-
-        $server->stats = $stats;
+        $server->stats = $request2;
 
         return $server;
     }
@@ -45,22 +39,24 @@ trait UsesServers
     /**
      * Toggle the power on a given server.
      *
-     * @param  string $serverUuid
+     * @param  string $serverId
+	 * @param  string $action
      * @return void
      */
-    public function powerServer($serverId, $action)
+    public function powerServer($serverIdentifier, $action)
     {
-        return $this->post("api/client/servers/$serverId/power", ['action'=>"$action"]);
+        return $this->post("api/client/servers/$serverIdentifier/power", ['signal'=>"$action"]);
     }
 
     /**
      * Send a command to a given server.
      *
-     * @param  string $serverUuid
+     * @param  string $serverId
+	 * @param  string $action
      * @return void
      */
-    public function commandServer($serverUuid, $command)
+    public function commandServer($serverIdentifier, $command)
     {
-        return $this->post("user/server/$serverUuid/command", ['command'=>"$command"]);
+        return $this->post("api/client/servers/$serverIdentifier/command", ['command'=>"$command"]);
     }
 }
