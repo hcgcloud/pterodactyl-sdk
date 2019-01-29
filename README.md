@@ -14,8 +14,8 @@
 - [x] $pterodactyl->serverEx($serverExternalId);
 - [x] $pterodactyl->createServer(array $data);
 - [x] $pterodactyl->deleteServer($serverId);
-- [ ] $pterodactyl->suspendServer($serverId);
-- [ ] $pterodactyl->unsuspendServer($serverId);
+- [x] $pterodactyl->suspendServer($serverId);
+- [x] $pterodactyl->unsuspendServer($serverId);
 - [ ] $pterodactyl->powerServer($serverUuid, $action);
 - [ ] $pterodactyl->commandServer($serverUuid, $command);
 - [x] $server->delete();
