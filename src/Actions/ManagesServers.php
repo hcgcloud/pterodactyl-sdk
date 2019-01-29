@@ -131,4 +131,14 @@ trait ManagesServers
         return $this->post("api/application/servers/$serverId/rebuild");
     }
 	
+    /**
+     * Update the given server's startup.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function updateServerStartup($serverId, array $data)
+    {
+        return $this->patch("api/application/servers/$serverId/startup", $data);
+    }
 }
