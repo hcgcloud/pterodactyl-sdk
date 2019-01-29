@@ -7,7 +7,7 @@
 ## Important
 **As we are upgrading it to support version 0.7.x, and haven't finished the upgrade yet. Some features may still not work properly. In addition, functions provided by this sdk may change at any time. Unless you already know the possible consequences, don't use it in production.**
 
-### Functons upgraded & tested
+### Functions upgraded & tested
 
 - [x] $pterodactyl->servers();
 - [x] $pterodactyl->server($serverId);
