@@ -5,11 +5,11 @@
 [![Software License][ico-license]](LICENSE.md)
 
 ## Important
-**As we are upgrading it to support version 0.7.x, and haven't finished the upgrade yet. Some features may still not work properly. In addition, functions provided by this sdk may change at any time. Unless you already know the possible consequences, don't use it in production.**
+**As we are upgrading it to support version 0.7.x, some APIs are still not integrated, and we can't guarantee that there are no bugs. You can see a list that what we completed and planned below. Unless you already know the possible consequences, don't use it in production.**
 
-### Functions upgraded/added/modified and have been tested
-
-#### Server
+## ToDo List
+The following ticked items are upgraded & tested.
+### Server
 - [x] $pterodactyl->servers();
 - [x] $pterodactyl->server($serverId);
 - [x] $pterodactyl->serverEx($serverExternalId);
@@ -24,15 +24,26 @@
 - [x] $pterodactyl->powerServer($serverIdentifier, $action); //'start', 'stop', 'restart', 'kill'
 - [x] $pterodactyl->commandServer($serverIdentifier, $command);
 
-##### Server Instance
+#### Server Instance
 - [x] $server->delete();
 - [x] $server->suspend();
 - [x] $server->unsuspend();
 - [x] $server->power();
 - [x] $server->command();
 
-#### Node
+### User
+- [x] $pterodactyl->users();
+- [x] $pterodactyl->user($userId);
+- [x] $pterodactyl->userEx($userExternalId);
+- [x] $pterodactyl->createUser(array $data);
+- [x] $pterodactyl->deleteUser($userId);
+
+#### User Instance
+- [x] $user->delete();
+
+### Node
 - [x] $pterodactyl->nodes();
+
 ## Install
 
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
@@ -119,12 +130,25 @@ These parameters will be used in the POST request sent to Pterodactyl servers, y
 Notice that this request for example will only start the server creation process, your server might need a few minutes before it completes provisioning, you'll need to check
 the Server's `$installed` property to know if it's ready or not yet.
 
-## Managing Users(Currently not totally upgraded to support 0.7.x & tested)
+Or use the following code to create a new user:
+```php
+$user = $pterodactyl->createUser([
+    "external_id" => "2",
+    "email" => 'test@test.com',
+    "username" => 'TestUser',
+    "first_name" => 'Test',
+    "last_name" => 'User',
+    "language" => 'zh-cn',
+    "password" => '123456'
+]);
+```
+
+## Managing Users
 
 ```php
 $pterodactyl->users();
 $pterodactyl->user($userId);
-$pterodactyl->userex($userExternalId);
+$pterodactyl->userEx($userExternalId);
 $pterodactyl->createUser(array $data);
 $pterodactyl->deleteUser($userId);
 ```
