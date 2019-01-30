@@ -34,12 +34,12 @@ trait ManagesUsers
     /**
      * Get a user instance by external id.
      *
-     * @param  string $userId
+     * @param  string $userExternalId
      * @return User
      */
-    public function userex($userId)
+    public function userEx($userExternalId)
     {
-        return new User($this->get("api/application/users/external/$userId"), $this);
+        return new User($this->get("api/application/users/external/$userExternalId"), $this);
     }
     /**
      * Create a new user.
@@ -52,6 +52,18 @@ trait ManagesUsers
         return new User($this->post('api/application/users', $data), $this);
     }
 
+    /**
+     * Update a specified user.
+     *
+     * @param  string $userId
+     * @param  array $data
+     * @return User
+     */
+    public function updateUser($userId, array $data)
+    {
+        return new User($this->patch("api/application/users/$userId", $data), $this);
+    }
+	
     /**
      * Delete the given user.
      *

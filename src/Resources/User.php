@@ -12,6 +12,13 @@ class User extends Resource
     public $id;
 
     /**
+     * The external id of the user.
+     *
+     * @var integer
+     */
+    public $externalId;
+	
+    /**
      * The uuid of the user.
      *
      * @var integer
