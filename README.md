@@ -36,11 +36,11 @@ The following ticked items are upgraded & tested.
 - [x] $pterodactyl->user($userId);
 - [x] $pterodactyl->userEx($userExternalId);
 - [x] $pterodactyl->createUser(array $data);
-- [ ] $pterodactyl->updateUser($userId, array $data);
+- [x] $pterodactyl->updateUser($userId, array $data);
 - [x] $pterodactyl->deleteUser($userId);
 
 #### User Instance
-- [x] $user->update(array $data);
+- [ ] $user->update(array $data);
 - [x] $user->delete();
 
 ### Node
@@ -160,6 +160,7 @@ $pterodactyl->users();
 $pterodactyl->user($userId);
 $pterodactyl->userEx($userExternalId);
 $pterodactyl->createUser(array $data);
+$pterodactyl->updateUser($userId, array $data);
 $pterodactyl->deleteUser($userId);
 ```
 
