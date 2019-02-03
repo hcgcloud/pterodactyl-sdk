@@ -40,7 +40,7 @@ The following ticked items are upgraded & tested.
 - [x] $pterodactyl->deleteUser($userId);
 
 #### User Instance
-- [ ] $user->update(array $data);
+- [x] $user->update(array $data);
 - [x] $user->delete();
 
 ### Node
@@ -167,6 +167,7 @@ $pterodactyl->deleteUser($userId);
 On a User instance you may also call:
 
 ```php
+$user->update(array $data);
 $user->delete();
 ```
 

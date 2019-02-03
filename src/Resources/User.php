@@ -97,4 +97,14 @@ class User extends Resource
     {
         return $this->pterodactyl->deleteUser($this->id);
     }
+	
+    /**
+     * Update the given user.
+     *
+     * @return void
+     */
+    public function update(array $data)
+    {
+        return $this->pterodactyl->updateUser($this->id, $data);
+    }
 }
