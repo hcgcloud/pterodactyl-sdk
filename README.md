@@ -10,41 +10,13 @@
 ## ToDo List
 The following ticked items are upgraded & tested.
 ### Server
-- [x] $pterodactyl->servers();
-- [x] $pterodactyl->server($serverId);
-- [x] $pterodactyl->serverEx($serverExternalId);
-- [x] $pterodactyl->createServer(array $data);
-- [x] $pterodactyl->deleteServer($serverId);
-- [x] $pterodactyl->suspendServer($serverId);
-- [x] $pterodactyl->unsuspendServer($serverId);
-- [x] $pterodactyl->powerServer($serverIdentifier, $action);
-- [x] $pterodactyl->commandServer($serverIdentifier, $command);
-- [x] $pterodactyl->listServers();
-- [x] $pterodactyl->getServer($serverIdentifier);
-- [x] $pterodactyl->powerServer($serverIdentifier, $action); //'start', 'stop', 'restart', 'kill'
-- [x] $pterodactyl->commandServer($serverIdentifier, $command);
-
-#### Server Instance
-- [x] $server->delete();
-- [x] $server->suspend();
-- [x] $server->unsuspend();
-- [x] $server->power();
-- [x] $server->command();
+All done, you can see available functions below.
 
 ### User
-- [x] $pterodactyl->users();
-- [x] $pterodactyl->user($userId);
-- [x] $pterodactyl->userEx($userExternalId);
-- [x] $pterodactyl->createUser(array $data);
-- [x] $pterodactyl->updateUser($userId, array $data);
-- [x] $pterodactyl->deleteUser($userId);
-
-#### User Instance
-- [x] $user->update(array $data);
-- [x] $user->delete();
+All done, you can see available functions below.
 
 ### Node
-- [ ] $pterodactyl->nodes();
+- [x] $pterodactyl->nodes();
 - [ ] $pterodactyl->node($nodeId);
 - [ ] $pterodactyl->createNode(array $data);
 - [ ] $pterodactyl->updateNode($nodeId, array $data);
