@@ -111,6 +111,16 @@ class Server extends Resource
     {
         return $this->pterodactyl->deleteServer($this->id);
     }
+	
+    /**
+     * Force delete the given server.
+     *
+     * @return void
+     */
+    public function forceDelete()
+    {
+        return $this->pterodactyl->forceDeleteServer($this->id);
+    }
 
     /**
      * Suspend the server.

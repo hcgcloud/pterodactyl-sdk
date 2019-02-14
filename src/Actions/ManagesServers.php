@@ -86,6 +86,17 @@ trait ManagesServers
     {
         return $this->delete("api/application/servers/$serverId");
     }
+	
+    /**
+     * Force delete the given server.
+     *
+     * @param  string $serverId
+     * @return void
+     */
+    public function forceDeleteServer($serverId)
+    {
+        return $this->delete("api/application/servers/$serverId/force");
+    }
 
     /**
      * Suspend the given server.
