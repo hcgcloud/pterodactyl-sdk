@@ -2,7 +2,8 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Software License][ico-license]](LICENSE.md)
+[![Total Downloads][ico-downloads]][link-downloads]
+![Coverage][ico-coverage]
 
 ## Important
 **As we are upgrading it to support version 0.7.x, some APIs are still not integrated, and we can't guarantee that there are no bugs. You can see a list that what we completed and planned below. Unless you already know the possible consequences, don't use it in production.**
@@ -152,6 +153,7 @@ $pterodactyl->server($serverId);
 $pterodactyl->serverEx($serverExternalId);
 $pterodactyl->createServer(array $data);
 $pterodactyl->deleteServer($serverId);
+$pterodactyl->forceDeleteServer($serverId);
 $pterodactyl->suspendServer($serverId);
 $pterodactyl->unsuspendServer($serverId);
 $pterodactyl->reinstallServer($serverId);
@@ -172,6 +174,7 @@ On a Server instance you may also call:
 ```php
 //Works with Application API
 $server->delete();
+$server->forceDelete();
 $server->suspend();
 $server->unsuspend();
 $server->reinstall();
@@ -190,6 +193,7 @@ $server->command($command);
 [ico-version]: https://img.shields.io/packagist/v/hcgcloud/pterodactyl-sdk.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg?style=flat-square
+[ico-coverage]: https://img.shields.io/codacy/coverage/aae8d10d1da04cbda8723e56bbfd71dd.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
 [link-downloads]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
