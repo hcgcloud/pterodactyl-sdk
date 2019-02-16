@@ -193,7 +193,7 @@ $server->command($command);
 [ico-version]: https://img.shields.io/packagist/v/hcgcloud/pterodactyl-sdk.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg?style=flat-square
-[ico-coverage]: https://img.shields.io/codacy/coverage/aae8d10d1da04cbda8723e56bbfd71dd.svg?style=flat-square
+[ico-coverage]: https://api.codacy.com/project/badge/Grade/aae8d10d1da04cbda8723e56bbfd71dd
 
 [link-packagist]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
 [link-downloads]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
