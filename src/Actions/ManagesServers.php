@@ -99,6 +99,17 @@ trait ManagesServers
     }
 
     /**
+     * Update the given server.
+     *
+     * @param  string $serverId
+	 * @param  array  $data
+     * @return void
+     */
+    public function updateServer($serverId, array $data)
+    {
+        return $this->patch("api/application/servers/$serverId/details", $data);
+    }
+    /**
      * Suspend the given server.
      *
      * @param  string $serverId

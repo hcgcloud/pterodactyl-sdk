@@ -141,7 +141,16 @@ class Server extends Resource
     {
         return $this->pterodactyl->unsuspendServer($this->id);
     }
-	
+
+    /**
+     * Update the server.
+     *
+     * @return void
+     */
+    public function update(array $data)
+    {
+        return $this->pterodactyl->updateServer($this->id, $data);
+    }
     /**
      * Reinstall the server.
      *
