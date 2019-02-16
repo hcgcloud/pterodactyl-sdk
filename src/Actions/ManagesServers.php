@@ -157,6 +157,7 @@ trait ManagesServers
      * Update the given server's startup.
      *
      * @param  string $serverId
+	 * @param  array  $data
      * @return void
      */
     public function updateServerStartup($serverId, array $data)
