@@ -108,7 +108,7 @@ $server = $pterodactyl->createServer([
 ]);
 ```
 
-These parameters will be used in the POST request sent to Pterodactyl servers, you can find more information about the parameters needed in panel source: `app\Http\Requests\Api\Application\Servers\StoreServerRequest.php`
+These parameters will be used in the POST request sent to Pterodactyl servers, you can find more information about the parameters needed in panel source: [app\Http\Requests\Api\Application\Servers\StoreServerRequest.php](https://github.com/pterodactyl/panel/blob/develop/app/Http/Requests/Api/Application/Servers/StoreServerRequest.php)
 
 Notice that this request for example will only start the server creation process, your server might need a few minutes before it completes provisioning, you'll need to check
 the Server's `$installed` property to know if it's ready or not yet.
@@ -116,12 +116,12 @@ the Server's `$installed` property to know if it's ready or not yet.
 Or use the following code to create a new user:
 ```php
 $user = $pterodactyl->createUser([
-    "external_id" => "2",
+    "external_id" => "2", //Optional
     "email" => 'test@test.com',
     "username" => 'TestUser',
     "first_name" => 'Test',
     "last_name" => 'User',
-    "language" => 'zh-cn',
+    "language" => 'en',
     "password" => '123456'
 ]);
 ```
