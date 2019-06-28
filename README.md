@@ -186,6 +186,13 @@ $server->power($action); //'start', 'stop', 'restart', 'kill
 $server->command($command);
 ```
 
+## Managing Nests
+
+```php
+$pterodactyl->nests();
+$pterodactyl->nest($nestId);
+```
+
 ## License
 
 `hcgcloud/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
