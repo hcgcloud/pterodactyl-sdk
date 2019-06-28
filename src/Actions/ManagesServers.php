@@ -24,7 +24,7 @@ trait ManagesServers
     /**
      * Get a server instance.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return Server
      */
     public function server($serverId)
@@ -46,7 +46,7 @@ trait ManagesServers
     /**
      * Get a server instance by external id.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return Server
      */
     public function serverEx($serverId)
@@ -79,7 +79,7 @@ trait ManagesServers
     /**
      * Delete the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function deleteServer($serverId)
@@ -90,7 +90,7 @@ trait ManagesServers
     /**
      * Force delete the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function forceDeleteServer($serverId)
@@ -101,7 +101,7 @@ trait ManagesServers
     /**
      * Update the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
 	 * @param  array  $data
      * @return void
      */
@@ -112,7 +112,7 @@ trait ManagesServers
     /**
      * Suspend the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function suspendServer($serverId)
@@ -123,7 +123,7 @@ trait ManagesServers
     /**
      * Unsuspend the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function unsuspendServer($serverId)
@@ -134,7 +134,7 @@ trait ManagesServers
     /**
      * Reinstall the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function reinstallServer($serverId)
@@ -145,7 +145,7 @@ trait ManagesServers
     /**
      * Rebuild the given server.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
      * @return void
      */
     public function rebuildServer($serverId)
@@ -156,7 +156,7 @@ trait ManagesServers
     /**
      * Update the given server's startup.
      *
-     * @param  string $serverId
+     * @param  integer $serverId
 	 * @param  array  $data
      * @return void
      */

@@ -23,7 +23,7 @@ trait ManagesUsers
     /**
      * Get a user instance.
      *
-     * @param  string $userId
+     * @param  integer $userId
      * @return User
      */
     public function user($userId)
@@ -34,7 +34,7 @@ trait ManagesUsers
     /**
      * Get a user instance by external id.
      *
-     * @param  string $userExternalId
+     * @param  integer $userExternalId
      * @return User
      */
     public function userEx($userExternalId)
@@ -55,7 +55,7 @@ trait ManagesUsers
     /**
      * Update a specified user.
      *
-     * @param  string $userId
+     * @param  integer $userId
      * @param  array $data
      * @return User
      */
@@ -67,7 +67,7 @@ trait ManagesUsers
     /**
      * Delete the given user.
      *
-     * @param  string $userId
+     * @param  integer $userId
      * @return void
      */
     public function deleteUser($userId)

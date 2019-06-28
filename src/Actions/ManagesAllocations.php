@@ -9,7 +9,7 @@ trait ManagesAllocations
     /**
      * Get the collection of allocations for a given node.
      *
-     * @param  string $nodeId
+     * @param  integer $nodeId
      * @return Allocation[]
      */
     public function allocations($nodeId)
