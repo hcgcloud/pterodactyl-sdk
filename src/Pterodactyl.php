@@ -12,7 +12,8 @@ class Pterodactyl
         Actions\ManagesAllocations,
         Actions\UsesServers,
 		Actions\ManagesNodes,
-		Actions\ManagesNests;
+		Actions\ManagesNests,
+		Actions\ManagesEggs;
 
     /**
      * The Pterodactyl API Key.

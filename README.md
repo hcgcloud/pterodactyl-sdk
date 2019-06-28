@@ -193,6 +193,13 @@ $pterodactyl->nests();
 $pterodactyl->nest($nestId);
 ```
 
+## Managing Eggs
+
+```php
+$pterodactyl->eggs($nestId);
+$pterodactyl->egg($nestId, $eggId);
+```
+
 ## License
 
 `hcgcloud/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
