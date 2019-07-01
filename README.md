@@ -76,7 +76,6 @@ $server = $pterodactyl->createServer([
     "pack" => 0,
     "docker_image" => "hub.tencentyun.com/unihc/pterodactyl_images:vcmp",
     "environment" => [
-        //Not confirmed
         [
             "server_id" => "",
             "variable_id" => "",
@@ -97,15 +96,12 @@ $server = $pterodactyl->createServer([
     ],
     "startup" => "./mpsvrrel64 -port {{SERVER_PORT}}",
     "description" => "test description",
-    "node_id" => 1,
-    "nest_id" => 5,
-    "allocation" => [
-        "default" => "16",
-        "additional" => [
-            "17",
-            "18"
-        ]
-    ]
+    "deploy" => [
+        "locations" => [1],
+        "dedicated_ip" => false,
+        "port_range" => []
+    ],
+    "start_on_completion" => true
 ]);
 ```
 
