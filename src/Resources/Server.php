@@ -143,14 +143,35 @@ class Server extends Resource
     }
 
     /**
-     * Update the server.
+     * Update details of the server.
      *
      * @return void
      */
-    public function update(array $data)
+    public function updateDetails(array $data)
     {
-        return $this->pterodactyl->updateServer($this->id, $data);
+        return $this->pterodactyl->updateServerDetails($this->id, $data);
     }
+
+    /**
+     * Update build configuration of the server.
+     *
+     * @return void
+     */
+    public function updateBuild(array $data)
+    {
+        return $this->pterodactyl->updateServerBuild($this->id, $data);
+    }
+
+    /**
+     * Update startup parameters of the server.
+     *
+     * @return void
+     */
+    public function updateStartup(array $data)
+    {
+        return $this->pterodactyl->updateServerStartup($this->id, $data);
+    }
+
     /**
      * Reinstall the server.
      *

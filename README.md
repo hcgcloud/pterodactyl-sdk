@@ -155,6 +155,8 @@ $pterodactyl->suspendServer($serverId);
 $pterodactyl->unsuspendServer($serverId);
 $pterodactyl->reinstallServer($serverId);
 $pterodactyl->rebuildServer($serverId);
+$pterodactyl->updateServerDetails($serverId, array $data);
+$pterodactyl->updateServerBuild($serverId, array $data);
 $pterodactyl->updateServerStartup($serverId, array $data);
 
 //Works with Account API
@@ -176,6 +178,9 @@ $server->suspend();
 $server->unsuspend();
 $server->reinstall();
 $server->rebuild();
+$server->updateDetails(array $data);
+$server->updateBuild(array $data);
+$server->updateStartup(array $data);
 
 //Works with Account API
 $server->power($action); //'start', 'stop', 'restart', 'kill

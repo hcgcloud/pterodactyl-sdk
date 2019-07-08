@@ -99,16 +99,41 @@ trait ManagesServers
     }
 
     /**
-     * Update the given server.
+     * Update details of the given server.
      *
      * @param  integer $serverId
 	 * @param  array  $data
      * @return void
      */
-    public function updateServer($serverId, array $data)
+    public function updateServerDetails($serverId, array $data)
     {
         return $this->patch("api/application/servers/$serverId/details", $data);
     }
+
+    /**
+     * Update build configuration of the given server.
+     *
+     * @param  integer $serverId
+	 * @param  array  $data
+     * @return void
+     */
+    public function updateServerBuild($serverId, array $data)
+    {
+        return $this->patch("api/application/servers/$serverId/build", $data);
+    }
+
+    /**
+     * Update startup parameters of the given server.
+     *
+     * @param  integer $serverId
+	 * @param  array  $data
+     * @return void
+     */
+    public function updateServerStartup($serverId, array $data)
+    {
+        return $this->patch("api/application/servers/$serverId/startup", $data);
+    }
+
     /**
      * Suspend the given server.
      *
@@ -151,17 +176,5 @@ trait ManagesServers
     public function rebuildServer($serverId)
     {
         return $this->post("api/application/servers/$serverId/rebuild");
-    }
-	
-    /**
-     * Update the given server's startup.
-     *
-     * @param  integer $serverId
-	 * @param  array  $data
-     * @return void
-     */
-    public function updateServerStartup($serverId, array $data)
-    {
-        return $this->patch("api/application/servers/$serverId/startup", $data);
     }
 }
