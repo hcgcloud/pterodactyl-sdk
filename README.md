@@ -68,36 +68,31 @@ $server = $pterodactyl->server(SERVER_ID_HERE);
 On multiple actions supported by this SDK you may need to pass some parameters, for example when creating a new server:
 
 ```php
+$egg = $pterodactyl->egg($nest_id, $egg_id);
 $server = $pterodactyl->createServer([
-    "external_id" => "4",
-    "name" => "APITest",
-    "user" => 1,
-    "egg" => 15,
+    "external_id" => $external_id,
+    "name" => $name,
+    "user" => $user_id,
+    "egg" => $egg_id,
     "pack" => 0,
-    "docker_image" => "hub.tencentyun.com/unihc/pterodactyl_images:vcmp",
-    "environment" => [
-        [
-            "server_id" => "",
-            "variable_id" => "",
-            "variable_value" => ""
-        ]
-    ],
+    "docker_image" => $egg->dockerImage,
     "skip_scripts" => false,
+    "environment" => [],
     "limits" => [
-        "memory" => 64,
-        "swap" => 0,
-        "disk" => 64,
-        "io" => 500,
-        "cpu" => 0
+        "memory" => $memory,
+        "swap" => $swap,
+        "disk" => $disk,
+        "io" => $io,
+        "cpu" => $cpu
     ],
     "feature_limits" => [
-        "databases" => 0,
-        "allocations" => 0
+        "databases" => $databases,
+        "allocations" => $allocations
     ],
-    "startup" => "./mpsvrrel64 -port {{SERVER_PORT}}",
-    "description" => "test description",
+    "startup" => $egg->startup,
+    "description" => "",
     "deploy" => [
-        "locations" => [1],
+        "locations" => [$location_id],
         "dedicated_ip" => false,
         "port_range" => []
     ],
