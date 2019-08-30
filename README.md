@@ -3,7 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
-[![Chat on Gitter][ico-chat]][link-chat]
+[![Chat on Discord][ico-chat]][link-chat]
 ![Coverage][ico-coverage]
 
 ## Important
@@ -205,8 +205,8 @@ $pterodactyl->egg($nestId, $eggId);
 [ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg?style=flat-square
 [ico-coverage]: https://api.codacy.com/project/badge/Grade/aae8d10d1da04cbda8723e56bbfd71dd
-[ico-chat]: https://img.shields.io/gitter/room/hcgcloud/pterodactyl-sdk.svg?style=flat-square
+[ico-chat]: https://img.shields.io/discord/609764930899673092?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
 [link-downloads]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
-[link-chat]: https://gitter.im/pterodactyl-sdk/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link
+[link-chat]: https://discord.gg/5KnNVfv
