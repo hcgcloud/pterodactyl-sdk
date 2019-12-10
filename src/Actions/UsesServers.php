@@ -3,6 +3,7 @@
 namespace HCGCloud\Pterodactyl\Actions;
 
 use HCGCloud\Pterodactyl\Resources\Server;
+use HCGCloud\Pterodactyl\Resources\Stats;
 
 trait UsesServers
 {
@@ -27,12 +28,8 @@ trait UsesServers
      */
     public function getServer($serverIdentifier)
     {
-        $request1 = $this->get("api/client/servers/$serverIdentifier");
-		$request2 = $this->get("api/client/servers/$serverIdentifier/utilization");
-        $server = new Server($request1, $this);
-
-        $server->stats = $request2;
-
+        $request = $this->get("api/client/servers/$serverIdentifier");
+        $server = new Server($request, $this);
         return $server;
     }
 
@@ -58,5 +55,18 @@ trait UsesServers
     public function commandServer($serverIdentifier, $command)
     {
         return $this->post("api/client/servers/$serverIdentifier/command", ['command'=>"$command"]);
+    }
+    
+    /**
+     * Get the utilization of a given server.
+     *
+     * @param  string $serverId
+     * @return Stats[]
+     */
+    public function utilizationServer($serverIdentifier)
+    {
+        $request = $this->get("api/client/servers/$serverIdentifier/utilization");
+        $stats = new Stats($request, $this);
+        return $stats;
     }
 }
