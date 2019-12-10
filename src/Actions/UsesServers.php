@@ -11,14 +11,19 @@ trait UsesServers
     /**
      * Get the collection of servers for the authenticated user.
      *
-     * @return Server[]
+     * @return array
      */
-    public function listServers()
+    public function listServers(int $page = 1)
     {
-        return $this->transformCollection(
-            $this->get('api/client/')['data'],
+        $data = $this->get("api/client?page=" . $page);
+        $transform = $this->transformCollection(
+            $data['data'],
             Server::class
         );
+        return [
+            'data' => $transform,
+            'meta' => $data['meta']
+        ];
     }
 
     /**

@@ -11,14 +11,19 @@ trait ManagesServers
     /**
      * Get the collection of servers.
      *
-     * @return Server[]
+     * @return array
      */
-    public function servers()
+    public function servers(int $page = 1)
     {
-        return $this->transformCollection(
-            $this->get('api/application/servers')['data'],
+        $data = $this->get("api/application/servers?page=" . $page);
+        $transform = $this->transformCollection(
+            $data['data'],
             Server::class
         );
+        return [
+            'data' => $transform,
+            'meta' => $data['meta']
+        ];
     }
 
     /**

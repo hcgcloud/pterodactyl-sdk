@@ -10,14 +10,19 @@ trait ManagesUsers
     /**
      * Get the collection of users.
      *
-     * @return User[]
+     * @return array
      */
-    public function users()
+    public function users(int $page = 1)
     {
-        return $this->transformCollection(
-            $this->get('api/application/users')['data'],
+        $data = $this->get("api/application/users?page=" . $page);
+        $transform = $this->transformCollection(
+            $data['data'],
             User::class
         );
+        return [
+            'data' => $transform,
+            'meta' => $data['meta']
+        ];
     }
 
     /**

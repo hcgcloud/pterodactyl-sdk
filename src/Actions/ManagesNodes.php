@@ -9,14 +9,19 @@ trait ManagesNodes
     /**
      * Get a collection of nodes.
      *
-     * @return Node[]
+     * @return array
      */
-    public function nodes()
+    public function nodes(int $page = 1)
     {
-        return $this->transformCollection(
-            $this->get("api/application/nodes")['data'],
+        $data = $this->get("api/application/nodes?page=" . $page);
+        $transform = $this->transformCollection(
+            $data['data'],
             Node::class
         );
+        return [
+            'data' => $transform,
+            'meta' => $data['meta']
+        ];
     }
 
     /**
