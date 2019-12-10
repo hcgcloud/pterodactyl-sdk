@@ -12,13 +12,6 @@ class Allocation extends Resource
     public $id;
 
     /**
-     * The node id of the allocation.
-     *
-     * @var integer
-     */
-    public $nodeId;
-
-    /**
      * The ip address of the allocation.
      *
      * @var string
@@ -30,7 +23,7 @@ class Allocation extends Resource
      *
      * @var string
      */
-    public $ipAlias;
+    public $alias;
 
     /**
      * The port of the allocation.
@@ -40,23 +33,9 @@ class Allocation extends Resource
     public $port;
 
     /**
-     * The server id of the allocation.
+     * The assign status of the allocation.
      *
-     * @var integer
+     * @var boolean
      */
-    public $serverId;
-
-    /**
-     * The date/time the allocation was created.
-     *
-     * @var string
-     */
-    public $createdAt;
-
-    /**
-     * The date/time the allocation was updated.
-     *
-     * @var string
-     */
-    public $updatedAt;
+    public $assigned;
 }

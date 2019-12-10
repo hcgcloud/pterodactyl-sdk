@@ -10,13 +10,18 @@ trait ManagesAllocations
      * Get the collection of allocations for a given node.
      *
      * @param  integer $nodeId
-     * @return Allocation[]
+     * @return array
      */
-    public function allocations($nodeId)
+    public function allocations($nodeId, int $page = 1)
     {
-        return $this->transformCollection(
-            $this->get("api/application/nodes/$nodeId". "?include=allocations")['included'],
+        $data = $this->get("api/application/nodes/$nodeId" . "/allocations?page=" . $page);
+        $transform = $this->transformCollection(
+            $data['data'],
             Allocation::class
         );
+        return [
+            'data' => $transform,
+            'meta' => $data['meta']
+        ];
     }
 }
