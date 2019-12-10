@@ -4,7 +4,8 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
 [![Chat on Discord][ico-chat]][link-chat]
-![Coverage][ico-coverage]
+
+[Documentation](https://hcgcloud.github.io/pterodactyl-sdk-docs)
 
 ## Important
 **As we are upgrading it to support version 0.7.x, some APIs are still not integrated, and we can't guarantee that there are no bugs. You can see a list that what we completed and planned below. Unless you already know the possible consequences, don't use it in production.**
@@ -201,11 +202,10 @@ $pterodactyl->egg($nestId, $eggId);
 `hcgcloud/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
 [license file](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/hcgcloud/pterodactyl-sdk.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg?style=flat-square
-[ico-coverage]: https://api.codacy.com/project/badge/Grade/aae8d10d1da04cbda8723e56bbfd71dd
-[ico-chat]: https://img.shields.io/discord/609764930899673092?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/hcgcloud/pterodactyl-sdk.svg
+[ico-license]: https://img.shields.io/badge/license-MIT-green.svg
+[ico-downloads]: https://img.shields.io/packagist/dt/hcgcloud/pterodactyl-sdk.svg
+[ico-chat]: https://img.shields.io/discord/609764930899673092
 
 [link-packagist]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
 [link-downloads]: https://packagist.org/packages/hcgcloud/pterodactyl-sdk
