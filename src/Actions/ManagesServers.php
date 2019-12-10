@@ -46,12 +46,12 @@ trait ManagesServers
     /**
      * Get a server instance by external id.
      *
-     * @param  integer $serverId
+     * @param  integer $externalId
      * @return Server
      */
-    public function serverEx($serverId)
+    public function serverEx($externalId)
     {
-        $request = $this->get("api/application/servers/external/$serverId" . "?include=allocations");
+        $request = $this->get("api/application/servers/external/$externalId" . "?include=allocations");
 		
         $allocations = $this->transformCollection(
             $request['attributes']['relationships']['allocations']['data'],
