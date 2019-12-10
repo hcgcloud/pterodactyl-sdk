@@ -144,4 +144,23 @@ class Node extends Resource
      */
     public $updatedAt;
 
+    /**
+     * Delete the given node.
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        return $this->pterodactyl->deleteNode($this->id);
+    }
+
+    /**
+     * Update the given node.
+     *
+     * @return void
+     */
+    public function update(array $data)
+    {
+        return $this->pterodactyl->updateNode($this->id, $data);
+    }
 }
