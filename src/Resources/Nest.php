@@ -60,4 +60,24 @@ class Nest extends Resource
      */
     public $updatedAt;
 
+    /**
+     * Get a collection of eggs in the given nest.
+     *
+     * @return Egg[]
+     */
+    public function eggs()
+    {
+        return $this->pterodactyl->eggs($this->id);
+    }
+
+    /**
+     * Get a egg instance in the given nest.
+     *
+	 * @param  integer $eggId
+     * @return Egg
+     */
+    public function egg($eggId)
+    {
+        return $this->pterodactyl->egg($this->id, $eggId);
+    }
 }
