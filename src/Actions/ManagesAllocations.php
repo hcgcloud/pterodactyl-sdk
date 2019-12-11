@@ -24,4 +24,29 @@ trait ManagesAllocations
             'meta' => $data['meta']
         ];
     }
+
+    /**
+     * Create new allocation(s).
+     *
+     * @param  integer $nodeId
+     * @param  array $data
+     * @return void
+     */
+    public function createAllocation($nodeId, array $data)
+    {
+        return $this->post("api/application/nodes/$nodeId/allocations", $data);
+    }
+
+    /**
+     * Delete the given allocation.
+     *
+     * @param  integer $nodeId
+     * @param  integer $allocationId
+     * @param  array $data
+     * @return void
+     */
+    public function deleteAllocation($nodeId, $allocationId)
+    {
+        return $this->delete("api/application/nodes/$nodeId/allocations/$allocationId");
+    }
 }

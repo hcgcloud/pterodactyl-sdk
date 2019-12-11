@@ -157,10 +157,44 @@ class Node extends Resource
     /**
      * Update the given node.
      *
+     * @param  array $data
      * @return void
      */
     public function update(array $data)
     {
         return $this->pterodactyl->updateNode($this->id, $data);
+    }
+
+    /**
+     * Get a collection of allocations of the given node.
+     *
+     * @param  int $page
+     * @return array
+     */
+    public function allocations(int $page = 1)
+    {
+        return $this->pterodactyl->allocations($this->id, $page);
+    }
+
+    /**
+     * Create new allocation(s) of the given node.
+     *
+     * @param  array $data
+     * @return void
+     */
+    public function createAllocation(array $data)
+    {
+        return $this->pterodactyl->createAllocation($this->id, $data);
+    }
+
+    /**
+     * Delete a allocation of the given node.
+     *
+     * @param  integer $allocationId
+     * @return void
+     */
+    public function deleteAllocation($allocationId)
+    {
+        return $this->pterodactyl->deleteAllocation($this->id, $allocationId);
     }
 }
