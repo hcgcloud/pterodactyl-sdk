@@ -38,6 +38,12 @@ Please check the [documentation](https://hcgcloud.github.io/pterodactyl-sdk-docs
 
 *As our documentation is not finished yet, you can check out the [legacy readme file](https://github.com/hcgcloud/pterodactyl-sdk/blob/2b1759961a5a92eb95a3c9d3b045bd8410bdd43f/README.md) for all functions available of this SDK.*
 
+## Support
+
+You can get support by going to our [Discord server](https://discord.gg/5KnNVfv) or [submitting new issue](https://github.com/hcgcloud/pterodactyl-sdk/issues/new).
+
+As a third-party API wrapper, We recommend you not asking for help elsewhere, or we may not be able to help you.
+
 ## License
 
 `hcgcloud/pterodactyl-sdk` is licensed under the MIT License (MIT). Please see the
