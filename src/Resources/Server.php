@@ -211,4 +211,47 @@ class Server extends Resource
     {
         return $this->pterodactyl->commandServer($this->identifier, $command);
     }
+
+    /**
+     * Get a collection of databases of the server.
+     *
+     * @return ServerDatabase[]
+     */
+    public function databases()
+    {
+        return $this->pterodactyl->serverDatabases($this->id);
+    }
+
+    /**
+     * Get a database instance of the server.
+     *
+     * @param  integer $databaseId
+     * @return ServerDatabase
+     */
+    public function database($databaseId)
+    {
+        return $this->pterodactyl->serverDatabase($this->id, $databaseId);
+    }
+
+    /**
+     * Reset a database password of the server.
+     *
+     * @param  integer $databaseId
+     * @return void
+     */
+    public function resetDatabasePassword($databaseId)
+    {
+        return $this->pterodactyl->resetServerDatabasePassword($this->id, $databaseId);
+    }
+
+    /**
+     * Delete a database of the server.
+     *
+     * @param  integer $databaseId
+     * @return void
+     */
+    public function deleteDatabase($databaseId)
+    {
+        return $this->pterodactyl->deleteServerDatabase($this->id, $databaseId);
+    }
 }

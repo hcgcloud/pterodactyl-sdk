@@ -4,6 +4,7 @@ namespace HCGCloud\Pterodactyl\Actions;
 
 use HCGCloud\Pterodactyl\Resources\Server;
 use HCGCloud\Pterodactyl\Resources\Allocation;
+use HCGCloud\Pterodactyl\Resources\ServerDatabase;
 
 trait ManagesServers
 {
@@ -181,5 +182,57 @@ trait ManagesServers
     public function rebuildServer($serverId)
     {
         return $this->post("api/application/servers/$serverId/rebuild");
+    }
+
+    /**
+     * Get a collection of databases of a server.
+     *
+     * @param  integer $serverId
+     * @return ServerDatabase[]
+     */
+    public function serverDatabases($serverId)
+    {
+        $data = $this->get("api/application/servers/$serverId/databases");
+        $transform = $this->transformCollection(
+            $data['data'],
+            ServerDatabase::class
+        );
+        return $transform;
+    }
+
+    /**
+     * Get a database instance of a server.
+     *
+     * @param  integer $serverId
+     * @param  integer $databaseId
+     * @return ServerDatabase
+     */
+    public function serverDatabase($serverId, $databaseId)
+    {
+        return new ServerDatabase($this->get("api/application/servers/$serverId/databases/$databaseId"), $this);
+    }
+
+    /**
+     * Reset the password of a server's database.
+     *
+     * @param  integer $serverId
+     * @param  integer $databaseId
+     * @return void
+     */
+    public function resetServerDatabasePassword($serverId, $databaseId)
+    {
+        return $this->post("api/application/servers/$serverId/databases/$databaseId/reset-password");
+    }
+
+    /**
+     *  Delete the given database of a server.
+     *
+     * @param  integer $serverId
+     * @param  integer $databaseId
+     * @return void
+     */
+    public function deleteServerDatabase($serverId, $databaseId)
+    {
+        return $this->delete("api/application/servers/$serverId/databases/$databaseId");
     }
 }
