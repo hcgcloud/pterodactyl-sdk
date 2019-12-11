@@ -7,15 +7,12 @@
 
 [Documentation](https://hcgcloud.github.io/pterodactyl-sdk-docs)
 
-## Important
-**As we are upgrading it to support version 0.7.x, some APIs are still not integrated, and we can't guarantee that there are no bugs. Unless you already know the possible consequences, don't use it in production.**
-
 ## Quick start
 
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
 
 ```bash
-composer require hcgcloud/pterodactyl-sdk:dev-master
+composer require hcgcloud/pterodactyl-sdk
 ```
 
 Then use Composer's autoload unless you are using a framework that support composer autoload:
