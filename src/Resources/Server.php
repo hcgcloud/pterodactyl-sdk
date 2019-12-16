@@ -232,6 +232,17 @@ class Server extends Resource
     {
         return $this->pterodactyl->serverDatabase($this->id, $databaseId);
     }
+    
+    /**
+     * Create a database for the server.
+     *
+     * @param  array $data
+     * @return ServerDatabase
+     */
+    public function createDatabase(array $data)
+    {
+        return $this->pterodactyl->createServerDatabase($this->id, $data);
+    }
 
     /**
      * Reset a database password of the server.

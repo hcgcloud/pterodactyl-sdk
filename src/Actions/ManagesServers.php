@@ -213,6 +213,18 @@ trait ManagesServers
     }
 
     /**
+     * Create a database for a server.
+     *
+     * @param  integer $serverId
+     * @param  array $data
+     * @return ServerDatabase
+     */
+    public function createServerDatabase($serverId, array $data)
+    {
+        return new ServerDatabase($this->post("api/application/servers/$serverId/databases/", $data), $this);
+    }
+
+    /**
      * Reset the password of a server's database.
      *
      * @param  integer $serverId
