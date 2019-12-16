@@ -109,11 +109,11 @@ trait ManagesServers
      *
      * @param  integer $serverId
 	 * @param  array  $data
-     * @return void
+     * @return Server
      */
     public function updateServerDetails($serverId, array $data)
     {
-        return $this->patch("api/application/servers/$serverId/details", $data);
+        return new Server($this->patch("api/application/servers/$serverId/details", $data), $this);
     }
 
     /**
@@ -121,11 +121,11 @@ trait ManagesServers
      *
      * @param  integer $serverId
 	 * @param  array  $data
-     * @return void
+     * @return Server
      */
     public function updateServerBuild($serverId, array $data)
     {
-        return $this->patch("api/application/servers/$serverId/build", $data);
+        return new Server($this->patch("api/application/servers/$serverId/build", $data), $this);
     }
 
     /**
@@ -133,11 +133,11 @@ trait ManagesServers
      *
      * @param  integer $serverId
 	 * @param  array  $data
-     * @return void
+     * @return Server
      */
     public function updateServerStartup($serverId, array $data)
     {
-        return $this->patch("api/application/servers/$serverId/startup", $data);
+        return new Server($this->patch("api/application/servers/$serverId/startup", $data), $this);
     }
 
     /**
