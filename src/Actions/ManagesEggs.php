@@ -8,8 +8,9 @@ trait ManagesEggs
 {
     /**
      * Get a collection of eggs in a nest.
-	 *
-     * @param  integer $nestId
+     *
+     * @param int $nestId
+     *
      * @return Egg[]
      */
     public function eggs($nestId)
@@ -19,16 +20,17 @@ trait ManagesEggs
             Egg::class
         );
     }
-	
+
     /**
      * Get a egg instance.
      *
-     * @param  integer $nestId
-	 * @param  integer $eggId
+     * @param int $nestId
+     * @param int $eggId
+     *
      * @return Egg
      */
     public function egg($nestId, $eggId)
     {
-		return new Egg($this->get("api/application/nests/$nestId/eggs/$eggId"), $this);
+        return new Egg($this->get("api/application/nests/$nestId/eggs/$eggId"), $this);
     }
 }

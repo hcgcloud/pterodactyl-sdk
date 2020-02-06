@@ -7,7 +7,7 @@ class Egg extends Resource
     /**
      * The id of the egg.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -21,10 +21,10 @@ class Egg extends Resource
     /**
      * The nest of the egg.
      *
-     * @var integer
+     * @var int
      */
     public $nest;
-	
+
     /**
      * The author of the egg.
      *
@@ -38,7 +38,7 @@ class Egg extends Resource
      * @var string
      */
     public $description;
-	
+
     /**
      * The docker image url of the egg.
      *
@@ -52,28 +52,28 @@ class Egg extends Resource
      * @var array
      */
     public $config = [];
-	
+
     /**
      * The startup of the egg.
      *
      * @var string
      */
     public $startup;
-	
+
     /**
      * The script of the egg.
      *
      * @var array
      */
     public $script = [];
-	
+
     /**
      * The attributes of the egg.
      *
      * @var array
      */
     public $attributes = [];
-	
+
     /**
      * The date/time the egg was created.
      *
@@ -87,5 +87,4 @@ class Egg extends Resource
      * @var string
      */
     public $updatedAt;
-
 }

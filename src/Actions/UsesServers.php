@@ -7,7 +7,6 @@ use HCGCloud\Pterodactyl\Resources\Stats;
 
 trait UsesServers
 {
-
     /**
      * Get the collection of servers for the authenticated user.
      *
@@ -15,14 +14,15 @@ trait UsesServers
      */
     public function listServers(int $page = 1)
     {
-        $data = $this->get("api/client?page=" . $page);
+        $data = $this->get('api/client?page='.$page);
         $transform = $this->transformCollection(
             $data['data'],
             Server::class
         );
+
         return [
             'data' => $transform,
-            'meta' => $data['meta']
+            'meta' => $data['meta'],
         ];
     }
 
@@ -35,14 +35,16 @@ trait UsesServers
     {
         $request = $this->get("api/client/servers/$serverIdentifier");
         $server = new Server($request, $this);
+
         return $server;
     }
 
     /**
      * Toggle the power on a given server.
      *
-     * @param  string $serverId
-	 * @param  string $action
+     * @param string $serverId
+     * @param string $action
+     *
      * @return void
      */
     public function powerServer($serverIdentifier, $action)
@@ -53,25 +55,28 @@ trait UsesServers
     /**
      * Send a command to a given server.
      *
-     * @param  string $serverId
-	 * @param  string $action
+     * @param string $serverId
+     * @param string $action
+     *
      * @return void
      */
     public function commandServer($serverIdentifier, $command)
     {
         return $this->post("api/client/servers/$serverIdentifier/command", ['command'=>"$command"]);
     }
-    
+
     /**
      * Get the utilization of a given server.
      *
-     * @param  string $serverId
+     * @param string $serverId
+     *
      * @return Stats[]
      */
     public function utilizationServer($serverIdentifier)
     {
         $request = $this->get("api/client/servers/$serverIdentifier/utilization");
         $stats = new Stats($request, $this);
+
         return $stats;
     }
 }

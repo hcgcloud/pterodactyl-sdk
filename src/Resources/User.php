@@ -17,7 +17,7 @@ class User extends Resource
      * @var integer
      */
     public $externalId;
-	
+
     /**
      * The uuid of the user.
      *
@@ -97,7 +97,7 @@ class User extends Resource
     {
         return $this->pterodactyl->deleteUser($this->id);
     }
-	
+
     /**
      * Update the given user.
      *

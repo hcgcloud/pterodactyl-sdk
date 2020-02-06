@@ -7,7 +7,7 @@ class Location extends Resource
     /**
      * The id of the location.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -31,7 +31,7 @@ class Location extends Resource
      * @var array
      */
     public $attributes = [];
-	
+
     /**
      * The date/time the location was created.
      *
