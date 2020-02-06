@@ -13,32 +13,35 @@ trait ManagesNodes
      */
     public function nodes(int $page = 1)
     {
-        $data = $this->get("api/application/nodes?page=" . $page);
+        $data = $this->get('api/application/nodes?page='.$page);
         $transform = $this->transformCollection(
             $data['data'],
             Node::class
         );
+
         return [
             'data' => $transform,
-            'meta' => $data['meta']
+            'meta' => $data['meta'],
         ];
     }
 
     /**
      * Get a node instance.
      *
-     * @param  integer $nodeId
+     * @param int $nodeId
+     *
      * @return Node
      */
     public function node($nodeId)
     {
-		return new Node($this->get("api/application/nodes/$nodeId"), $this);
+        return new Node($this->get("api/application/nodes/$nodeId"), $this);
     }
 
     /**
      * Create a new node.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return Node
      */
     public function createNode(array $data)
@@ -49,19 +52,21 @@ trait ManagesNodes
     /**
      * Update a specified node.
      *
-     * @param  integer $nodeId
-     * @param  array $data
+     * @param int   $nodeId
+     * @param array $data
+     *
      * @return Node
      */
     public function updateNode($nodeId, array $data)
     {
         return new Node($this->patch("api/application/nodes/$nodeId", $data), $this);
     }
-	
+
     /**
      * Delete the given node.
      *
-     * @param  integer $nodeId
+     * @param int $nodeId
+     *
      * @return void
      */
     public function deleteNode($nodeId)

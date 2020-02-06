@@ -7,21 +7,21 @@ class Server extends Resource
     /**
      * The id of the server.
      *
-     * @var integer
+     * @var int
      */
     public $id;
-	
+
     /**
      * The external id of the server.
      *
-     * @var integer
+     * @var int
      */
     public $externalId;
 
     /**
      * The uuid of the server.
      *
-     * @var integer
+     * @var int
      */
     public $uuid;
 
@@ -52,18 +52,18 @@ class Server extends Resource
      * @var string
      */
     public $description;
-	
+
     /**
      * The suspended status of the server.
      *
-     * @var integer
+     * @var int
      */
     public $suspended;
 
     /**
      * The pack id for the server.
      *
-     * @var integer
+     * @var int
      */
     public $pack;
 
@@ -111,7 +111,7 @@ class Server extends Resource
     {
         return $this->pterodactyl->deleteServer($this->id);
     }
-	
+
     /**
      * Force delete the given server.
      *
@@ -181,7 +181,7 @@ class Server extends Resource
     {
         return $this->pterodactyl->reinstallServer($this->id);
     }
-	
+
     /**
      * Rebuild the server.
      *
@@ -225,18 +225,20 @@ class Server extends Resource
     /**
      * Get a database instance of the server.
      *
-     * @param  integer $databaseId
+     * @param int $databaseId
+     *
      * @return ServerDatabase
      */
     public function database($databaseId)
     {
         return $this->pterodactyl->serverDatabase($this->id, $databaseId);
     }
-    
+
     /**
      * Create a database for the server.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return ServerDatabase
      */
     public function createDatabase(array $data)
@@ -247,7 +249,8 @@ class Server extends Resource
     /**
      * Reset a database password of the server.
      *
-     * @param  integer $databaseId
+     * @param int $databaseId
+     *
      * @return void
      */
     public function resetDatabasePassword($databaseId)
@@ -258,7 +261,8 @@ class Server extends Resource
     /**
      * Delete a database of the server.
      *
-     * @param  integer $databaseId
+     * @param int $databaseId
+     *
      * @return void
      */
     public function deleteDatabase($databaseId)

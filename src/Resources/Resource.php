@@ -23,8 +23,9 @@ class Resource
     /**
      * Create a new resource instance.
      *
-     * @param  array $attributes
-     * @param  Pterodactyl $pterodactyl
+     * @param array       $attributes
+     * @param Pterodactyl $pterodactyl
+     *
      * @return void
      */
     public function __construct(array $attributes, $pterodactyl = null)

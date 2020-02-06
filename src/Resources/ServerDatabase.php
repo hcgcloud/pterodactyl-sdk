@@ -7,21 +7,21 @@ class ServerDatabase extends Resource
     /**
      * The id of the server's database.
      *
-     * @var integer
+     * @var int
      */
     public $id;
-	
+
     /**
      * The server id of the server's database.
      *
-     * @var integer
+     * @var int
      */
     public $server;
 
     /**
      * The host id of the server's database.
      *
-     * @var integer
+     * @var int
      */
     public $host;
 
@@ -76,7 +76,7 @@ class ServerDatabase extends Resource
     {
         return $this->pterodactyl->resetServerDatabasePassword($this->server, $this->id);
     }
-	
+
     /**
      * Delete the given database of a server.
      *

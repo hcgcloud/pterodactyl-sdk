@@ -7,7 +7,7 @@ class Nest extends Resource
     /**
      * The id of the nest.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -45,7 +45,7 @@ class Nest extends Resource
      * @var array
      */
     public $attributes = [];
-	
+
     /**
      * The date/time the nest was created.
      *
@@ -73,7 +73,8 @@ class Nest extends Resource
     /**
      * Get a egg instance in the given nest.
      *
-	 * @param  integer $eggId
+     * @param int $eggId
+     *
      * @return Egg
      */
     public function egg($eggId)

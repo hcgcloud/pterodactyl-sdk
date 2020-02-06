@@ -7,14 +7,14 @@ class Node extends Resource
     /**
      * The id of the node.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
     /**
      * The node is public or not.
      *
-     * @var integer
+     * @var int
      */
     public $public;
 
@@ -35,7 +35,7 @@ class Node extends Resource
     /**
      * The location id of the node.
      *
-     * @var integer
+     * @var int
      */
     public $locationId;
 
@@ -70,66 +70,66 @@ class Node extends Resource
     /**
      * The memory of the node.
      *
-     * @var integer
+     * @var int
      */
     public $memory;
 
     /**
      * The memory overallocate of the node.
      *
-     * @var integer
+     * @var int
      */
     public $memoryOverallocate;
-	
+
     /**
      * The disk of the node.
      *
-     * @var integer
+     * @var int
      */
     public $disk;
 
     /**
      * The disk overallocate of the node.
      *
-     * @var integer
+     * @var int
      */
     public $diskOverallocate;
-	
+
     /**
      * The upload size of the node.
      *
-     * @var integer
+     * @var int
      */
     public $uploadSize;
-	
+
     /**
      * The daemon listen port of the node.
      *
-     * @var integer
+     * @var int
      */
     public $daemonListen;
-	
+
     /**
      * The daemon sftp port of the node.
      *
-     * @var integer
+     * @var int
      */
     public $daemonSftp;
-	
+
     /**
      * The daemon base of the node.
      *
      * @var string
      */
     public $daemonBase;
-	
+
     /**
      * The attributes of the node.
      *
      * @var array
      */
     public $attributes = [];
-	
+
     /**
      * The date/time the node was created.
      *
@@ -157,7 +157,8 @@ class Node extends Resource
     /**
      * Update the given node.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return void
      */
     public function update(array $data)
@@ -168,7 +169,8 @@ class Node extends Resource
     /**
      * Get a collection of allocations of the given node.
      *
-     * @param  int $page
+     * @param int $page
+     *
      * @return array
      */
     public function allocations(int $page = 1)
@@ -179,7 +181,8 @@ class Node extends Resource
     /**
      * Create new allocation(s) of the given node.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return void
      */
     public function createAllocation(array $data)
@@ -190,7 +193,8 @@ class Node extends Resource
     /**
      * Delete a allocation of the given node.
      *
-     * @param  integer $allocationId
+     * @param int $allocationId
+     *
      * @return void
      */
     public function deleteAllocation($allocationId)

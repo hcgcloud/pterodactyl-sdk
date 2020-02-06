@@ -2,18 +2,19 @@
 
 namespace HCGCloud\Pterodactyl;
 
-use Psr\Http\Message\ResponseInterface;
-use HCGCloud\Pterodactyl\Exceptions\TimeoutException;
-use HCGCloud\Pterodactyl\Exceptions\NotFoundException;
-use HCGCloud\Pterodactyl\Exceptions\ValidationException;
 use HCGCloud\Pterodactyl\Exceptions\FailedActionException;
+use HCGCloud\Pterodactyl\Exceptions\NotFoundException;
+use HCGCloud\Pterodactyl\Exceptions\TimeoutException;
+use HCGCloud\Pterodactyl\Exceptions\ValidationException;
+use Psr\Http\Message\ResponseInterface;
 
 trait MakesHttpRequests
 {
     /**
      * Make a GET request to Pterodactyl servers and return the response.
      *
-     * @param  string $uri
+     * @param string $uri
+     *
      * @return mixed
      */
     private function get($uri)
@@ -24,8 +25,9 @@ trait MakesHttpRequests
     /**
      * Make a POST request to Pterodactyl servers and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function post($uri, array $payload = [])
@@ -36,8 +38,9 @@ trait MakesHttpRequests
     /**
      * Make a PUT request to Pterodactyl servers and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function put($uri, array $payload = [])
@@ -48,8 +51,9 @@ trait MakesHttpRequests
     /**
      * Make a PATCH request to Pterodactyl servers and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function patch($uri, array $payload = [])
@@ -60,8 +64,9 @@ trait MakesHttpRequests
     /**
      * Make a DELETE request to Pterodactyl servers and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function delete($uri, array $payload = [])
@@ -72,14 +77,15 @@ trait MakesHttpRequests
     /**
      * Make request to Pterodactyl servers and return the response.
      *
-     * @param  string $verb
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $verb
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function request($verb, $uri, array $payload = [])
     {
-        $url = $this->baseUri . $uri;
+        $url = $this->baseUri.$uri;
 
         $body = json_encode($payload);
 
@@ -101,7 +107,8 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  \Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @return void
      */
     private function handleRequestError(ResponseInterface $response)
@@ -124,8 +131,9 @@ trait MakesHttpRequests
     /**
      * Retry the callback or fail after x seconds.
      *
-     * @param  integer $timeout
-     * @param  callable $callback
+     * @param int      $timeout
+     * @param callable $callback
+     *
      * @return mixed
      */
     public function retry($timeout, $callback)

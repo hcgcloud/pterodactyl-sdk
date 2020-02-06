@@ -6,15 +6,15 @@ use GuzzleHttp\Client as HttpClient;
 
 class Pterodactyl
 {
-    use MakesHttpRequests,
-        Actions\ManagesUsers,
-        Actions\ManagesServers,
-        Actions\ManagesAllocations,
-        Actions\UsesServers,
-		Actions\ManagesNodes,
-		Actions\ManagesNests,
-        Actions\ManagesEggs,
-        Actions\ManagesLocations;
+    use MakesHttpRequests;
+    use Actions\ManagesUsers;
+    use Actions\ManagesServers;
+    use Actions\ManagesAllocations;
+    use Actions\UsesServers;
+    use Actions\ManagesNodes;
+    use Actions\ManagesNests;
+    use Actions\ManagesEggs;
+    use Actions\ManagesLocations;
 
     /**
      * The Pterodactyl API Key.
@@ -47,8 +47,9 @@ class Pterodactyl
     /**
      * Create a new Pterodactyl instance.
      *
-     * @param  string $apiKey
-     * @param  \GuzzleHttp\Client $guzzle
+     * @param string             $apiKey
+     * @param \GuzzleHttp\Client $guzzle
+     *
      * @return void
      */
     public function __construct($apiKey, $baseUri, HttpClient $guzzle = null)
@@ -58,21 +59,22 @@ class Pterodactyl
         $this->baseUri = $baseUri;
 
         $this->guzzle = $guzzle ?: new HttpClient([
-            'base_uri' => $this->baseUri,
+            'base_uri'    => $this->baseUri,
             'http_errors' => false,
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json'
-            ]
+            'headers'     => [
+                'Accept'       => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
         ]);
     }
 
     /**
      * Transform the items of the collection to the given class.
      *
-     * @param  array $collection
-     * @param  string $class
-     * @param  array $extraData
+     * @param array  $collection
+     * @param string $class
+     * @param array  $extraData
+     *
      * @return array
      */
     protected function transformCollection($collection, $class, $extraData = [])
@@ -83,9 +85,10 @@ class Pterodactyl
     }
 
     /**
-     * Set a new timeout
+     * Set a new timeout.
      *
-     * @param  int $timeout
+     * @param int $timeout
+     *
      * @return $this
      */
     public function setTimeout($timeout)
@@ -96,9 +99,9 @@ class Pterodactyl
     }
 
     /**
-     * Get the timeout
+     * Get the timeout.
      *
-     * @return  int
+     * @return int
      */
     public function getTimeout()
     {

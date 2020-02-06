@@ -2,13 +2,12 @@
 
 namespace HCGCloud\Pterodactyl\Actions;
 
-use HCGCloud\Pterodactyl\Resources\Server;
 use HCGCloud\Pterodactyl\Resources\Allocation;
+use HCGCloud\Pterodactyl\Resources\Server;
 use HCGCloud\Pterodactyl\Resources\ServerDatabase;
 
 trait ManagesServers
 {
-
     /**
      * Get the collection of servers.
      *
@@ -16,27 +15,29 @@ trait ManagesServers
      */
     public function servers(int $page = 1)
     {
-        $data = $this->get("api/application/servers?page=" . $page);
+        $data = $this->get('api/application/servers?page='.$page);
         $transform = $this->transformCollection(
             $data['data'],
             Server::class
         );
+
         return [
             'data' => $transform,
-            'meta' => $data['meta']
+            'meta' => $data['meta'],
         ];
     }
 
     /**
      * Get a server instance.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return Server
      */
     public function server($serverId)
     {
-        $request = $this->get("api/application/servers/$serverId" . "?include=allocations");
-		
+        $request = $this->get("api/application/servers/$serverId".'?include=allocations');
+
         $allocations = $this->transformCollection(
             $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
@@ -48,33 +49,35 @@ trait ManagesServers
 
         return $server;
     }
-	
+
     /**
      * Get a server instance by external id.
      *
-     * @param  integer $externalId
+     * @param int $externalId
+     *
      * @return Server
      */
     public function serverEx($externalId)
     {
-        $request = $this->get("api/application/servers/external/$externalId" . "?include=allocations");
-		
+        $request = $this->get("api/application/servers/external/$externalId".'?include=allocations');
+
         $allocations = $this->transformCollection(
             $request['attributes']['relationships']['allocations']['data'],
             Allocation::class
         );
-		
+
         $server = new Server($request, $this);
-		
+
         $server->allocations = $allocations;
-		
+
         return $server;
     }
 
     /**
      * Create a new server.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return Server
      */
     public function createServer(array $data)
@@ -85,18 +88,20 @@ trait ManagesServers
     /**
      * Delete the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function deleteServer($serverId)
     {
         return $this->delete("api/application/servers/$serverId");
     }
-	
+
     /**
      * Force delete the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function forceDeleteServer($serverId)
@@ -107,8 +112,9 @@ trait ManagesServers
     /**
      * Update details of the given server.
      *
-     * @param  integer $serverId
-	 * @param  array  $data
+     * @param int   $serverId
+     * @param array $data
+     *
      * @return Server
      */
     public function updateServerDetails($serverId, array $data)
@@ -119,8 +125,9 @@ trait ManagesServers
     /**
      * Update build configuration of the given server.
      *
-     * @param  integer $serverId
-	 * @param  array  $data
+     * @param int   $serverId
+     * @param array $data
+     *
      * @return Server
      */
     public function updateServerBuild($serverId, array $data)
@@ -131,8 +138,9 @@ trait ManagesServers
     /**
      * Update startup parameters of the given server.
      *
-     * @param  integer $serverId
-	 * @param  array  $data
+     * @param int   $serverId
+     * @param array $data
+     *
      * @return Server
      */
     public function updateServerStartup($serverId, array $data)
@@ -143,7 +151,8 @@ trait ManagesServers
     /**
      * Suspend the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function suspendServer($serverId)
@@ -154,29 +163,32 @@ trait ManagesServers
     /**
      * Unsuspend the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function unsuspendServer($serverId)
     {
         return $this->post("api/application/servers/$serverId/unsuspend");
     }
-	
+
     /**
      * Reinstall the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function reinstallServer($serverId)
     {
         return $this->post("api/application/servers/$serverId/reinstall");
     }
-	
+
     /**
      * Rebuild the given server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return void
      */
     public function rebuildServer($serverId)
@@ -187,7 +199,8 @@ trait ManagesServers
     /**
      * Get a collection of databases of a server.
      *
-     * @param  integer $serverId
+     * @param int $serverId
+     *
      * @return ServerDatabase[]
      */
     public function serverDatabases($serverId)
@@ -197,14 +210,16 @@ trait ManagesServers
             $data['data'],
             ServerDatabase::class
         );
+
         return $transform;
     }
 
     /**
      * Get a database instance of a server.
      *
-     * @param  integer $serverId
-     * @param  integer $databaseId
+     * @param int $serverId
+     * @param int $databaseId
+     *
      * @return ServerDatabase
      */
     public function serverDatabase($serverId, $databaseId)
@@ -215,8 +230,9 @@ trait ManagesServers
     /**
      * Create a database for a server.
      *
-     * @param  integer $serverId
-     * @param  array $data
+     * @param int   $serverId
+     * @param array $data
+     *
      * @return ServerDatabase
      */
     public function createServerDatabase($serverId, array $data)
@@ -227,8 +243,9 @@ trait ManagesServers
     /**
      * Reset the password of a server's database.
      *
-     * @param  integer $serverId
-     * @param  integer $databaseId
+     * @param int $serverId
+     * @param int $databaseId
+     *
      * @return void
      */
     public function resetServerDatabasePassword($serverId, $databaseId)
@@ -239,8 +256,9 @@ trait ManagesServers
     /**
      *  Delete the given database of a server.
      *
-     * @param  integer $serverId
-     * @param  integer $databaseId
+     * @param int $serverId
+     * @param int $databaseId
+     *
      * @return void
      */
     public function deleteServerDatabase($serverId, $databaseId)
