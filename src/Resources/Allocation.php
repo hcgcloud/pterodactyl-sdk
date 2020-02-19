@@ -7,7 +7,7 @@ class Allocation extends Resource
     /**
      * The id of the allocation.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -28,14 +28,14 @@ class Allocation extends Resource
     /**
      * The port of the allocation.
      *
-     * @var integer
+     * @var int
      */
     public $port;
 
     /**
      * The assign status of the allocation.
      *
-     * @var boolean
+     * @var bool
      */
     public $assigned;
 }
