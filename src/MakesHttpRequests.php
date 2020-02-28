@@ -92,8 +92,8 @@ trait MakesHttpRequests
         $token = $this->apiKey;
 
         $options['body'] = $body;
-        $options = array_add($options, 'debug', false);
-        $options['headers'] = array_add($options, 'Authorization', 'Bearer '.$token);
+        $options['debug'] = false;
+        $options['headers']['Authorization'] = 'Bearer '.$token;
 
         $response = $this->guzzle->request($verb, $uri, $options);
 
