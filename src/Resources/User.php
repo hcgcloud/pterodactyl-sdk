@@ -7,21 +7,21 @@ class User extends Resource
     /**
      * The id of the user.
      *
-     * @var integer
+     * @var int
      */
     public $id;
 
     /**
      * The external id of the user.
      *
-     * @var integer
+     * @var int
      */
     public $externalId;
 
     /**
      * The uuid of the user.
      *
-     * @var integer
+     * @var int
      */
     public $uuid;
 
@@ -63,7 +63,7 @@ class User extends Resource
     /**
      * If a user is an admin.
      *
-     * @var integer
+     * @var int
      */
     public $rootAdmin;
 
@@ -106,11 +106,12 @@ class User extends Resource
     public function update(array $data = [])
     {
         $data = array_merge([
-            'username' => $this->username,
-            'email' => $this->email,
+            'username'   => $this->username,
+            'email'      => $this->email,
             'first_name' => $this->firstName,
-            'last_name' => $this->lastName
+            'last_name'  => $this->lastName,
         ], $data);
+
         return $this->pterodactyl->updateUser($this->id, $data);
     }
 }

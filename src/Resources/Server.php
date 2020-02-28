@@ -94,7 +94,7 @@ class Server extends Resource
      * @var array
      */
     public $limits = [];
-    
+
     /**
      * The feature limits of the server.
      *
@@ -108,7 +108,7 @@ class Server extends Resource
      * @var array
      */
     public $allocations = [];
-    
+
     /**
      * The container of the server.
      *
@@ -165,8 +165,9 @@ class Server extends Resource
     {
         $data = array_merge([
             'name' => $this->name,
-            'user' => $this->user
+            'user' => $this->user,
         ], $data);
+
         return $this->pterodactyl->updateServerDetails($this->id, $data);
     }
 
@@ -178,10 +179,11 @@ class Server extends Resource
     public function updateBuild(array $data = [])
     {
         $data = array_merge([
-            'allocation' => $this->allocation,
-            'limits' => $this->limits,
-            'feature_limits' => $this->featureLimits
+            'allocation'     => $this->allocation,
+            'limits'         => $this->limits,
+            'feature_limits' => $this->featureLimits,
         ], $data);
+
         return $this->pterodactyl->updateServerBuild($this->id, $data);
     }
 
@@ -193,12 +195,13 @@ class Server extends Resource
     public function updateStartup(array $data = [])
     {
         $data = array_merge([
-            'startup' => $this->container['startup_command'],
-            'egg' => $this->egg,
-            'image' => $this->container['image'],
-            'environment' => $this->container['environment'],
-            'skip_scripts' => 0
+            'startup'      => $this->container['startup_command'],
+            'egg'          => $this->egg,
+            'image'        => $this->container['image'],
+            'environment'  => $this->container['environment'],
+            'skip_scripts' => 0,
         ], $data);
+
         return $this->pterodactyl->updateServerStartup($this->id, $data);
     }
 
