@@ -103,8 +103,14 @@ class User extends Resource
      *
      * @return void
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
+        $data = array_merge([
+            'username' => $this->username,
+            'email' => $this->email,
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName
+        ], $data);
         return $this->pterodactyl->updateUser($this->id, $data);
     }
 }

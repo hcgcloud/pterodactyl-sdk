@@ -61,8 +61,12 @@ class Location extends Resource
      *
      * @return void
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
+        $data = array_merge([
+            'short' => $this->short,
+            'long' => $this->long
+        ], $data);
         return $this->pterodactyl->updateLocation($this->id, $data);
     }
 }
