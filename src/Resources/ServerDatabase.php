@@ -61,13 +61,6 @@ class ServerDatabase extends Resource
     public $updatedAt;
 
     /**
-     * The attributes of the server.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * Reset password of the given server's database.
      *
      * @return void

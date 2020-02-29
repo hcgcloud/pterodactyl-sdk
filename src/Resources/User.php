@@ -82,13 +82,6 @@ class User extends Resource
     public $updatedAt;
 
     /**
-     * The attributes of the user.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * Delete the given user.
      *
      * @return void

@@ -40,13 +40,6 @@ class Nest extends Resource
     public $description;
 
     /**
-     * The attributes of the nest.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the nest was created.
      *
      * @var string

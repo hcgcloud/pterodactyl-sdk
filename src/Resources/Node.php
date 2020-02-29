@@ -124,13 +124,6 @@ class Node extends Resource
     public $daemonBase;
 
     /**
-     * The attributes of the node.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the node was created.
      *
      * @var string

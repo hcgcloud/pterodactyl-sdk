@@ -26,13 +26,6 @@ class Location extends Resource
     public $long;
 
     /**
-     * The attributes of the location.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the location was created.
      *
      * @var string
