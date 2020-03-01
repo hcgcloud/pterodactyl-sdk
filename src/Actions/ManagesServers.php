@@ -12,7 +12,7 @@ trait ManagesServers
      * Get the collection of servers.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function servers(int $page = 1)

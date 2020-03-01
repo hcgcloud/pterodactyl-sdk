@@ -151,7 +151,7 @@ class Server extends Resource
 
     /**
      * Update details of the server.
-     * 
+     *
      * @param array $data
      *
      * @return void
@@ -170,7 +170,7 @@ class Server extends Resource
      * Update build configuration of the server.
      *
      * @param array $data
-     * 
+     *
      * @return void
      */
     public function updateBuild(array $data = [])
@@ -188,7 +188,7 @@ class Server extends Resource
      * Update startup parameters of the server.
      *
      * @param array $data
-     * 
+     *
      * @return void
      */
     public function updateStartup(array $data = [])
@@ -228,7 +228,7 @@ class Server extends Resource
      * Power the server.
      *
      * @param string $action
-     * 
+     *
      * @return void
      */
     public function power(string $action)
@@ -240,7 +240,7 @@ class Server extends Resource
      * Send command to the server.
      *
      * @param string $command
-     * 
+     *
      * @return void
      */
     public function command(string $command)

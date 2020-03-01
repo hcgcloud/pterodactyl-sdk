@@ -10,7 +10,7 @@ trait ManagesNests
      * Get a collection of nests.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function nests(int $page = 1)

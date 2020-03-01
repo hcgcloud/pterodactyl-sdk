@@ -10,7 +10,7 @@ trait ManagesLocations
      * Get a collection of locations.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function locations(int $page = 1)

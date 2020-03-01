@@ -11,7 +11,7 @@ trait UsesServers
      * Get the collection of servers for the authenticated user.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function listServers(int $page = 1)
@@ -32,7 +32,7 @@ trait UsesServers
      * Gets the details of a given server.
      *
      * @param string $serverIdentifier
-     * 
+     *
      * @return Server[]
      */
     public function getServer(string $serverIdentifier)

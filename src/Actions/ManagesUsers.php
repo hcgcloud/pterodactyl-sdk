@@ -10,7 +10,7 @@ trait ManagesUsers
      * Get the collection of users.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function users(int $page = 1)

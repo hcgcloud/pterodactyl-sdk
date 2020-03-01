@@ -10,7 +10,7 @@ trait ManagesNodes
      * Get a collection of nodes.
      *
      * @param int $page
-     * 
+     *
      * @return array
      */
     public function nodes(int $page = 1)
