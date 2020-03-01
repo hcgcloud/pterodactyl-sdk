@@ -9,6 +9,8 @@ trait ManagesLocations
     /**
      * Get a collection of locations.
      *
+     * @param int $page
+     * 
      * @return array
      */
     public function locations(int $page = 1)
@@ -32,7 +34,7 @@ trait ManagesLocations
      *
      * @return Location
      */
-    public function location($locationId)
+    public function location(int $locationId)
     {
         return new Location($this->get("api/application/locations/$locationId"), $this);
     }
@@ -57,7 +59,7 @@ trait ManagesLocations
      *
      * @return Location
      */
-    public function updateLocation($locationId, array $data)
+    public function updateLocation(int $locationId, array $data)
     {
         return new Location($this->patch("api/application/locations/$locationId", $data), $this);
     }
@@ -69,7 +71,7 @@ trait ManagesLocations
      *
      * @return void
      */
-    public function deleteLocation($locationId)
+    public function deleteLocation(int $locationId)
     {
         return $this->delete("api/application/locations/$locationId");
     }

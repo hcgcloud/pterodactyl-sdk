@@ -190,7 +190,7 @@ class Node extends Resource
      *
      * @return void
      */
-    public function deleteAllocation($allocationId)
+    public function deleteAllocation(int $allocationId)
     {
         return $this->pterodactyl->deleteAllocation($this->id, $allocationId);
     }

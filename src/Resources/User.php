@@ -94,6 +94,8 @@ class User extends Resource
     /**
      * Update the given user.
      *
+     * @param array $data
+     * 
      * @return void
      */
     public function update(array $data = [])

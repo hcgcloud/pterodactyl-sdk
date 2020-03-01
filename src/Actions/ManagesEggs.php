@@ -13,7 +13,7 @@ trait ManagesEggs
      *
      * @return Egg[]
      */
-    public function eggs($nestId)
+    public function eggs(int $nestId)
     {
         return $this->transformCollection(
             $this->get("api/application/nests/$nestId/eggs")['data'],
@@ -29,7 +29,7 @@ trait ManagesEggs
      *
      * @return Egg
      */
-    public function egg($nestId, $eggId)
+    public function egg(int $nestId, int $eggId)
     {
         return new Egg($this->get("api/application/nests/$nestId/eggs/$eggId"), $this);
     }

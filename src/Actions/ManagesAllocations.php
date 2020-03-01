@@ -10,10 +10,11 @@ trait ManagesAllocations
      * Get the collection of allocations for a given node.
      *
      * @param int $nodeId
+     * @param int $page
      *
      * @return array
      */
-    public function allocations($nodeId, int $page = 1)
+    public function allocations(int $nodeId, int $page = 1)
     {
         $data = $this->get("api/application/nodes/$nodeId".'/allocations?page='.$page);
         $transform = $this->transformCollection(
@@ -35,7 +36,7 @@ trait ManagesAllocations
      *
      * @return void
      */
-    public function createAllocation($nodeId, array $data)
+    public function createAllocation(int $nodeId, array $data)
     {
         return $this->post("api/application/nodes/$nodeId/allocations", $data);
     }
@@ -49,7 +50,7 @@ trait ManagesAllocations
      *
      * @return void
      */
-    public function deleteAllocation($nodeId, $allocationId)
+    public function deleteAllocation(int $nodeId, int $allocationId)
     {
         return $this->delete("api/application/nodes/$nodeId/allocations/$allocationId");
     }

@@ -9,6 +9,8 @@ trait ManagesNests
     /**
      * Get a collection of nests.
      *
+     * @param int $page
+     * 
      * @return array
      */
     public function nests(int $page = 1)
@@ -32,7 +34,7 @@ trait ManagesNests
      *
      * @return Nest
      */
-    public function nest($nestId)
+    public function nest(int $nestId)
     {
         return new Nest($this->get("api/application/nests/$nestId"), $this);
     }

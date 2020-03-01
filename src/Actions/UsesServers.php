@@ -10,6 +10,8 @@ trait UsesServers
     /**
      * Get the collection of servers for the authenticated user.
      *
+     * @param int $page
+     * 
      * @return array
      */
     public function listServers(int $page = 1)
@@ -29,9 +31,11 @@ trait UsesServers
     /**
      * Gets the details of a given server.
      *
+     * @param string $serverIdentifier
+     * 
      * @return Server[]
      */
-    public function getServer($serverIdentifier)
+    public function getServer(string $serverIdentifier)
     {
         $request = $this->get("api/client/servers/$serverIdentifier");
         $server = new Server($request, $this);
@@ -42,12 +46,12 @@ trait UsesServers
     /**
      * Toggle the power on a given server.
      *
-     * @param string $serverId
+     * @param string $serverIdentifier
      * @param string $action
      *
      * @return void
      */
-    public function powerServer($serverIdentifier, $action)
+    public function powerServer(string $serverIdentifier, string $action)
     {
         return $this->post("api/client/servers/$serverIdentifier/power", ['signal'=>"$action"]);
     }
@@ -55,12 +59,12 @@ trait UsesServers
     /**
      * Send a command to a given server.
      *
-     * @param string $serverId
-     * @param string $action
+     * @param string $serverIdentifier
+     * @param string $command
      *
      * @return void
      */
-    public function commandServer($serverIdentifier, $command)
+    public function commandServer(string $serverIdentifier, string $command)
     {
         return $this->post("api/client/servers/$serverIdentifier/command", ['command'=>"$command"]);
     }
@@ -68,11 +72,11 @@ trait UsesServers
     /**
      * Get the utilization of a given server.
      *
-     * @param string $serverId
+     * @param string $serverIdentifier
      *
      * @return Stats[]
      */
-    public function utilizationServer($serverIdentifier)
+    public function utilizationServer(string $serverIdentifier)
     {
         $request = $this->get("api/client/servers/$serverIdentifier/utilization");
         $stats = new Stats($request, $this);

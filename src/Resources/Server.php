@@ -151,6 +151,8 @@ class Server extends Resource
 
     /**
      * Update details of the server.
+     * 
+     * @param array $data
      *
      * @return void
      */
@@ -167,6 +169,8 @@ class Server extends Resource
     /**
      * Update build configuration of the server.
      *
+     * @param array $data
+     * 
      * @return void
      */
     public function updateBuild(array $data = [])
@@ -183,6 +187,8 @@ class Server extends Resource
     /**
      * Update startup parameters of the server.
      *
+     * @param array $data
+     * 
      * @return void
      */
     public function updateStartup(array $data = [])
@@ -221,19 +227,23 @@ class Server extends Resource
     /**
      * Power the server.
      *
+     * @param string $action
+     * 
      * @return void
      */
-    public function power($action)
+    public function power(string $action)
     {
         return $this->pterodactyl->powerServer($this->identifier, $action);
     }
 
     /**
-     * Power the server.
+     * Send command to the server.
      *
+     * @param string $command
+     * 
      * @return void
      */
-    public function command($command)
+    public function command(string $command)
     {
         return $this->pterodactyl->commandServer($this->identifier, $command);
     }
@@ -255,7 +265,7 @@ class Server extends Resource
      *
      * @return ServerDatabase
      */
-    public function database($databaseId)
+    public function database(int $databaseId)
     {
         return $this->pterodactyl->serverDatabase($this->id, $databaseId);
     }
@@ -279,7 +289,7 @@ class Server extends Resource
      *
      * @return void
      */
-    public function resetDatabasePassword($databaseId)
+    public function resetDatabasePassword(int $databaseId)
     {
         return $this->pterodactyl->resetServerDatabasePassword($this->id, $databaseId);
     }
@@ -291,7 +301,7 @@ class Server extends Resource
      *
      * @return void
      */
-    public function deleteDatabase($databaseId)
+    public function deleteDatabase(int $databaseId)
     {
         return $this->pterodactyl->deleteServerDatabase($this->id, $databaseId);
     }

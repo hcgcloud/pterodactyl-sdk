@@ -9,6 +9,8 @@ trait ManagesNodes
     /**
      * Get a collection of nodes.
      *
+     * @param int $page
+     * 
      * @return array
      */
     public function nodes(int $page = 1)
@@ -32,7 +34,7 @@ trait ManagesNodes
      *
      * @return Node
      */
-    public function node($nodeId)
+    public function node(int $nodeId)
     {
         return new Node($this->get("api/application/nodes/$nodeId"), $this);
     }
@@ -57,7 +59,7 @@ trait ManagesNodes
      *
      * @return Node
      */
-    public function updateNode($nodeId, array $data)
+    public function updateNode(int $nodeId, array $data)
     {
         return new Node($this->patch("api/application/nodes/$nodeId", $data), $this);
     }
@@ -69,7 +71,7 @@ trait ManagesNodes
      *
      * @return void
      */
-    public function deleteNode($nodeId)
+    public function deleteNode(int $nodeId)
     {
         return $this->delete("api/application/nodes/$nodeId");
     }

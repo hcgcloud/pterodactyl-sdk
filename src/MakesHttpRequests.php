@@ -143,7 +143,7 @@ trait MakesHttpRequests
         beginning:
 
         $output = $callback();
-        
+
         if ($output) {
             return $output;
         }

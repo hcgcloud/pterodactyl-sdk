@@ -11,6 +11,8 @@ trait ManagesServers
     /**
      * Get the collection of servers.
      *
+     * @param int $page
+     * 
      * @return array
      */
     public function servers(int $page = 1)
@@ -34,7 +36,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function server($serverId)
+    public function server(int $serverId)
     {
         $request = $this->get("api/application/servers/$serverId".'?include=allocations');
 
@@ -57,7 +59,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function serverEx($externalId)
+    public function serverEx(int $externalId)
     {
         $request = $this->get("api/application/servers/external/$externalId".'?include=allocations');
 
@@ -92,7 +94,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function deleteServer($serverId)
+    public function deleteServer(int $serverId)
     {
         return $this->delete("api/application/servers/$serverId");
     }
@@ -104,7 +106,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function forceDeleteServer($serverId)
+    public function forceDeleteServer(int $serverId)
     {
         return $this->delete("api/application/servers/$serverId/force");
     }
@@ -117,7 +119,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function updateServerDetails($serverId, array $data)
+    public function updateServerDetails(int $serverId, array $data)
     {
         return new Server($this->patch("api/application/servers/$serverId/details", $data), $this);
     }
@@ -130,7 +132,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function updateServerBuild($serverId, array $data)
+    public function updateServerBuild(int $serverId, array $data)
     {
         return new Server($this->patch("api/application/servers/$serverId/build", $data), $this);
     }
@@ -143,7 +145,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function updateServerStartup($serverId, array $data)
+    public function updateServerStartup(int $serverId, array $data)
     {
         return new Server($this->patch("api/application/servers/$serverId/startup", $data), $this);
     }
@@ -155,7 +157,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function suspendServer($serverId)
+    public function suspendServer(int $serverId)
     {
         return $this->post("api/application/servers/$serverId/suspend");
     }
@@ -167,7 +169,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function unsuspendServer($serverId)
+    public function unsuspendServer(int $serverId)
     {
         return $this->post("api/application/servers/$serverId/unsuspend");
     }
@@ -179,7 +181,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function reinstallServer($serverId)
+    public function reinstallServer(int $serverId)
     {
         return $this->post("api/application/servers/$serverId/reinstall");
     }
@@ -191,7 +193,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function rebuildServer($serverId)
+    public function rebuildServer(int $serverId)
     {
         return $this->post("api/application/servers/$serverId/rebuild");
     }
@@ -203,7 +205,7 @@ trait ManagesServers
      *
      * @return ServerDatabase[]
      */
-    public function serverDatabases($serverId)
+    public function serverDatabases(int $serverId)
     {
         $data = $this->get("api/application/servers/$serverId/databases");
         $transform = $this->transformCollection(
@@ -222,7 +224,7 @@ trait ManagesServers
      *
      * @return ServerDatabase
      */
-    public function serverDatabase($serverId, $databaseId)
+    public function serverDatabase(int $serverId, int $databaseId)
     {
         return new ServerDatabase($this->get("api/application/servers/$serverId/databases/$databaseId"), $this);
     }
@@ -235,7 +237,7 @@ trait ManagesServers
      *
      * @return ServerDatabase
      */
-    public function createServerDatabase($serverId, array $data)
+    public function createServerDatabase(int $serverId, array $data)
     {
         return new ServerDatabase($this->post("api/application/servers/$serverId/databases/", $data), $this);
     }
@@ -248,7 +250,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function resetServerDatabasePassword($serverId, $databaseId)
+    public function resetServerDatabasePassword(int $serverId, int $databaseId)
     {
         return $this->post("api/application/servers/$serverId/databases/$databaseId/reset-password");
     }
@@ -261,7 +263,7 @@ trait ManagesServers
      *
      * @return void
      */
-    public function deleteServerDatabase($serverId, $databaseId)
+    public function deleteServerDatabase(int $serverId, int $databaseId)
     {
         return $this->delete("api/application/servers/$serverId/databases/$databaseId");
     }
