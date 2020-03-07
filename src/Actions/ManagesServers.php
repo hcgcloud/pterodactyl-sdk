@@ -17,16 +17,7 @@ trait ManagesServers
      */
     public function servers(int $page = 1)
     {
-        $data = $this->get('api/application/servers?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Server::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/servers?page='.$page);
     }
 
     /**
@@ -38,18 +29,7 @@ trait ManagesServers
      */
     public function server(int $serverId)
     {
-        $request = $this->get("api/application/servers/$serverId".'?include=allocations');
-
-        $allocations = $this->transformCollection(
-            $request['attributes']['relationships']['allocations']['data'],
-            Allocation::class
-        );
-
-        $server = new Server($request, $this);
-
-        $server->allocations = $allocations;
-
-        return $server;
+        return $this->get("api/application/servers/$serverId".'?include=allocations,subusers');
     }
 
     /**
@@ -61,18 +41,7 @@ trait ManagesServers
      */
     public function serverEx(int $externalId)
     {
-        $request = $this->get("api/application/servers/external/$externalId".'?include=allocations');
-
-        $allocations = $this->transformCollection(
-            $request['attributes']['relationships']['allocations']['data'],
-            Allocation::class
-        );
-
-        $server = new Server($request, $this);
-
-        $server->allocations = $allocations;
-
-        return $server;
+        return $this->get("api/application/servers/external/$externalId".'?include=allocations');
     }
 
     /**
@@ -84,7 +53,7 @@ trait ManagesServers
      */
     public function createServer(array $data)
     {
-        return new Server($this->post('api/application/servers', $data), $this);
+        return $this->post('api/application/servers', $data);
     }
 
     /**
@@ -121,7 +90,7 @@ trait ManagesServers
      */
     public function updateServerDetails(int $serverId, array $data)
     {
-        return new Server($this->patch("api/application/servers/$serverId/details", $data), $this);
+        return $this->patch("api/application/servers/$serverId/details", $data);
     }
 
     /**
@@ -134,7 +103,7 @@ trait ManagesServers
      */
     public function updateServerBuild(int $serverId, array $data)
     {
-        return new Server($this->patch("api/application/servers/$serverId/build", $data), $this);
+        return $this->patch("api/application/servers/$serverId/build", $data);
     }
 
     /**
@@ -147,7 +116,7 @@ trait ManagesServers
      */
     public function updateServerStartup(int $serverId, array $data)
     {
-        return new Server($this->patch("api/application/servers/$serverId/startup", $data), $this);
+        return $this->patch("api/application/servers/$serverId/startup", $data);
     }
 
     /**
@@ -207,13 +176,7 @@ trait ManagesServers
      */
     public function serverDatabases(int $serverId)
     {
-        $data = $this->get("api/application/servers/$serverId/databases");
-        $transform = $this->transformCollection(
-            $data['data'],
-            ServerDatabase::class
-        );
-
-        return $transform;
+        return $this->get("api/application/servers/$serverId/databases");
     }
 
     /**
@@ -226,7 +189,7 @@ trait ManagesServers
      */
     public function serverDatabase(int $serverId, int $databaseId)
     {
-        return new ServerDatabase($this->get("api/application/servers/$serverId/databases/$databaseId"), $this);
+        return $this->get("api/application/servers/$serverId/databases/$databaseId");
     }
 
     /**
@@ -239,7 +202,7 @@ trait ManagesServers
      */
     public function createServerDatabase(int $serverId, array $data)
     {
-        return new ServerDatabase($this->post("api/application/servers/$serverId/databases/", $data), $this);
+        return $this->post("api/application/servers/$serverId/databases/", $data);
     }
 
     /**

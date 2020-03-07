@@ -16,15 +16,7 @@ trait ManagesLocations
     public function locations(int $page = 1)
     {
         $data = $this->get('api/application/locations?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Location::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->transform($data);
     }
 
     /**
@@ -36,7 +28,7 @@ trait ManagesLocations
      */
     public function location(int $locationId)
     {
-        return new Location($this->get("api/application/locations/$locationId"), $this);
+        return $this->get("api/application/locations/$locationId");
     }
 
     /**
@@ -48,7 +40,7 @@ trait ManagesLocations
      */
     public function createLocation(array $data)
     {
-        return new Location($this->post('api/application/locations', $data), $this);
+        return $this->post('api/application/locations', $data);
     }
 
     /**
@@ -61,7 +53,7 @@ trait ManagesLocations
      */
     public function updateLocation(int $locationId, array $data)
     {
-        return new Location($this->patch("api/application/locations/$locationId", $data), $this);
+        return $this->patch("api/application/locations/$locationId", $data);
     }
 
     /**

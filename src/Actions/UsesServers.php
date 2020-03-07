@@ -16,16 +16,7 @@ trait UsesServers
      */
     public function listServers(int $page = 1)
     {
-        $data = $this->get('api/client?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Server::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/client?page='.$page);
     }
 
     /**
@@ -37,10 +28,7 @@ trait UsesServers
      */
     public function getServer(string $serverIdentifier)
     {
-        $request = $this->get("api/client/servers/$serverIdentifier");
-        $server = new Server($request, $this);
-
-        return $server;
+        return $this->get("api/client/servers/$serverIdentifier");
     }
 
     /**
@@ -78,9 +66,6 @@ trait UsesServers
      */
     public function utilizationServer(string $serverIdentifier)
     {
-        $request = $this->get("api/client/servers/$serverIdentifier/utilization");
-        $stats = new Stats($request, $this);
-
-        return $stats;
+        return $this->get("api/client/servers/$serverIdentifier/utilization");
     }
 }

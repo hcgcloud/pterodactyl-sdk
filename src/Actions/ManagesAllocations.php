@@ -16,16 +16,7 @@ trait ManagesAllocations
      */
     public function allocations(int $nodeId, int $page = 1)
     {
-        $data = $this->get("api/application/nodes/$nodeId".'/allocations?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Allocation::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get("api/application/nodes/$nodeId".'/allocations?page='.$page);
     }
 
     /**

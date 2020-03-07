@@ -15,16 +15,7 @@ trait ManagesUsers
      */
     public function users(int $page = 1)
     {
-        $data = $this->get('api/application/users?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            User::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/users?page='.$page);
     }
 
     /**
@@ -36,7 +27,7 @@ trait ManagesUsers
      */
     public function user(int $userId)
     {
-        return new User($this->get("api/application/users/$userId"), $this);
+        return $this->get("api/application/users/$userId");
     }
 
     /**
@@ -48,7 +39,7 @@ trait ManagesUsers
      */
     public function userEx(int $userExternalId)
     {
-        return new User($this->get("api/application/users/external/$userExternalId"), $this);
+        return $this->get("api/application/users/external/$userExternalId");
     }
 
     /**
@@ -60,7 +51,7 @@ trait ManagesUsers
      */
     public function createUser(array $data)
     {
-        return new User($this->post('api/application/users', $data), $this);
+        return $this->post('api/application/users', $data);
     }
 
     /**
@@ -73,7 +64,7 @@ trait ManagesUsers
      */
     public function updateUser(int $userId, array $data)
     {
-        return new User($this->patch("api/application/users/$userId", $data), $this);
+        return $this->patch("api/application/users/$userId", $data);
     }
 
     /**

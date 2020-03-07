@@ -15,16 +15,7 @@ trait ManagesNodes
      */
     public function nodes(int $page = 1)
     {
-        $data = $this->get('api/application/nodes?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Node::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/nodes?page='.$page);
     }
 
     /**
@@ -36,7 +27,7 @@ trait ManagesNodes
      */
     public function node(int $nodeId)
     {
-        return new Node($this->get("api/application/nodes/$nodeId"), $this);
+        return $this->get("api/application/nodes/$nodeId");
     }
 
     /**
@@ -48,7 +39,7 @@ trait ManagesNodes
      */
     public function createNode(array $data)
     {
-        return new Node($this->post('api/application/nodes', $data), $this);
+        return $this->post('api/application/nodes', $data);
     }
 
     /**
@@ -61,7 +52,7 @@ trait ManagesNodes
      */
     public function updateNode(int $nodeId, array $data)
     {
-        return new Node($this->patch("api/application/nodes/$nodeId", $data), $this);
+        return $this->patch("api/application/nodes/$nodeId", $data);
     }
 
     /**

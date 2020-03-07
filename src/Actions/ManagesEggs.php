@@ -15,10 +15,7 @@ trait ManagesEggs
      */
     public function eggs(int $nestId)
     {
-        return $this->transformCollection(
-            $this->get("api/application/nests/$nestId/eggs")['data'],
-            Egg::class
-        );
+        return $this->get("api/application/nests/$nestId/eggs");
     }
 
     /**
@@ -31,6 +28,6 @@ trait ManagesEggs
      */
     public function egg(int $nestId, int $eggId)
     {
-        return new Egg($this->get("api/application/nests/$nestId/eggs/$eggId"), $this);
+        return $this->get("api/application/nests/$nestId/eggs/$eggId");
     }
 }

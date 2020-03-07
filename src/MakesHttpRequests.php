@@ -103,7 +103,7 @@ trait MakesHttpRequests
 
         $responseBody = (string) $response->getBody();
 
-        return json_decode($responseBody, true) ?: $responseBody;
+        return $this->transform(json_decode($responseBody, true)) ?: $responseBody;
     }
 
     /**
