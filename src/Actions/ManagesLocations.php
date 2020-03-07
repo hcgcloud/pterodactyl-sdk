@@ -9,32 +9,26 @@ trait ManagesLocations
     /**
      * Get a collection of locations.
      *
+     * @param int $page
+     *
      * @return array
      */
     public function locations(int $page = 1)
     {
-        $data = $this->get('api/application/locations?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Location::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/locations?page='.$page);
     }
 
     /**
      * Get a location instance.
      *
-     * @param int $locationId
+     * @param int   $locationId
+     * @param array $includes
      *
      * @return Location
      */
-    public function location($locationId)
+    public function location(int $locationId, array $includes = [])
     {
-        return new Location($this->get("api/application/locations/$locationId"), $this);
+        return $this->get("api/application/locations/$locationId".$this->include($includes));
     }
 
     /**
@@ -46,7 +40,7 @@ trait ManagesLocations
      */
     public function createLocation(array $data)
     {
-        return new Location($this->post('api/application/locations', $data), $this);
+        return $this->post('api/application/locations', $data);
     }
 
     /**
@@ -57,9 +51,9 @@ trait ManagesLocations
      *
      * @return Location
      */
-    public function updateLocation($locationId, array $data)
+    public function updateLocation(int $locationId, array $data)
     {
-        return new Location($this->patch("api/application/locations/$locationId", $data), $this);
+        return $this->patch("api/application/locations/$locationId", $data);
     }
 
     /**
@@ -69,7 +63,7 @@ trait ManagesLocations
      *
      * @return void
      */
-    public function deleteLocation($locationId)
+    public function deleteLocation(int $locationId)
     {
         return $this->delete("api/application/locations/$locationId");
     }

@@ -9,32 +9,26 @@ trait ManagesNodes
     /**
      * Get a collection of nodes.
      *
+     * @param int $page
+     *
      * @return array
      */
     public function nodes(int $page = 1)
     {
-        $data = $this->get('api/application/nodes?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Node::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/nodes?page='.$page);
     }
 
     /**
      * Get a node instance.
      *
-     * @param int $nodeId
+     * @param int   $nodeId
+     * @param array $includes
      *
      * @return Node
      */
-    public function node($nodeId)
+    public function node(int $nodeId, array $includes = [])
     {
-        return new Node($this->get("api/application/nodes/$nodeId"), $this);
+        return $this->get("api/application/nodes/$nodeId".$this->include($includes));
     }
 
     /**
@@ -46,7 +40,7 @@ trait ManagesNodes
      */
     public function createNode(array $data)
     {
-        return new Node($this->post('api/application/nodes', $data), $this);
+        return $this->post('api/application/nodes', $data);
     }
 
     /**
@@ -57,9 +51,9 @@ trait ManagesNodes
      *
      * @return Node
      */
-    public function updateNode($nodeId, array $data)
+    public function updateNode(int $nodeId, array $data)
     {
-        return new Node($this->patch("api/application/nodes/$nodeId", $data), $this);
+        return $this->patch("api/application/nodes/$nodeId", $data);
     }
 
     /**
@@ -69,7 +63,7 @@ trait ManagesNodes
      *
      * @return void
      */
-    public function deleteNode($nodeId)
+    public function deleteNode(int $nodeId)
     {
         return $this->delete("api/application/nodes/$nodeId");
     }

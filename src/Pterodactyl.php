@@ -69,19 +69,57 @@ class Pterodactyl
     }
 
     /**
-     * Transform the items of the collection to the given class.
+     * Transform response data to resources.
      *
-     * @param array  $collection
-     * @param string $class
-     * @param array  $extraData
+     * @param array $response
      *
-     * @return array
+     * @return mixed
      */
-    protected function transformCollection($collection, $class, $extraData = [])
+    protected function transform($response)
     {
-        return array_map(function ($data) use ($class, $extraData) {
-            return new $class($data + $extraData, $this);
-        }, $collection);
+        if (empty($response['object'])) {
+            return $response;
+        }
+
+        switch ($response['object']) {
+            case 'list':
+                $data = array_map(function ($object) {
+                    return $this->transform($object);
+                }, $response['data']);
+
+                if (isset($response['meta'])) {
+                    return [
+                        'data' => $data,
+                        'meta' => $response['meta'],
+                    ];
+                }
+
+                return $data;
+        }
+
+        if (isset($response['attributes']['relationships'])) {
+            $response['attributes']['relationships'] = array_map(function ($object) {
+                return $this->transform($object);
+            }, $response['attributes']['relationships']);
+        }
+
+        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
+
+        $resource = class_exists($class) ? new $class($response['attributes'], $this) : $response['attributes'];
+
+        return $resource;
+    }
+
+    /**
+     * Transform include array to url parameter.
+     *
+     * @param array $includes
+     *
+     * @return string
+     */
+    protected function include($includes)
+    {
+        return empty($includes) ? '' : '?include='.implode(',', $includes);
     }
 
     /**

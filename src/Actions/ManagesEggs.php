@@ -13,24 +13,22 @@ trait ManagesEggs
      *
      * @return Egg[]
      */
-    public function eggs($nestId)
+    public function eggs(int $nestId)
     {
-        return $this->transformCollection(
-            $this->get("api/application/nests/$nestId/eggs")['data'],
-            Egg::class
-        );
+        return $this->get("api/application/nests/$nestId/eggs");
     }
 
     /**
      * Get a egg instance.
      *
-     * @param int $nestId
-     * @param int $eggId
+     * @param int   $nestId
+     * @param int   $eggId
+     * @param array $includes
      *
      * @return Egg
      */
-    public function egg($nestId, $eggId)
+    public function egg(int $nestId, int $eggId, array $includes = [])
     {
-        return new Egg($this->get("api/application/nests/$nestId/eggs/$eggId"), $this);
+        return $this->get("api/application/nests/$nestId/eggs/$eggId".$this->include($includes));
     }
 }

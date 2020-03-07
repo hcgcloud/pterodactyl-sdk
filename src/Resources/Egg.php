@@ -68,13 +68,6 @@ class Egg extends Resource
     public $script = [];
 
     /**
-     * The attributes of the egg.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the egg was created.
      *
      * @var string

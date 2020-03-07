@@ -124,13 +124,6 @@ class Node extends Resource
     public $daemonBase;
 
     /**
-     * The attributes of the node.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the node was created.
      *
      * @var string
@@ -197,7 +190,7 @@ class Node extends Resource
      *
      * @return void
      */
-    public function deleteAllocation($allocationId)
+    public function deleteAllocation(int $allocationId)
     {
         return $this->pterodactyl->deleteAllocation($this->id, $allocationId);
     }

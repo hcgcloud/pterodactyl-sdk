@@ -40,13 +40,6 @@ class Nest extends Resource
     public $description;
 
     /**
-     * The attributes of the nest.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * The date/time the nest was created.
      *
      * @var string
@@ -73,12 +66,13 @@ class Nest extends Resource
     /**
      * Get a egg instance in the given nest.
      *
-     * @param int $eggId
+     * @param int   $eggId
+     * @param array $includes
      *
      * @return Egg
      */
-    public function egg($eggId)
+    public function egg($eggId, array $includes = [])
     {
-        return $this->pterodactyl->egg($this->id, $eggId);
+        return $this->pterodactyl->egg($this->id, $eggId, $includes);
     }
 }

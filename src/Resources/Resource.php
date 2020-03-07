@@ -11,7 +11,7 @@ class Resource
      *
      * @var array
      */
-    public $attributes;
+    protected $attributes;
 
     /**
      * The Pterodactyl SDK instance.

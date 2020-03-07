@@ -103,7 +103,7 @@ trait MakesHttpRequests
 
         $responseBody = (string) $response->getBody();
 
-        return json_decode($responseBody, true) ?: $responseBody;
+        return $this->transform(json_decode($responseBody, true)) ?: $responseBody;
     }
 
     /**
@@ -142,7 +142,9 @@ trait MakesHttpRequests
 
         beginning:
 
-        if ($output = $callback()) {
+        $output = $callback();
+
+        if ($output) {
             return $output;
         }
 

@@ -9,31 +9,25 @@ trait ManagesNests
     /**
      * Get a collection of nests.
      *
+     * @param int $page
+     *
      * @return array
      */
     public function nests(int $page = 1)
     {
-        $data = $this->get('api/application/nests?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            Nest::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/nests?page='.$page);
     }
 
     /**
      * Get a nest instance.
      *
-     * @param int $nestId
+     * @param int   $nestId
+     * @param array $includes
      *
      * @return Nest
      */
-    public function nest($nestId)
+    public function nest(int $nestId, array $includes = [])
     {
-        return new Nest($this->get("api/application/nests/$nestId"), $this);
+        return $this->get("api/application/nests/$nestId".$this->include($includes));
     }
 }

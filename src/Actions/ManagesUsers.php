@@ -9,44 +9,39 @@ trait ManagesUsers
     /**
      * Get the collection of users.
      *
+     * @param int $page
+     *
      * @return array
      */
     public function users(int $page = 1)
     {
-        $data = $this->get('api/application/users?page='.$page);
-        $transform = $this->transformCollection(
-            $data['data'],
-            User::class
-        );
-
-        return [
-            'data' => $transform,
-            'meta' => $data['meta'],
-        ];
+        return $this->get('api/application/users?page='.$page);
     }
 
     /**
      * Get a user instance.
      *
-     * @param int $userId
+     * @param int   $userId
+     * @param array $includes
      *
      * @return User
      */
-    public function user($userId)
+    public function user(int $userId, array $includes = [])
     {
-        return new User($this->get("api/application/users/$userId"), $this);
+        return $this->get("api/application/users/$userId".$this->include($includes));
     }
 
     /**
      * Get a user instance by external id.
      *
-     * @param int $userExternalId
+     * @param int   $userExternalId
+     * @param array $includes
      *
      * @return User
      */
-    public function userEx($userExternalId)
+    public function userEx(int $userExternalId, array $includes = [])
     {
-        return new User($this->get("api/application/users/external/$userExternalId"), $this);
+        return $this->get("api/application/users/external/$userExternalId".$this->include($includes));
     }
 
     /**
@@ -58,7 +53,7 @@ trait ManagesUsers
      */
     public function createUser(array $data)
     {
-        return new User($this->post('api/application/users', $data), $this);
+        return $this->post('api/application/users', $data);
     }
 
     /**
@@ -69,9 +64,9 @@ trait ManagesUsers
      *
      * @return User
      */
-    public function updateUser($userId, array $data)
+    public function updateUser(int $userId, array $data)
     {
-        return new User($this->patch("api/application/users/$userId", $data), $this);
+        return $this->patch("api/application/users/$userId", $data);
     }
 
     /**
@@ -81,7 +76,7 @@ trait ManagesUsers
      *
      * @return void
      */
-    public function deleteUser($userId)
+    public function deleteUser(int $userId)
     {
         return $this->delete("api/application/users/$userId");
     }
