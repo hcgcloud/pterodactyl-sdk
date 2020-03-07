@@ -27,7 +27,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function server(int $serverId, array $includes = [])
+    public function server(int $serverId, array $includes = ['allocations'])
     {
         return $this->get("api/application/servers/$serverId".$this->include($includes));
     }
@@ -40,7 +40,7 @@ trait ManagesServers
      *
      * @return Server
      */
-    public function serverEx(int $externalId, array $includes = [])
+    public function serverEx(int $externalId, array $includes = ['allocations'])
     {
         return $this->get("api/application/servers/external/$externalId".$this->include($includes));
     }
