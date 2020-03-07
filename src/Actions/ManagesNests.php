@@ -21,7 +21,7 @@ trait ManagesNests
     /**
      * Get a nest instance.
      *
-     * @param int $nestId
+     * @param int   $nestId
      * @param array $includes
      *
      * @return Nest

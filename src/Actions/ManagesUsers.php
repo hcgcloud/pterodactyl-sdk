@@ -21,7 +21,7 @@ trait ManagesUsers
     /**
      * Get a user instance.
      *
-     * @param int $userId
+     * @param int   $userId
      * @param array $includes
      *
      * @return User
@@ -34,7 +34,7 @@ trait ManagesUsers
     /**
      * Get a user instance by external id.
      *
-     * @param int $userExternalId
+     * @param int   $userExternalId
      * @param array $includes
      *
      * @return User

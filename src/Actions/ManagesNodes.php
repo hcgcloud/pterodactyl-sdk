@@ -21,7 +21,7 @@ trait ManagesNodes
     /**
      * Get a node instance.
      *
-     * @param int $nodeId
+     * @param int   $nodeId
      * @param array $includes
      *
      * @return Node

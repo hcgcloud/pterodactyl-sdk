@@ -66,7 +66,7 @@ class Nest extends Resource
     /**
      * Get a egg instance in the given nest.
      *
-     * @param int $eggId
+     * @param int   $eggId
      * @param array $includes
      *
      * @return Egg

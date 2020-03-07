@@ -22,7 +22,7 @@ trait ManagesServers
     /**
      * Get a server instance.
      *
-     * @param int $serverId
+     * @param int   $serverId
      * @param array $includes
      *
      * @return Server
@@ -35,7 +35,7 @@ trait ManagesServers
     /**
      * Get a server instance by external id.
      *
-     * @param int $externalId
+     * @param int   $externalId
      * @param array $includes
      *
      * @return Server

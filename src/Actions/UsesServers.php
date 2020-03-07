@@ -23,7 +23,7 @@ trait UsesServers
      * Gets the details of a given server.
      *
      * @param string $serverIdentifier
-     * @param array $includes
+     * @param array  $includes
      *
      * @return Server[]
      */

@@ -21,7 +21,7 @@ trait ManagesLocations
     /**
      * Get a location instance.
      *
-     * @param int $locationId
+     * @param int   $locationId
      * @param array $includes
      *
      * @return Location

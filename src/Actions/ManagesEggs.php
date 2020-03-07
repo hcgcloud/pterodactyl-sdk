@@ -21,8 +21,8 @@ trait ManagesEggs
     /**
      * Get a egg instance.
      *
-     * @param int $nestId
-     * @param int $eggId
+     * @param int   $nestId
+     * @param int   $eggId
      * @param array $includes
      *
      * @return Egg
