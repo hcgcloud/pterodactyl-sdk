@@ -22,12 +22,13 @@ trait ManagesNodes
      * Get a node instance.
      *
      * @param int $nodeId
+     * @param array $includes
      *
      * @return Node
      */
-    public function node(int $nodeId)
+    public function node(int $nodeId, array $includes = [])
     {
-        return $this->get("api/application/nodes/$nodeId");
+        return $this->get("api/application/nodes/$nodeId".$this->include($includes));
     }
 
     /**

@@ -67,11 +67,12 @@ class Nest extends Resource
      * Get a egg instance in the given nest.
      *
      * @param int $eggId
+     * @param array $includes
      *
      * @return Egg
      */
-    public function egg($eggId)
+    public function egg($eggId, array $includes = [])
     {
-        return $this->pterodactyl->egg($this->id, $eggId);
+        return $this->pterodactyl->egg($this->id, $eggId, $includes);
     }
 }

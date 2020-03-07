@@ -22,24 +22,26 @@ trait ManagesUsers
      * Get a user instance.
      *
      * @param int $userId
+     * @param array $includes
      *
      * @return User
      */
-    public function user(int $userId)
+    public function user(int $userId, array $includes = [])
     {
-        return $this->get("api/application/users/$userId");
+        return $this->get("api/application/users/$userId".$this->include($includes));
     }
 
     /**
      * Get a user instance by external id.
      *
      * @param int $userExternalId
+     * @param array $includes
      *
      * @return User
      */
-    public function userEx(int $userExternalId)
+    public function userEx(int $userExternalId, array $includes = [])
     {
-        return $this->get("api/application/users/external/$userExternalId");
+        return $this->get("api/application/users/external/$userExternalId".$this->include($includes));
     }
 
     /**

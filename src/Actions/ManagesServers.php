@@ -23,24 +23,26 @@ trait ManagesServers
      * Get a server instance.
      *
      * @param int $serverId
+     * @param array $includes
      *
      * @return Server
      */
-    public function server(int $serverId)
+    public function server(int $serverId, array $includes = [])
     {
-        return $this->get("api/application/servers/$serverId".'?include=allocations,subusers');
+        return $this->get("api/application/servers/$serverId".$this->include($includes));
     }
 
     /**
      * Get a server instance by external id.
      *
      * @param int $externalId
+     * @param array $includes
      *
      * @return Server
      */
-    public function serverEx(int $externalId)
+    public function serverEx(int $externalId, array $includes = [])
     {
-        return $this->get("api/application/servers/external/$externalId".'?include=allocations');
+        return $this->get("api/application/servers/external/$externalId".$this->include($includes));
     }
 
     /**

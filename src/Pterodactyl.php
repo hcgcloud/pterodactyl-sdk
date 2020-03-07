@@ -111,6 +111,18 @@ class Pterodactyl
     }
 
     /**
+     * Transform include array to url parameter.
+     *
+     * @param array $includes
+     *
+     * @return string
+     */
+    protected function include($includes)
+    {
+        return empty($includes) ? '' : '?include='.implode(',', $includes);
+    }
+
+    /**
      * Set a new timeout.
      *
      * @param int $timeout

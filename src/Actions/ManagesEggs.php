@@ -23,11 +23,12 @@ trait ManagesEggs
      *
      * @param int $nestId
      * @param int $eggId
+     * @param array $includes
      *
      * @return Egg
      */
-    public function egg(int $nestId, int $eggId)
+    public function egg(int $nestId, int $eggId, array $includes = [])
     {
-        return $this->get("api/application/nests/$nestId/eggs/$eggId");
+        return $this->get("api/application/nests/$nestId/eggs/$eggId".$this->include($includes));
     }
 }

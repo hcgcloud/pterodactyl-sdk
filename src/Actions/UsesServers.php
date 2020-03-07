@@ -23,12 +23,13 @@ trait UsesServers
      * Gets the details of a given server.
      *
      * @param string $serverIdentifier
+     * @param array $includes
      *
      * @return Server[]
      */
-    public function getServer(string $serverIdentifier)
+    public function getServer(string $serverIdentifier, array $includes = [])
     {
-        return $this->get("api/client/servers/$serverIdentifier");
+        return $this->get("api/client/servers/$serverIdentifier".$this->include($includes));
     }
 
     /**

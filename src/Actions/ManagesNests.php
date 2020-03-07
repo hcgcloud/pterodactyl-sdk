@@ -22,11 +22,12 @@ trait ManagesNests
      * Get a nest instance.
      *
      * @param int $nestId
+     * @param array $includes
      *
      * @return Nest
      */
-    public function nest(int $nestId)
+    public function nest(int $nestId, array $includes = [])
     {
-        return $this->get("api/application/nests/$nestId");
+        return $this->get("api/application/nests/$nestId".$this->include($includes));
     }
 }

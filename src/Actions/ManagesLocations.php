@@ -22,12 +22,13 @@ trait ManagesLocations
      * Get a location instance.
      *
      * @param int $locationId
+     * @param array $includes
      *
      * @return Location
      */
-    public function location(int $locationId)
+    public function location(int $locationId, array $includes = [])
     {
-        return $this->get("api/application/locations/$locationId");
+        return $this->get("api/application/locations/$locationId".$this->include($includes));
     }
 
     /**
