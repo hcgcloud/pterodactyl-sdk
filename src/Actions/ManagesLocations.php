@@ -15,9 +15,7 @@ trait ManagesLocations
      */
     public function locations(int $page = 1)
     {
-        $data = $this->get('api/application/locations?page='.$page);
-
-        return $this->transform($data);
+        return $this->get('api/application/locations?page='.$page);
     }
 
     /**
