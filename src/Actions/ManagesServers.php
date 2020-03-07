@@ -2,7 +2,6 @@
 
 namespace HCGCloud\Pterodactyl\Actions;
 
-use HCGCloud\Pterodactyl\Resources\Allocation;
 use HCGCloud\Pterodactyl\Resources\Server;
 use HCGCloud\Pterodactyl\Resources\ServerDatabase;
 

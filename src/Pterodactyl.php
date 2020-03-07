@@ -72,6 +72,7 @@ class Pterodactyl
      * Transform response data to resources.
      *
      * @param array $response
+     *
      * @return mixed
      */
     protected function transform($response)
@@ -89,9 +90,10 @@ class Pterodactyl
                 if (isset($response['meta'])) {
                     return [
                         'data' => $data,
-                        'meta' => $response['meta']
+                        'meta' => $response['meta'],
                     ];
                 }
+
                 return $data;
         }
 
@@ -101,7 +103,7 @@ class Pterodactyl
             }, $response['attributes']['relationships']);
         }
 
-        $class = '\\HCGCloud\\Pterodactyl\\Resources\\' . ucwords($response['object']);
+        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
 
         $resource = class_exists($class) ? new $class($response['attributes'], $this) : $response['attributes'];
 
