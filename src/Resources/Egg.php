@@ -44,7 +44,7 @@ class Egg extends Resource
      *
      * @var string
      */
-    public $docker_image;
+    public $dockerImage;
 
     /**
      * The config of the egg.
