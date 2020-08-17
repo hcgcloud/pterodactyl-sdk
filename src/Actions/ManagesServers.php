@@ -35,12 +35,12 @@ trait ManagesServers
     /**
      * Get a server instance by external id.
      *
-     * @param int   $externalId
-     * @param array $includes
+     * @param string $externalId
+     * @param array  $includes
      *
      * @return Server
      */
-    public function serverEx(int $externalId, array $includes = ['allocations'])
+    public function serverEx(string $externalId, array $includes = ['allocations'])
     {
         return $this->get("api/application/servers/external/$externalId".$this->include($includes));
     }
