@@ -209,7 +209,9 @@ class Http
             }, $response['attributes']['relationships']);
         }
 
-        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object']);
+        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object'])) ? 
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object']) : 
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
 
         $resource = class_exists($class) ? new $class($response, $this->pterodactyl) : $response;
 
