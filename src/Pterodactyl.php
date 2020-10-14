@@ -8,6 +8,7 @@ use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
 
 use HCGCloud\Pterodactyl\Managers\Application\UserManager as ApplicationUserManager;
 use HCGCloud\Pterodactyl\Managers\Application\LocationManager as ApplicationLocationManager;
+use HCGCloud\Pterodactyl\Managers\Application\NestManager as ApplicationNestManager;
 use HCGCloud\Pterodactyl\Managers\Client\AccountManager as ClientAccountManager;
 
 class Pterodactyl
@@ -41,7 +42,7 @@ class Pterodactyl
     public $http;
     
     /**
-     * Account Manager.
+     * Account manager.
      *
      * @var ClientAccountManager
      */
@@ -55,11 +56,18 @@ class Pterodactyl
     public $locations;
     
     /**
-     * User Manager.
+     * User manager.
      *
      * @var ApplicationUserManager
      */
     public $users;
+
+    /**
+     * Nest manager.
+     *
+     * @var ApplicationNestManager
+     */
+    public $nests;
 
     /**
      * Create a new Pterodactyl instance.
@@ -87,6 +95,7 @@ class Pterodactyl
             case 'application':
                 $this->locations = new ApplicationLocationManager($that);
                 $this->users = new ApplicationUserManager($that);
+                $this->nests = new ApplicationNestManager($that);
             break;
             case 'client':
                 $this->account = new ClientAccountManager($that);
