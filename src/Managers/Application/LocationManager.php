@@ -29,7 +29,7 @@ class LocationManager extends Manager
      * Get a location instance.
      *
      * @param int   $locationId
-     * @param array $includes
+     * @param array $query
      *
      * @return Location
      */

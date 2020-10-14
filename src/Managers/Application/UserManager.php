@@ -29,7 +29,7 @@ class UserManager extends Manager
      * Get a user instance by user id.
      *
      * @param int   $userId
-     * @param array $includes
+     * @param array $query
      *
      * @return User
      */
@@ -39,7 +39,7 @@ class UserManager extends Manager
     }
 
     /**
-     * Get a user instance by user id.
+     * Get a user instance by user external id.
      *
      * @param string $externalId
      * @param array  $includes
