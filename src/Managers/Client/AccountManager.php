@@ -9,12 +9,12 @@ use HCGCloud\Pterodactyl\Resources\User;
 class AccountManager extends Manager
 {
     /**
-     * Get information of the account
+     * Get information of the account.
      *
      * @return User
      */
     public function details()
     {
-        return $this->http->get('api/client/account');
+        return $this->http->get('account');
     }
 }
