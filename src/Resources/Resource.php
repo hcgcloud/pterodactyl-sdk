@@ -33,6 +33,7 @@ class Resource
         $attributes = isset($attributes['attributes'])
             ? array_merge($attributes, $attributes['attributes'])
             : $attributes;
+
         $this->attributes = $attributes;
         $this->pterodactyl = $pterodactyl;
 
@@ -44,7 +45,7 @@ class Resource
      *
      * @return void
      */
-    private function fill()
+    protected function fill()
     {
         foreach ($this->attributes as $key => $value) {
             $key = $this->camelCase($key);
@@ -58,7 +59,7 @@ class Resource
      *
      * @param $key
      */
-    private function camelCase($key)
+    protected function camelCase($key)
     {
         $parts = explode('_', $key);
 
