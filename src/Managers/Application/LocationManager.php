@@ -1,22 +1,26 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Managers;
+namespace HCGCloud\Pterodactyl\Managers\Application;
 
-use HCGCloud\Pterodactyl\Resources\Location;
+use HCGCloud\Pterodactyl\Managers\Manager;
+
+use HCGCloud\Pterodactyl\Resources\Collection;
+
+use HCGCloud\Pterodactyl\Resources\Application\Location;
 
 class LocationManager extends Manager
 {
     /**
-     * Get a collection of locations.
+     * Get a paginated collection of locations.
      *
      * @param int $page
      * @param array $query
      *
      * @return Collection
      */
-    public function all(int $page = 1, array $query = [])
+    public function paginate(int $page = 1, array $query = [])
     {
-        return $this->http->get('api/application/locations', array_merge([
+        return $this->http->get('locations', array_merge([
             'page' => $page
         ], $query));
     }
@@ -31,7 +35,7 @@ class LocationManager extends Manager
      */
     public function get(int $locationId, array $query = [])
     {
-        return $this->http->get("api/application/locations/$locationId", $query);
+        return $this->http->get("locations/$locationId", $query);
     }
 
     /**
@@ -43,7 +47,7 @@ class LocationManager extends Manager
      */
     public function create(array $data)
     {
-        return $this->http->post('api/application/locations', [], $data);
+        return $this->http->post('locations', [], $data);
     }
 
     /**
@@ -56,7 +60,7 @@ class LocationManager extends Manager
      */
     public function update(int $locationId, array $data)
     {
-        return $this->http->patch("api/application/locations/$locationId", [], $data);
+        return $this->http->patch("locations/$locationId", [], $data);
     }
 
     /**
@@ -68,6 +72,6 @@ class LocationManager extends Manager
      */
     public function delete(int $locationId)
     {
-        return $this->http->delete("api/application/locations/$locationId");
+        return $this->http->delete("locations/$locationId");
     }
 }

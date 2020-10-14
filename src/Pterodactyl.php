@@ -4,7 +4,11 @@ namespace HCGCloud\Pterodactyl;
 
 use GuzzleHttp\Client as Client;
 
-use HCGCloud\Pterodactyl\Managers\LocationManager;
+use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
+
+use HCGCloud\Pterodactyl\Managers\Application\UserManager as ApplicationUserManager;
+use HCGCloud\Pterodactyl\Managers\Application\LocationManager as ApplicationLocationManager;
+use HCGCloud\Pterodactyl\Managers\Client\AccountManager as ClientAccountManager;
 
 class Pterodactyl
 {
@@ -23,18 +27,39 @@ class Pterodactyl
     public $apiKey;
 
     /**
+     * The API type of the API key.
+     *
+     * @var string
+     */
+    public $apiType;
+
+    /**
      * The Http client.
      *
-     * @var Http
+     * @var Client
      */
     public $http;
     
     /**
+     * Account Manager.
+     *
+     * @var ClientAccountManager
+     */
+    public $account;
+
+    /**
      * Location manager.
      *
-     * @var LocationManager
+     * @var ApplicationLocationManager
      */
     public $locations;
+    
+    /**
+     * User Manager.
+     *
+     * @var ApplicationUserManager
+     */
+    public $users;
 
     /**
      * Create a new Pterodactyl instance.
@@ -44,14 +69,28 @@ class Pterodactyl
      *
      * @return void
      */
-    public function __construct($baseUri, $apiKey, Client $guzzle = null)
+    public function __construct($baseUri, $apiKey, $apiType = 'application', Client $guzzle = null)
     {
         $this->baseUri = $baseUri;
 
         $this->apiKey = $apiKey;
-    
+
+        if(!in_array($apiType, ['application', 'client'], true)) {
+            throw new InvaildApiTypeException();
+        }
+        $this->apiType = $apiType;
+
         $this->http = new Http($this, $guzzle);
 
-        $this->locations = new LocationManager($this);
+        $that = $this;
+        switch($this->apiType) {
+            case 'application':
+                $this->locations = new ApplicationLocationManager($that);
+                $this->users = new ApplicationUserManager($that);
+            break;
+            case 'client':
+                $this->account = new ClientAccountManager($that);
+            break;
+        }
     }
 }

@@ -106,11 +106,6 @@ class Collection extends Resource implements ArrayAccess, JsonSerializable, Seri
 
     public function unserialize($serialized)
     {
-        return $this->attributes = unserialize($serialized);
-    }
-
-    public function toJson($option = JSON_UNESCAPED_UNICODE)
-    {
-        return json_encode($this->all(), $option);
+        return $this->attributes['data'] = unserialize($serialized);
     }
 }

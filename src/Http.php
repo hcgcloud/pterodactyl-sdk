@@ -35,6 +35,13 @@ class Http
     protected $apiKey;
 
     /**
+     * The Pterodactyl API key's type.
+     *
+     * @var string
+     */
+    protected $apiType;
+
+    /**
      * The GuzzleHttp client.
      *
      * @var Client
@@ -55,6 +62,8 @@ class Http
         $this->baseUri = $this->pterodactyl->baseUri;
 
         $this->apiKey = $this->pterodactyl->apiKey;
+
+        $this->apiType = $this->pterodactyl->apiType;
 
         $this->guzzle = $guzzle ?: new Client([
             'base_uri'    => $this->baseUri,
@@ -148,7 +157,7 @@ class Http
      */
     public function request($method, $uri, array $query = [], array $payload = [])
     {
-        $url = $this->baseUri.$uri;
+        $uri = $this->baseUri . '/api/' . $this->apiType . '/' . $uri;
 
         $body = json_encode($payload);
 
@@ -200,7 +209,7 @@ class Http
             }, $response['attributes']['relationships']);
         }
 
-        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
+        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object']);
 
         $resource = class_exists($class) ? new $class($response, $this->pterodactyl) : $response;
 

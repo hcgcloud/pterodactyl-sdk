@@ -1,11 +1,13 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Resources;
+namespace HCGCloud\Pterodactyl\Resources\Application;
+
+use HCGCloud\Pterodactyl\Resources\Resource;
 
 class Location extends Resource
 {
     /**
-     * Delete the given location.
+     * Delete the location.
      *
      * @return void
      */
@@ -15,7 +17,7 @@ class Location extends Resource
     }
 
     /**
-     * Update the given location.
+     * Update the location.
      *
      * @return void
      */
