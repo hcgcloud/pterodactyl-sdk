@@ -18,6 +18,8 @@ class Location extends Resource
 
     /**
      * Update the location.
+     * 
+     * @param array $data
      *
      * @return void
      */
