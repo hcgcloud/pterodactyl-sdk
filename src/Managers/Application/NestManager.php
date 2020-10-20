@@ -2,8 +2,6 @@
 
 namespace HCGCloud\Pterodactyl\Managers\Application;
 
-use HCGCloud\Pterodactyl\Pterodactyl;
-
 use HCGCloud\Pterodactyl\Managers\Manager;
 
 use HCGCloud\Pterodactyl\Resources\Collection;
