@@ -209,13 +209,33 @@ class Http
             }, $response['attributes']['relationships']);
         }
 
-        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object'])) ? 
-            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.ucwords($response['object']) : 
-            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
+        $object = ucwords($this->camelCase($response['object']));
+
+        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.$object) ? 
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.$object : 
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.$object;
 
         $resource = class_exists($class) ? new $class($response, $this->pterodactyl) : $response;
 
         return $resource;
+    }
+
+    /**
+     * Convert the key name to camel case.
+     *
+     * @param $key
+     */
+    private function camelCase($key)
+    {
+        $parts = explode('_', $key);
+
+        foreach ($parts as $i => $part) {
+            if ($i !== 0) {
+                $parts[$i] = ucfirst($part);
+            }
+        }
+
+        return str_replace(' ', '', implode(' ', $parts));
     }
 
     /**
