@@ -98,16 +98,15 @@ class Pterodactyl
 
         $this->http = new Http($this, $guzzle);
 
-        $that = $this;
         switch($this->apiType) {
             case 'application':
-                $this->locations = new ApplicationLocationManager($that);
-                $this->users = new ApplicationUserManager($that);
-                $this->nests = new ApplicationNestManager($that);
-                $this->nodes = new ApplicationNodeManager($that);
+                $this->locations = new ApplicationLocationManager($this);
+                $this->users = new ApplicationUserManager($this);
+                $this->nests = new ApplicationNestManager($this);
+                $this->nodes = new ApplicationNodeManager($this);
             break;
             case 'client':
-                $this->account = new ClientAccountManager($that);
+                $this->account = new ClientAccountManager($this);
             break;
         }
     }
