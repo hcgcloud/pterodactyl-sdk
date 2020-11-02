@@ -211,8 +211,8 @@ class Http
 
         $object = ucwords($this->camelCase($response['object']));
 
-        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.$object) ? 
-            '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($this->apiType).'\\'.$object : 
+        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.$object) ? 
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.$object : 
             '\\HCGCloud\\Pterodactyl\\Resources\\'.$object;
 
         $resource = class_exists($class) ? new $class($response, $this->pterodactyl) : $response;

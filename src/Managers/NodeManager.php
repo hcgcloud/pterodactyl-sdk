@@ -1,13 +1,13 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Managers\Application;
+namespace HCGCloud\Pterodactyl\Managers;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
 
 use HCGCloud\Pterodactyl\Resources\Collection;
 
-use HCGCloud\Pterodactyl\Resources\Application\Node;
-use HCGCloud\Pterodactyl\Resources\Application\Allocation;
+use HCGCloud\Pterodactyl\Resources\Node;
+use HCGCloud\Pterodactyl\Resources\Allocation;
 
 class NodeManager extends Manager
 {

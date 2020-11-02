@@ -1,12 +1,12 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Managers\Application;
+namespace HCGCloud\Pterodactyl\Managers;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
 
 use HCGCloud\Pterodactyl\Resources\Collection;
 
-use HCGCloud\Pterodactyl\Resources\Application\User;
+use HCGCloud\Pterodactyl\Resources\User;
 
 class UserManager extends Manager
 {

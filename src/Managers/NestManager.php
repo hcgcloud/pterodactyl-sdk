@@ -1,13 +1,13 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Managers\Application;
+namespace HCGCloud\Pterodactyl\Managers;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
 
 use HCGCloud\Pterodactyl\Resources\Collection;
 
-use HCGCloud\Pterodactyl\Resources\Application\Nest;
-use HCGCloud\Pterodactyl\Resources\Application\Egg;
+use HCGCloud\Pterodactyl\Resources\Nest;
+use HCGCloud\Pterodactyl\Resources\Egg;
 
 class NestManager extends Manager
 {

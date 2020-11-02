@@ -1,6 +1,6 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Resources\Client;
+namespace HCGCloud\Pterodactyl\Resources;
 
 use HCGCloud\Pterodactyl\Resources\Resource;
 

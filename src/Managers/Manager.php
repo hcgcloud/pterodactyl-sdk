@@ -21,10 +21,19 @@ class Manager
      */
     public $http;
 
+    /**
+     * The API type of the API key.
+     *
+     * @var string
+     */
+    public $apiType;
+
     public function __construct(Pterodactyl $pterodactyl)
     {
         $this->pterodactyl = $pterodactyl;
 
         $this->http = $this->pterodactyl->http;
+
+        $this->apiType = $this->pterodactyl->apiType;
     }
 }

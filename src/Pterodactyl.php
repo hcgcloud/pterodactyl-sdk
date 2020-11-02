@@ -6,11 +6,11 @@ use GuzzleHttp\Client as Client;
 
 use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
 
-use HCGCloud\Pterodactyl\Managers\Application\UserManager as ApplicationUserManager;
-use HCGCloud\Pterodactyl\Managers\Application\LocationManager as ApplicationLocationManager;
-use HCGCloud\Pterodactyl\Managers\Application\NodeManager as ApplicationNodeManager;
-use HCGCloud\Pterodactyl\Managers\Application\NestManager as ApplicationNestManager;
-use HCGCloud\Pterodactyl\Managers\Client\AccountManager as ClientAccountManager;
+use HCGCloud\Pterodactyl\Managers\UserManager;
+use HCGCloud\Pterodactyl\Managers\LocationManager;
+use HCGCloud\Pterodactyl\Managers\NodeManager;
+use HCGCloud\Pterodactyl\Managers\NestManager;
+use HCGCloud\Pterodactyl\Managers\AccountManager;
 
 class Pterodactyl
 {
@@ -45,35 +45,35 @@ class Pterodactyl
     /**
      * Account manager.
      *
-     * @var ClientAccountManager
+     * @var AccountManager
      */
     public $account;
 
     /**
      * Location manager.
      *
-     * @var ApplicationLocationManager
+     * @var LocationManager
      */
     public $locations;
     
     /**
      * User manager.
      *
-     * @var ApplicationUserManager
+     * @var UserManager
      */
     public $users;
 
     /**
      * Nest manager.
      *
-     * @var ApplicationNestManager
+     * @var NestManager
      */
     public $nests;
 
     /**
      * Node manager.
      *
-     * @var ApplicationNodeManager
+     * @var NodeManager
      */
     public $nodes;
 
@@ -98,16 +98,10 @@ class Pterodactyl
 
         $this->http = new Http($this, $guzzle);
 
-        switch($this->apiType) {
-            case 'application':
-                $this->locations = new ApplicationLocationManager($this);
-                $this->users = new ApplicationUserManager($this);
-                $this->nests = new ApplicationNestManager($this);
-                $this->nodes = new ApplicationNodeManager($this);
-            break;
-            case 'client':
-                $this->account = new ClientAccountManager($this);
-            break;
-        }
+        $this->locations = new LocationManager($this);
+        $this->users = new UserManager($this);
+        $this->nests = new NestManager($this);
+        $this->nodes = new NodeManager($this);
+        $this->account = new AccountManager($this);
     }
 }

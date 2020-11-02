@@ -1,12 +1,12 @@
 <?php
 
-namespace HCGCloud\Pterodactyl\Managers\Application;
+namespace HCGCloud\Pterodactyl\Managers;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
 
 use HCGCloud\Pterodactyl\Resources\Collection;
 
-use HCGCloud\Pterodactyl\Resources\Application\Location;
+use HCGCloud\Pterodactyl\Resources\Location;
 
 class LocationManager extends Manager
 {
