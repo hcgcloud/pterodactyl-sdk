@@ -11,6 +11,7 @@ use HCGCloud\Pterodactyl\Managers\NestManager;
 use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
 use HCGCloud\Pterodactyl\Managers\NodeManager;
 use HCGCloud\Pterodactyl\Managers\ServerManager;
+use HCGCloud\Pterodactyl\Managers\Server\ServerDatabaseManager;
 use HCGCloud\Pterodactyl\Managers\UserManager;
 
 class Pterodactyl
@@ -100,6 +101,13 @@ class Pterodactyl
     public $servers;
 
     /**
+     * Server database manager.
+     *
+     * @var ServerDatabaseManager
+     */
+    public $server_databases;
+
+    /**
      * Create a new Pterodactyl instance.
      *
      * @param string             $apiKey
@@ -128,5 +136,6 @@ class Pterodactyl
         $this->node_allocations = new NodeAllocationManager($this);
         $this->account = new AccountManager($this);
         $this->servers = new ServerManager($this);
+        $this->server_databases = new ServerDatabaseManager($this);
     }
 }
