@@ -7,7 +7,6 @@ use HCGCloud\Pterodactyl\Managers\Manager;
 use HCGCloud\Pterodactyl\Resources\Collection;
 
 use HCGCloud\Pterodactyl\Resources\Node;
-use HCGCloud\Pterodactyl\Resources\Allocation;
 
 class NodeManager extends Manager
 {
@@ -87,47 +86,5 @@ class NodeManager extends Manager
     public function delete(int $nodeId)
     {
         return $this->http->delete("nodes/$nodeId");
-    }
-
-    /**
-     * Get a paginated collection of node allocations.
-     *
-     * @param int $nodeId
-     * @param int $page
-     * @param array $query
-     *
-     * @return Collection
-     */
-    public function allocations(int $nodeId, int $page = 1, array $query = [])
-    {
-        return $this->http->get("nodes/$nodeId/allocations", array_merge([
-            'page' => $page
-        ], $query));
-    }
-
-    /**
-     * Create a new allocation for a node.
-     *
-     * @param int $nodeId
-     * @param array $data
-     *
-     * @return User
-     */
-    public function createAllocation(int $nodeId, array $data)
-    {
-        return $this->http->post("nodes/$nodeId/allocations", [], $data);
-    }
-
-    /**
-     * Delete the given allocation of a node.
-     *
-     * @param int $nodeId
-     * @param int $allocationId
-     *
-     * @return void
-     */
-    public function deleteAllocation(int $nodeId, int $allocationId)
-    {
-        return $this->http->delete("nodes/$nodeId/allocations/$allocationId");
     }
 }

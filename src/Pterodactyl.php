@@ -9,7 +9,9 @@ use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
 use HCGCloud\Pterodactyl\Managers\UserManager;
 use HCGCloud\Pterodactyl\Managers\LocationManager;
 use HCGCloud\Pterodactyl\Managers\NodeManager;
+use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
 use HCGCloud\Pterodactyl\Managers\NestManager;
+use HCGCloud\Pterodactyl\Managers\Nest\NestEggManager;
 use HCGCloud\Pterodactyl\Managers\AccountManager;
 
 class Pterodactyl
@@ -78,6 +80,20 @@ class Pterodactyl
     public $nodes;
 
     /**
+     * Node allocation manager.
+     * 
+     * @var NodeAllocationManager
+     */
+    public $node_allocations;
+
+    /**
+     * Nest egg manager.
+     *
+     * @var NestEggManager
+     */
+    public $nest_eggs;
+
+    /**
      * Create a new Pterodactyl instance.
      *
      * @param string             $apiKey
@@ -101,7 +117,9 @@ class Pterodactyl
         $this->locations = new LocationManager($this);
         $this->users = new UserManager($this);
         $this->nests = new NestManager($this);
+        $this->nest_eggs = new NestEggManager($this);
         $this->nodes = new NodeManager($this);
+        $this->node_allocations = new NodeAllocationManager($this);
         $this->account = new AccountManager($this);
     }
 }
