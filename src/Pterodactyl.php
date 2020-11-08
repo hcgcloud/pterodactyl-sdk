@@ -10,8 +10,8 @@ use HCGCloud\Pterodactyl\Managers\Nest\NestEggManager;
 use HCGCloud\Pterodactyl\Managers\NestManager;
 use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
 use HCGCloud\Pterodactyl\Managers\NodeManager;
-use HCGCloud\Pterodactyl\Managers\ServerManager;
 use HCGCloud\Pterodactyl\Managers\Server\ServerDatabaseManager;
+use HCGCloud\Pterodactyl\Managers\ServerManager;
 use HCGCloud\Pterodactyl\Managers\UserManager;
 
 class Pterodactyl

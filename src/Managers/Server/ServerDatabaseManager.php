@@ -3,8 +3,8 @@
 namespace HCGCloud\Pterodactyl\Managers\Server;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
-use HCGCloud\Pterodactyl\Resources\ServerDatabase;
 use HCGCloud\Pterodactyl\Resources\Collection;
+use HCGCloud\Pterodactyl\Resources\ServerDatabase;
 
 class ServerDatabaseManager extends Manager
 {
