@@ -2,10 +2,7 @@
 
 namespace HCGCloud\Pterodactyl\Managers;
 
-use HCGCloud\Pterodactyl\Managers\Manager;
-
 use HCGCloud\Pterodactyl\Resources\Collection;
-
 use HCGCloud\Pterodactyl\Resources\Nest;
 
 class NestManager extends Manager
@@ -13,7 +10,7 @@ class NestManager extends Manager
     /**
      * Get a paginated collection of nests.
      *
-     * @param int $page
+     * @param int   $page
      * @param array $query
      *
      * @return Collection
@@ -21,7 +18,7 @@ class NestManager extends Manager
     public function paginate(int $page = 1, array $query = [])
     {
         return $this->http->get('nests', array_merge([
-            'page' => $page
+            'page' => $page,
         ], $query));
     }
 

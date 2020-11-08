@@ -2,10 +2,7 @@
 
 namespace HCGCloud\Pterodactyl\Managers;
 
-use HCGCloud\Pterodactyl\Managers\Manager;
-
 use HCGCloud\Pterodactyl\Resources\Collection;
-
 use HCGCloud\Pterodactyl\Resources\Server;
 
 class ServerManager extends Manager
@@ -13,7 +10,7 @@ class ServerManager extends Manager
     /**
      * Get a paginated collection of servers.
      *
-     * @param int $page
+     * @param int   $page
      * @param array $query
      *
      * @return Collection
@@ -21,7 +18,7 @@ class ServerManager extends Manager
     public function paginate(int $page = 1, array $query = [])
     {
         return $this->http->get('servers', array_merge([
-            'page' => $page
+            'page' => $page,
         ], $query));
     }
 
@@ -75,7 +72,7 @@ class ServerManager extends Manager
     {
         return $this->http->patch("servers/$serverId/details", [], $data);
     }
-    
+
     /**
      * Update build of a specified server.
      *
@@ -105,7 +102,7 @@ class ServerManager extends Manager
     /**
      * Suspend a specified server.
      *
-     * @param int   $serverId
+     * @param int $serverId
      *
      * @return void
      */
@@ -117,7 +114,7 @@ class ServerManager extends Manager
     /**
      * Unsuspend a specified server.
      *
-     * @param int   $serverId
+     * @param int $serverId
      *
      * @return void
      */
@@ -129,7 +126,7 @@ class ServerManager extends Manager
     /**
      * Reinstall a specified server.
      *
-     * @param int   $serverId
+     * @param int $serverId
      *
      * @return void
      */

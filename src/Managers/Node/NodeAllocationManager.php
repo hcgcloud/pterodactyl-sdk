@@ -3,18 +3,16 @@
 namespace HCGCloud\Pterodactyl\Managers\Node;
 
 use HCGCloud\Pterodactyl\Managers\Manager;
-
-use HCGCloud\Pterodactyl\Resources\Collection;
-
 use HCGCloud\Pterodactyl\Resources\Allocation;
+use HCGCloud\Pterodactyl\Resources\Collection;
 
 class NodeAllocationManager extends Manager
 {
     /**
      * Get a paginated collection of node allocations.
      *
-     * @param int $nodeId
-     * @param int $page
+     * @param int   $nodeId
+     * @param int   $page
      * @param array $query
      *
      * @return Collection
@@ -22,14 +20,14 @@ class NodeAllocationManager extends Manager
     public function paginate(int $nodeId, int $page = 1, array $query = [])
     {
         return $this->http->get("nodes/$nodeId/allocations", array_merge([
-            'page' => $page
+            'page' => $page,
         ], $query));
     }
 
     /**
      * Create a new allocation for a node.
      *
-     * @param int $nodeId
+     * @param int   $nodeId
      * @param array $data
      *
      * @return Allocation

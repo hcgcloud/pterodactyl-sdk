@@ -2,9 +2,8 @@
 
 namespace HCGCloud\Pterodactyl\Resources;
 
-use HCGCloud\Pterodactyl\Pterodactyl;
-
 use ArrayAccess;
+use HCGCloud\Pterodactyl\Pterodactyl;
 use JsonSerializable;
 use Serializable;
 
@@ -16,7 +15,7 @@ class Resource implements ArrayAccess, JsonSerializable, Serializable
      * @var array
      */
     protected $attributes;
-    
+
     /**
      * The origin attributes.
      *
@@ -82,7 +81,7 @@ class Resource implements ArrayAccess, JsonSerializable, Serializable
     /**
      * Convert resource to array.
      *
-     * @return Array
+     * @return array
      */
     public function toArray()
     {

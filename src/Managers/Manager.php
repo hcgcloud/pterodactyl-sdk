@@ -2,8 +2,8 @@
 
 namespace HCGCloud\Pterodactyl\Managers;
 
-use HCGCloud\Pterodactyl\Pterodactyl;
 use HCGCloud\Pterodactyl\Http;
+use HCGCloud\Pterodactyl\Pterodactyl;
 
 class Manager
 {

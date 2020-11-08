@@ -3,17 +3,15 @@
 namespace HCGCloud\Pterodactyl;
 
 use GuzzleHttp\Client as Client;
-
 use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
-
-use HCGCloud\Pterodactyl\Managers\UserManager;
-use HCGCloud\Pterodactyl\Managers\LocationManager;
-use HCGCloud\Pterodactyl\Managers\NodeManager;
-use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
-use HCGCloud\Pterodactyl\Managers\NestManager;
-use HCGCloud\Pterodactyl\Managers\Nest\NestEggManager;
 use HCGCloud\Pterodactyl\Managers\AccountManager;
+use HCGCloud\Pterodactyl\Managers\LocationManager;
+use HCGCloud\Pterodactyl\Managers\Nest\NestEggManager;
+use HCGCloud\Pterodactyl\Managers\NestManager;
+use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
+use HCGCloud\Pterodactyl\Managers\NodeManager;
 use HCGCloud\Pterodactyl\Managers\ServerManager;
+use HCGCloud\Pterodactyl\Managers\UserManager;
 
 class Pterodactyl
 {
@@ -44,7 +42,7 @@ class Pterodactyl
      * @var Client
      */
     public $http;
-    
+
     /**
      * Account manager.
      *
@@ -58,7 +56,7 @@ class Pterodactyl
      * @var LocationManager
      */
     public $locations;
-    
+
     /**
      * User manager.
      *
@@ -82,7 +80,7 @@ class Pterodactyl
 
     /**
      * Node allocation manager.
-     * 
+     *
      * @var NodeAllocationManager
      */
     public $node_allocations;
@@ -95,7 +93,7 @@ class Pterodactyl
     public $nest_eggs;
 
     /**
-     * Server manager
+     * Server manager.
      *
      * @var ServerManager
      */
@@ -115,7 +113,7 @@ class Pterodactyl
 
         $this->apiKey = $apiKey;
 
-        if(!in_array($apiType, ['application', 'client'], true)) {
+        if (!in_array($apiType, ['application', 'client'], true)) {
             throw new InvaildApiTypeException();
         }
         $this->apiType = $apiType;

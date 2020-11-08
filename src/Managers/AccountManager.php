@@ -2,10 +2,8 @@
 
 namespace HCGCloud\Pterodactyl\Managers;
 
-use HCGCloud\Pterodactyl\Managers\Manager;
-
-use HCGCloud\Pterodactyl\Resources\User;
 use HCGCloud\Pterodactyl\Resources\SystemPermissions;
+use HCGCloud\Pterodactyl\Resources\User;
 
 class AccountManager extends Manager
 {
@@ -21,7 +19,7 @@ class AccountManager extends Manager
 
     /**
      * Get permissions of the account.
-     * 
+     *
      * @return SystemPermissions
      */
     public function permissions()

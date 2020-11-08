@@ -2,11 +2,8 @@
 
 namespace HCGCloud\Pterodactyl\Resources;
 
-use HCGCloud\Pterodactyl\Resources\Resource;
-
 class User extends Resource
 {
-
     /**
      * Save the user.
      *
@@ -14,11 +11,13 @@ class User extends Resource
      */
     public function save()
     {
-        return $this->update(array_merge([
-            'email' => $this->email,
-            'username' => $this->username,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name], $this->getChangedData()
+        return $this->update(array_merge(
+            [
+                'email'      => $this->email,
+                'username'   => $this->username,
+                'first_name' => $this->first_name,
+                'last_name'  => $this->last_name, ],
+            $this->getChangedData()
         ));
     }
 
@@ -26,13 +25,14 @@ class User extends Resource
      * Update the user.
      *
      * @param array $data
+     *
      * @return void
      */
     public function update(array $data)
     {
         $this->pterodactyl->users->update($this->id, $data);
     }
-    
+
     /**
      * Delete the user.
      *

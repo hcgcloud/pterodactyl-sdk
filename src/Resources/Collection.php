@@ -30,7 +30,7 @@ class Collection extends Resource implements ArrayAccess, JsonSerializable, Seri
     /**
      * Convert resource to array.
      *
-     * @return Array
+     * @return array
      */
     public function toArray()
     {
@@ -40,7 +40,7 @@ class Collection extends Resource implements ArrayAccess, JsonSerializable, Seri
     /**
      * Get meta data of resource.
      *
-     * @return Array
+     * @return array
      */
     public function meta()
     {

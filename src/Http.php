@@ -8,7 +8,6 @@ use HCGCloud\Pterodactyl\Exceptions\FailedActionException;
 use HCGCloud\Pterodactyl\Exceptions\NotFoundException;
 use HCGCloud\Pterodactyl\Exceptions\TimeoutException;
 use HCGCloud\Pterodactyl\Exceptions\ValidationException;
-
 use Psr\Http\Message\ResponseInterface;
 
 class Http
@@ -93,8 +92,8 @@ class Http
      * Make a POST request and return the response.
      *
      * @param string $uri
-     * @param array $query
-     * @param array $payload
+     * @param array  $query
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -107,8 +106,8 @@ class Http
      * Make a PUT request and return the response.
      *
      * @param string $uri
-     * @param array $query
-     * @param array $payload
+     * @param array  $query
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -121,8 +120,8 @@ class Http
      * Make a PATCH request and return the response.
      *
      * @param string $uri
-     * @param array $query
-     * @param array $payload
+     * @param array  $query
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -135,8 +134,8 @@ class Http
      * Make a DELETE request and return the response.
      *
      * @param string $uri
-     * @param array $query
-     * @param array $payload
+     * @param array  $query
+     * @param array  $payload
      *
      * @return mixed
      */
@@ -150,14 +149,14 @@ class Http
      *
      * @param string $method
      * @param string $uri
-     * @param array $query
-     * @param array $payload
+     * @param array  $query
+     * @param array  $payload
      *
      * @return mixed
      */
     public function request($method, $uri, array $query = [], array $payload = [])
     {
-        $uri = $this->baseUri . '/api/' . $this->apiType . '/' . $uri;
+        $uri = $this->baseUri.'/api/'.$this->apiType.'/'.$uri;
 
         $body = json_encode($payload);
 
@@ -211,8 +210,8 @@ class Http
 
         $object = ucwords($this->camelCase($response['object']));
 
-        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.$object) ? 
-            '\\HCGCloud\\Pterodactyl\\Resources\\'.$object : 
+        $class = class_exists('\\HCGCloud\\Pterodactyl\\Resources\\'.$object) ?
+            '\\HCGCloud\\Pterodactyl\\Resources\\'.$object :
             '\\HCGCloud\\Pterodactyl\\Resources\\'.$object;
 
         $resource = class_exists($class) ? new $class($response, $this->pterodactyl) : $response;
@@ -245,7 +244,7 @@ class Http
      */
     private function handleRequestError(ResponseInterface $response)
     {
-        switch($response->getStatusCode()) {
+        switch ($response->getStatusCode()) {
             case 400:
                 throw new FailedActionException((string) $response->getBody());
             case 403:

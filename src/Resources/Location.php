@@ -2,8 +2,6 @@
 
 namespace HCGCloud\Pterodactyl\Resources;
 
-use HCGCloud\Pterodactyl\Resources\Resource;
-
 class Location extends Resource
 {
     /**
@@ -18,7 +16,7 @@ class Location extends Resource
 
     /**
      * Update the location.
-     * 
+     *
      * @param array $data
      *
      * @return void
