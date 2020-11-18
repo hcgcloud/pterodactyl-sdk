@@ -35,7 +35,7 @@ class ServerManager extends Manager
     /**
      * Get a server instance by id.
      *
-     * @param mixed   $serverId
+     * @param mixed $serverId
      * @param array $query
      *
      * @return Server
@@ -173,7 +173,7 @@ class ServerManager extends Manager
      * Get information for websocket console of a specified server.
      *
      * @param string $serverId
-     * 
+     *
      * @return array
      */
     public function websocket(string $serverId)
@@ -185,7 +185,7 @@ class ServerManager extends Manager
      * Get resource utilization of a specified server.
      *
      * @param string $serverId
-     * 
+     *
      * @return Stats
      */
     public function resources(string $serverId)
