@@ -29,13 +29,13 @@ class ServerDatabaseManager extends Manager
      *
      * @param mixed $serverId
      * @param int   $databaseId
-     * @param array $query
+     * @param array $includes
      *
      * @return ServerDatabase
      */
-    public function get($serverId, int $databaseId, array $query = [])
+    public function get($serverId, int $databaseId, array $includes = [])
     {
-        return $this->http->get("servers/$serverId/databases/$databaseId", $query);
+        return $this->http->get("servers/$serverId/databases/$databaseId", $includes);
     }
 
     /**

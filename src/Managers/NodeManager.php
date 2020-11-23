@@ -26,13 +26,13 @@ class NodeManager extends Manager
      * Get a node instance by id.
      *
      * @param int   $nodeId
-     * @param array $query
+     * @param array $includes
      *
      * @return Node
      */
-    public function get(int $nodeId, array $query = [])
+    public function get(int $nodeId, array $includes = [])
     {
-        return $this->http->get("nodes/$nodeId", $query);
+        return $this->http->get("nodes/$nodeId", $includes);
     }
 
     /**

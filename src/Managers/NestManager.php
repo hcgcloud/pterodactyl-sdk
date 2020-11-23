@@ -26,12 +26,12 @@ class NestManager extends Manager
      * Get a nest instance by id.
      *
      * @param int   $nestId
-     * @param array $query
+     * @param array $includes
      *
      * @return Nest
      */
-    public function get(int $nestId, array $query = [])
+    public function get(int $nestId, array $includes = [])
     {
-        return $this->http->get("nests/$nestId", $query);
+        return $this->http->get("nests/$nestId", $includes);
     }
 }

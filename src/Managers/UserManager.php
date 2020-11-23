@@ -26,13 +26,13 @@ class UserManager extends Manager
      * Get a user instance by user id.
      *
      * @param int   $userId
-     * @param array $query
+     * @param array $includes
      *
      * @return User
      */
-    public function get(int $userId, array $query = [])
+    public function get(int $userId, array $includes = [])
     {
-        return $this->http->get("users/$userId", $query);
+        return $this->http->get("users/$userId", $includes);
     }
 
     /**
@@ -43,9 +43,9 @@ class UserManager extends Manager
      *
      * @return User
      */
-    public function getByExternalid(string $externalId, array $query = [])
+    public function getByExternalid(string $externalId, array $includes = [])
     {
-        return $this->http->get("users/external/$externalId", $query);
+        return $this->http->get("users/external/$externalId", $includes);
     }
 
     /**
