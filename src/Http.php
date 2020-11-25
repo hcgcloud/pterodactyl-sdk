@@ -80,12 +80,19 @@ class Http
      * Make a GET request and return the response.
      *
      * @param string $uri
+     * @param array  $query
      *
      * @return mixed
      */
     public function get($uri, array $query = [])
     {
-        return $this->request('GET', $uri, [], $query);
+        if(empty($query) || array_keys($query) !== range(0, count($query) - 1)) {
+            // parameters were passed directly
+            return $this->request('GET', $uri, $query);
+        } else {
+            // includes list was passed
+            return $this->request('GET', $uri, ["include" => join(",", $query)]);
+        }
     }
 
     /**
@@ -166,6 +173,12 @@ class Http
         $options['body'] = $body;
         $options['debug'] = false;
         $options['headers']['Authorization'] = 'Bearer '.$token;
+
+        // use server assigned IP Address
+        if (!empty($_SERVER['SERVER_ADDR'])) {
+            $options['curl'][CURLOPT_INTERFACE] = $_SERVER['SERVER_ADDR'];
+            $options['stream_context']['bindto'] = $_SERVER['SERVER_ADDR'];
+        }
 
         $response = $this->guzzle->request($method, $uri, $options);
 

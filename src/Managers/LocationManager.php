@@ -26,13 +26,13 @@ class LocationManager extends Manager
      * Get a location instance.
      *
      * @param int   $locationId
-     * @param array $query
+     * @param array $includes
      *
      * @return Location
      */
-    public function get(int $locationId, array $query = [])
+    public function get(int $locationId, array $includes = [])
     {
-        return $this->http->get("locations/$locationId", $query);
+        return $this->http->get("locations/$locationId", $includes);
     }
 
     /**

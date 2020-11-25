@@ -29,12 +29,12 @@ class NestEggManager extends Manager
      *
      * @param int   $nestId
      * @param int   $eggId
-     * @param array $query
+     * @param array $includes
      *
      * @return Egg
      */
-    public function get(int $nestId, int $eggId, array $query = [])
+    public function get(int $nestId, int $eggId, array $includes = [])
     {
-        return $this->http->get("nests/$nestId/eggs/$eggId", $query);
+        return $this->http->get("nests/$nestId/eggs/$eggId", $includes);
     }
 }

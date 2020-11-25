@@ -36,26 +36,26 @@ class ServerManager extends Manager
      * Get a server instance by id.
      *
      * @param mixed $serverId
-     * @param array $query
+     * @param array $includes
      *
      * @return Server
      */
-    public function get($serverId, array $query = [])
+    public function get($serverId, array $includes = [])
     {
-        return $this->http->get("servers/$serverId", $query);
+        return $this->http->get("servers/$serverId", $includes);
     }
 
     /**
      * Get a server instance by external id.
      *
      * @param int   $externalId
-     * @param array $query
+     * @param array $includes
      *
      * @return Server
      */
-    public function getByExternalId(int $externalId, array $query = [])
+    public function getByExternalId(int $externalId, array $includes = [])
     {
-        return $this->http->get("servers/external/$externalId", $query);
+        return $this->http->get("servers/external/$externalId", $includes);
     }
 
     /**
