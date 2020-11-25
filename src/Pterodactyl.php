@@ -2,47 +2,110 @@
 
 namespace HCGCloud\Pterodactyl;
 
-use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Client as Client;
+use HCGCloud\Pterodactyl\Exceptions\InvaildApiTypeException;
+use HCGCloud\Pterodactyl\Managers\AccountManager;
+use HCGCloud\Pterodactyl\Managers\LocationManager;
+use HCGCloud\Pterodactyl\Managers\Nest\NestEggManager;
+use HCGCloud\Pterodactyl\Managers\NestManager;
+use HCGCloud\Pterodactyl\Managers\Node\NodeAllocationManager;
+use HCGCloud\Pterodactyl\Managers\NodeManager;
+use HCGCloud\Pterodactyl\Managers\Server\ServerDatabaseManager;
+use HCGCloud\Pterodactyl\Managers\ServerManager;
+use HCGCloud\Pterodactyl\Managers\UserManager;
 
 class Pterodactyl
 {
-    use MakesHttpRequests;
-    use Actions\ManagesUsers;
-    use Actions\ManagesServers;
-    use Actions\ManagesAllocations;
-    use Actions\UsesServers;
-    use Actions\ManagesNodes;
-    use Actions\ManagesNests;
-    use Actions\ManagesEggs;
-    use Actions\ManagesLocations;
-
     /**
-     * The Pterodactyl API Key.
-     *
-     * @var string
-     */
-    public $apiKey;
-
-    /**
-     * The Pterodactyl Base Uri.
+     * The Pterodactyl base uri.
      *
      * @var string
      */
     public $baseUri;
 
     /**
-     * The Guzzle HTTP Client instance.
+     * The Pterodactyl API key.
      *
-     * @var \GuzzleHttp\Client
+     * @var string
      */
-    public $guzzle;
+    public $apiKey;
 
     /**
-     * Number of seconds a request is retried.
+     * The API type of the API key.
      *
-     * @var int
+     * @var string
      */
-    public $timeout = 30;
+    public $apiType;
+
+    /**
+     * The Http client.
+     *
+     * @var Client
+     */
+    public $http;
+
+    /**
+     * Account manager.
+     *
+     * @var AccountManager
+     */
+    public $account;
+
+    /**
+     * Location manager.
+     *
+     * @var LocationManager
+     */
+    public $locations;
+
+    /**
+     * User manager.
+     *
+     * @var UserManager
+     */
+    public $users;
+
+    /**
+     * Nest manager.
+     *
+     * @var NestManager
+     */
+    public $nests;
+
+    /**
+     * Node manager.
+     *
+     * @var NodeManager
+     */
+    public $nodes;
+
+    /**
+     * Node allocation manager.
+     *
+     * @var NodeAllocationManager
+     */
+    public $node_allocations;
+
+    /**
+     * Nest egg manager.
+     *
+     * @var NestEggManager
+     */
+    public $nest_eggs;
+
+    /**
+     * Server manager.
+     *
+     * @var ServerManager
+     */
+    public $servers;
+
+    /**
+     * Server database manager.
+     *
+     * @var ServerDatabaseManager
+     */
+    public $server_databases;
 
     /**
      * Create a new Pterodactyl instance.
@@ -52,97 +115,27 @@ class Pterodactyl
      *
      * @return void
      */
-    public function __construct($apiKey, $baseUri, HttpClient $guzzle = null)
+    public function __construct($baseUri, $apiKey, $apiType = 'application', Client $guzzle = null)
     {
-        $this->apiKey = $apiKey;
-
         $this->baseUri = $baseUri;
 
-        $this->guzzle = $guzzle ?: new HttpClient([
-            'base_uri'    => $this->baseUri,
-            'http_errors' => false,
-            'headers'     => [
-                'Accept'       => 'application/json',
-                'Content-Type' => 'application/json',
-            ],
-        ]);
-    }
+        $this->apiKey = $apiKey;
 
-    /**
-     * Transform response data to resources.
-     *
-     * @param array $response
-     *
-     * @return mixed
-     */
-    protected function transform($response)
-    {
-        if (empty($response['object'])) {
-            return $response;
+        if (!in_array($apiType, ['application', 'client'], true)) {
+            throw new InvaildApiTypeException();
         }
+        $this->apiType = $apiType;
 
-        switch ($response['object']) {
-            case 'list':
-                $data = array_map(function ($object) {
-                    return $this->transform($object);
-                }, $response['data']);
+        $this->http = new Http($this, $guzzle);
 
-                if (isset($response['meta'])) {
-                    return [
-                        'data' => $data,
-                        'meta' => $response['meta'],
-                    ];
-                }
-
-                return $data;
-        }
-
-        if (isset($response['attributes']['relationships'])) {
-            $response['attributes']['relationships'] = array_map(function ($object) {
-                return $this->transform($object);
-            }, $response['attributes']['relationships']);
-        }
-
-        $class = '\\HCGCloud\\Pterodactyl\\Resources\\'.ucwords($response['object']);
-
-        $resource = class_exists($class) ? new $class($response['attributes'], $this) : $response['attributes'];
-
-        return $resource;
-    }
-
-    /**
-     * Transform include array to url parameter.
-     *
-     * @param array $includes
-     *
-     * @return string
-     */
-    protected function include($includes)
-    {
-        return empty($includes) ? '' : '?include='.implode(',', $includes);
-    }
-
-    /**
-     * Set a new timeout.
-     *
-     * @param int $timeout
-     *
-     * @return $this
-     */
-    public function setTimeout($timeout)
-    {
-        $this->timeout = $timeout;
-
-        return $this;
-    }
-
-    /**
-     * Get the timeout.
-     *
-     * @return int
-     */
-    public function getTimeout()
-    {
-        return $this->timeout;
+        $this->locations = new LocationManager($this);
+        $this->users = new UserManager($this);
+        $this->nests = new NestManager($this);
+        $this->nest_eggs = new NestEggManager($this);
+        $this->nodes = new NodeManager($this);
+        $this->node_allocations = new NodeAllocationManager($this);
+        $this->account = new AccountManager($this);
+        $this->servers = new ServerManager($this);
+        $this->server_databases = new ServerDatabaseManager($this);
     }
 }

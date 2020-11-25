@@ -3,33 +3,11 @@
 namespace HCGCloud\Pterodactyl\Resources;
 
 use ArrayAccess;
-use HCGCloud\Pterodactyl\Pterodactyl;
 use JsonSerializable;
 use Serializable;
 
-class Resource implements ArrayAccess, JsonSerializable, Serializable
+class Collection extends Resource implements ArrayAccess, JsonSerializable, Serializable
 {
-    /**
-     * The resource attributes.
-     *
-     * @var array
-     */
-    protected $attributes;
-
-    /**
-     * The origin attributes.
-     *
-     * @var array
-     */
-    protected $origin;
-
-    /**
-     * The Pterodactyl SDK instance.
-     *
-     * @var Pterodactyl
-     */
-    protected $pterodactyl;
-
     /**
      * Create a new resource instance.
      *
@@ -41,41 +19,12 @@ class Resource implements ArrayAccess, JsonSerializable, Serializable
     public function __construct(array $attributes, $pterodactyl = null)
     {
         $attributes = isset($attributes['attributes'])
-            ? $attributes['attributes']
+            ? array_merge($attributes, $attributes['attributes'])
             : $attributes;
 
-        $this->origin = $this->attributes = $attributes;
+        $this->attributes = $attributes;
 
         $this->pterodactyl = $pterodactyl;
-    }
-
-    public function getChangedData()
-    {
-        $data = array_diff($this->attributes, $this->origin);
-
-        $this->origin = $this->attributes;
-
-        return $data;
-    }
-
-    public function __set($key, $value)
-    {
-        $this->attributes[$key] = $value;
-    }
-
-    public function __get($key)
-    {
-        return $this->attributes[$key];
-    }
-
-    public function __isset($key)
-    {
-        return isset($this->attributes[$key]);
-    }
-
-    public function __unset($key)
-    {
-        unset($this->attributes[$key]);
     }
 
     /**
@@ -88,29 +37,39 @@ class Resource implements ArrayAccess, JsonSerializable, Serializable
         return $this->all();
     }
 
+    /**
+     * Get meta data of resource.
+     *
+     * @return array
+     */
+    public function meta()
+    {
+        return $this->attributes['meta'];
+    }
+
     public function all()
     {
-        return $this->attributes;
+        return $this->attributes['data'];
     }
 
     public function get($offset)
     {
-        return $this->attributes[$offset];
+        return $this->attributes['data'][$offset];
     }
 
     public function set($offset, $value)
     {
-        $this->attributes[$offset] = $value;
+        $this->attributes['data'][$offset] = $value;
     }
 
     public function has($offset)
     {
-        return isset($this->attributes[$offset]);
+        return isset($this->attributes['data'][$offset]);
     }
 
     public function forget($offset)
     {
-        unset($this->attributes[$offset]);
+        unset($this->attributes['data'][$offset]);
     }
 
     public function offsetGet($offset)
@@ -137,16 +96,16 @@ class Resource implements ArrayAccess, JsonSerializable, Serializable
 
     public function jsonSerialize()
     {
-        return $this->attributes;
+        return $this->attributes['data'];
     }
 
     public function serialize()
     {
-        return serialize($this->attributes);
+        return serialize($this->attributes['data']);
     }
 
     public function unserialize($serialized)
     {
-        return $this->attributes = unserialize($serialized);
+        return $this->attributes['data'] = unserialize($serialized);
     }
 }

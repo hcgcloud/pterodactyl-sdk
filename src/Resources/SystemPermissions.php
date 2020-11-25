@@ -2,6 +2,6 @@
 
 namespace HCGCloud\Pterodactyl\Resources;
 
-class Allocation extends Resource
+class SystemPermissions extends Resource
 {
 }

@@ -5,52 +5,19 @@ namespace HCGCloud\Pterodactyl\Resources;
 class Location extends Resource
 {
     /**
-     * The id of the location.
-     *
-     * @var int
-     */
-    public $id;
-
-    /**
-     * The short name of the location.
-     *
-     * @var string
-     */
-    public $short;
-
-    /**
-     * The long name of the location.
-     *
-     * @var string
-     */
-    public $long;
-
-    /**
-     * The date/time the location was created.
-     *
-     * @var string
-     */
-    public $createdAt;
-
-    /**
-     * The date/time the location was updated.
-     *
-     * @var string
-     */
-    public $updatedAt;
-
-    /**
-     * Delete the given location.
+     * Delete the location.
      *
      * @return void
      */
     public function delete()
     {
-        return $this->pterodactyl->deleteLocation($this->id);
+        return $this->pterodactyl->locations->delete($this->id);
     }
 
     /**
-     * Update the given location.
+     * Update the location.
+     *
+     * @param array $data
      *
      * @return void
      */
@@ -61,6 +28,6 @@ class Location extends Resource
             'long'  => $this->long,
         ], $data);
 
-        return $this->pterodactyl->updateLocation($this->id, $data);
+        return $this->pterodactyl->locations->update($this->id, $data);
     }
 }
