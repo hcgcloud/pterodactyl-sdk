@@ -67,7 +67,7 @@ class ServerManager extends Manager
      */
     public function create(array $data)
     {
-        return $this->http->post('server', [], $data);
+        return $this->http->post('servers', [], $data);
     }
 
     /**
