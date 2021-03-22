@@ -85,7 +85,7 @@ class Http
      */
     public function get($uri, array $query = [])
     {
-        return $this->request('GET', $uri, [], $query);
+        return $this->request('GET', $uri, $query);
     }
 
     /**
