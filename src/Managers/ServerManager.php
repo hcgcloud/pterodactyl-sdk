@@ -48,12 +48,12 @@ class ServerManager extends Manager
     /**
      * Get a server instance by external id.
      *
-     * @param int   $externalId
+     * @param string $externalId
      * @param array $query
      *
      * @return Server
      */
-    public function getByExternalId(int $externalId, array $query = [])
+    public function getByExternalId(string $externalId, array $query = [])
     {
         return $this->http->get("servers/external/$externalId", $query);
     }
