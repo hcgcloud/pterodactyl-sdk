@@ -218,4 +218,16 @@ class ServerManager extends Manager
     {
         return $this->http->post("servers/$serverId/power", [], ['signal' => $signal]);
     }
+    
+     /**
+     * Backup a server
+     *
+     * @param string $serverId
+     *
+     * @return array
+     */
+    public function backup(string $serverId)
+    {
+        return $this->http->post("servers/$serverId/backup");
+    }
 }
