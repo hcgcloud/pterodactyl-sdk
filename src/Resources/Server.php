@@ -97,7 +97,7 @@ class Server extends Resource
      */
     public function websocket()
     {
-        return $this->pterodactyl->servers->forceDelete($this->identifier);
+        return $this->pterodactyl->servers->websocket($this->identifier);
     }
 
     /**
