@@ -97,7 +97,7 @@ class Server extends Resource
      */
     public function websocket()
     {
-        return $this->pterodactyl->servers->forceDelete($this->identifier);
+        return echo "This feature is still in Beta!";
     }
 
     /**
