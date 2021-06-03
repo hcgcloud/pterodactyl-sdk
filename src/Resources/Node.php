@@ -25,4 +25,14 @@ class Node extends Resource
     {
         return $this->pterodactyl->nodes->update($this->id, $data);
     }
+
+    /**
+     * Get node configuration.
+     *
+     * @return void
+     */
+    public function getConfiguration()
+    {
+        return $this->pterodactyl->nodes->getConfiguration($this->id);
+    }
 }
