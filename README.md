@@ -9,6 +9,15 @@
 
 ## Quick start
 
+**For Pterodactyl Panel v1**, you may need to install `v2` version of this sdk, otherwise some functions may not work properly.
+
+There is no stable [version](https://github.com/hcgcloud/pterodactyl-sdk/releases) and full [documentation](https://hcgcloud.github.io/pterodactyl-sdk-docs-v2/) for `v2` yet, you may need to read the source code to use this sdk.
+```bash
+composer require hcgcloud/pterodactyl-sdk:v2.0.0-alpha.2
+```
+
+---
+
 To install the SDK in your project you need to require the package via [composer](http://getcomposer.org):
 
 ```bash
