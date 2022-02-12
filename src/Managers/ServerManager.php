@@ -228,6 +228,6 @@ class ServerManager extends Manager
      */
     public function backup(string $serverId)
     {
-        return $this->http->post("servers/$serverId/backup");
+        return $this->http->post("servers/$serverId/backups");
     }
 }
